@@ -1,0 +1,54 @@
+{% extends "_layout.j2" %}
+{% set active = "watchlists" %}
+{% block title %}Watchlists{% endblock %}
+{% block heading %}Watchlists{% endblock %}
+{% block content %}
+<div class="mb-3 flex items-center gap-3">
+  <div role="tablist" class="tabs tabs-box tabs-sm">
+    <a role="tab" class="tab tab-active">Default <span class="ml-1 text-base-content/50">32</span></a>
+    <a role="tab" class="tab">F&amp;O <span class="ml-1 text-base-content/50">10</span></a>
+    <a role="tab" class="tab">Indices <span class="ml-1 text-base-content/50">6</span></a>
+    <a role="tab" class="tab">{{ icon("plus", "h-3.5 w-3.5") }} New list</a>
+  </div>
+  <span class="chip chip-ok ml-2"><span class="h-1.5 w-1.5 animate-pulse rounded-full bg-success"></span> Live · OpenAlgo WebSocket</span>
+  <div class="relative ml-auto">
+    <label class="input input-sm w-80">{{ icon("plus", "h-3.5 w-3.5 opacity-50") }}<input value="TATA" placeholder="Add symbol (validated against the instrument master)"></label>
+    <div class="absolute right-0 z-10 mt-1 w-80 overflow-hidden rounded-box border border-base-300 bg-base-100 text-sm shadow-lg">
+      {% for sym, ex, name, typ in [("TATAMOTORS", "NSE", "Tata Motors", "EQ"), ("TATASTEEL", "NSE", "Tata Steel", "EQ"), ("TATAPOWER", "BSE", "Tata Power", "EQ"), ("TATAMOTORS25APRFUT", "NFO", "Tata Motors Apr fut", "FUT")] %}
+        <div class="flex items-center justify-between px-3 py-2 {{ 'bg-primary/10' if loop.first }}"><div><b>{{ sym }}</b> <span class="text-xs text-base-content/50">{{ ex }}</span><div class="text-[11px] text-base-content/50">{{ name }}</div></div><span class="chip chip-idle">{{ typ }}</span></div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<section class="card-h overflow-hidden">
+  <table class="w-full">
+    <thead class="bg-base-200/60"><tr><th class="th">Symbol</th><th class="th text-right">LTP</th><th class="th text-right">Change</th><th class="th text-right">Volume</th><th class="th">Day range</th><th class="th">Stored data</th><th class="th"></th></tr></thead>
+    <tbody>
+    {% for sym, ex, ltp, chg, vol, lo, hi, pos, cov in [
+        ("SBIN", "NSE", "771.85", 0.42, "1.24 Cr", "764.10", "775.30", 68, [("D", "chip-ok"), ("5m", "chip-warn"), ("1m", "chip-ok")]),
+        ("RELIANCE", "NSE", "1,278.40", -0.86, "98.3 L", "1,271.00", "1,294.50", 32, [("D", "chip-ok"), ("5m", "chip-ok"), ("1m", "chip-ok")]),
+        ("TCS", "NSE", "3,612.15", 1.12, "21.7 L", "3,560.00", "3,620.90", 91, [("D", "chip-ok"), ("5m", "chip-ok")]),
+        ("TCS", "BSE", "3,611.80", 1.10, "1.02 L", "3,561.20", "3,620.00", 90, [("D", "chip-ok")]),
+        ("NIFTY", "NSE_INDEX", "23,519.35", 0.21, "-", "23,401.70", "23,581.10", 66, [("D", "chip-ok"), ("5m", "chip-ok"), ("1m", "chip-ok")]),
+        ("M&M", "NSE", "2,734.00", -1.94, "24.1 L", "2,720.50", "2,801.00", 17, [("D", "chip-ok"), ("5m", "chip-warn")]),
+        ("CRUDEOIL", "MCX", "5,912", 0.68, "8.4 K", "5,861", "5,930", 74, [("D", "chip-ok"), ("5m", "chip-ok"), ("15m", "chip-ok")])] %}
+      <tr class="hover:bg-base-200/60">
+        <td class="td"><b>{{ sym }}</b> <span class="text-xs text-base-content/50">{{ ex }}</span></td>
+        <td class="td num text-right">{{ ltp }}</td>
+        <td class="td num text-right {{ 'text-success' if chg >= 0 else 'text-error' }}">{{ "%+.2f"|format(chg) }}%</td>
+        <td class="td num text-right text-xs text-base-content/70">{{ vol }}</td>
+        <td class="td"><div class="flex items-center gap-2 text-[11px] text-base-content/50"><span class="num">{{ lo }}</span><div class="relative h-1 w-24 rounded bg-base-300"><div class="absolute -top-0.5 h-2 w-1 rounded bg-base-content/70" style="left: {{ pos }}%"></div></div><span class="num">{{ hi }}</span></div></td>
+        <td class="td"><div class="flex gap-1">{% for iv, cls in cov %}<span class="chip {{ cls }}">{{ iv }}</span>{% endfor %}</div></td>
+        <td class="td text-right whitespace-nowrap">
+          <a href="charts.html" class="btn btn-ghost btn-xs" title="Chart">{{ icon("chart-candlestick", "h-3.5 w-3.5") }}</a>
+          <button class="btn btn-ghost btn-xs" title="Download">{{ icon("download", "h-3.5 w-3.5") }}</button>
+          <button class="btn btn-ghost btn-xs" title="Remove">{{ icon("trash-2", "h-3.5 w-3.5") }}</button>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <div class="border-t border-base-300 px-3 py-2 text-xs text-base-content/55">Showing 7 of 32 · quotes stream via the OpenAlgo WebSocket (REST fallback: 8 req/s, 3 s cache) · the same symbol on two exchanges is two instruments</div>
+</section>
+{% endblock %}

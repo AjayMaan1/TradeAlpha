@@ -1,0 +1,62 @@
+{
+ "zerodha": {
+  "20@5m": "close+  68s",
+  "20@1m": "NO (slower than bar)",
+  "50@5m": "close+  81s",
+  "50@1m": "NO (slower than bar)",
+  "100@5m": "close+ 102s",
+  "100@1m": "NO (slower than bar)",
+  "200@5m": "close+ 143s",
+  "200@1m": "NO (slower than bar)"
+ },
+ "angelone": {
+  "20@5m": "close+  68s",
+  "20@1m": "NO (slower than bar)",
+  "50@5m": "close+  81s",
+  "50@1m": "NO (slower than bar)",
+  "100@5m": "close+ 102s",
+  "100@1m": "NO (per-hour limit)",
+  "200@5m": "close+ 143s",
+  "200@1m": "NO (per-minute limit)"
+ },
+ "upstox": {
+  "20@5m": "close+  60s",
+  "20@1m": "NO (slower than bar)",
+  "50@5m": "close+  61s",
+  "50@1m": "NO (slower than bar)",
+  "100@5m": "close+  62s",
+  "100@1m": "NO (per-hour limit)",
+  "200@5m": "close+  65s",
+  "200@1m": "NO (per-hour limit)"
+ },
+ "dhan": {
+  "20@5m": "close+  65s",
+  "20@1m": "NO (slower than bar)",
+  "50@5m": "close+  72s",
+  "50@1m": "NO (slower than bar)",
+  "100@5m": "close+  85s",
+  "100@1m": "NO (slower than bar)",
+  "200@5m": "close+ 110s",
+  "200@1m": "NO (slower than bar)"
+ },
+ "fyers": {
+  "20@5m": "close+  62s",
+  "20@1m": "NO (slower than bar)",
+  "50@5m": "close+  66s",
+  "50@1m": "NO (slower than bar)",
+  "100@5m": "close+  72s",
+  "100@1m": "NO (slower than bar)",
+  "200@5m": "close+ 120s",
+  "200@1m": "NO (per-minute limit)"
+ },
+ "icici_breeze": {
+  "20@5m": "close+  75s",
+  "20@1m": "NO (per-day limit)",
+  "50@5m": "close+  98s",
+  "50@1m": "NO (per-day limit)",
+  "100@5m": "NO (per-day limit)",
+  "100@1m": "NO (per-minute limit)",
+  "200@5m": "NO (per-day limit)",
+  "200@1m": "NO (per-minute limit)"
+ }
+}

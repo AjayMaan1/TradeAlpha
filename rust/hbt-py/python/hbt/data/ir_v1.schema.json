@@ -1,0 +1,432 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://historify.local/schemas/strategy-ir-v1.json",
+ "title": "Historify Lab Strategy IR v1",
+ "description": "Structure of a strategy document. Types, causality, limits and lookback are checked by the compiler (hbt-ir); this schema is the structural contract (editors, UI form builder).",
+ "type": "object",
+ "required": [
+  "ir_version",
+  "name",
+  "rules"
+ ],
+ "additionalProperties": false,
+ "properties": {
+  "ir_version": {
+   "const": 1
+  },
+  "name": {
+   "type": "string",
+   "minLength": 1,
+   "maxLength": 200
+  },
+  "description": {
+   "type": "string",
+   "maxLength": 4096
+  },
+  "params": {
+   "type": "object",
+   "propertyNames": {
+    "$ref": "#/$defs/name"
+   },
+   "additionalProperties": {
+    "$ref": "#/$defs/param"
+   }
+  },
+  "constraints": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/expr"
+   }
+  },
+  "universe": {
+   "type": "object",
+   "additionalProperties": false,
+   "properties": {
+    "interval": {
+     "$ref": "#/$defs/interval"
+    },
+    "watchlist": {
+     "type": "string"
+    },
+    "symbols": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "exchange": {
+     "type": "string"
+    }
+   }
+  },
+  "data": {
+   "type": "object",
+   "additionalProperties": false,
+   "properties": {
+    "adjustment": {
+     "enum": [
+      "raw",
+      "adjusted",
+      "total_return"
+     ]
+    }
+   }
+  },
+  "signals": {
+   "type": "object",
+   "propertyNames": {
+    "$ref": "#/$defs/name"
+   },
+   "additionalProperties": {
+    "$ref": "#/$defs/expr"
+   }
+  },
+  "rules": {
+   "type": "array",
+   "minItems": 1,
+   "maxItems": 64,
+   "items": {
+    "$ref": "#/$defs/rule"
+   }
+  },
+  "product": {
+   "enum": [
+    "MIS",
+    "CNC",
+    "NRML"
+   ]
+  },
+  "meta": {
+   "type": "object"
+  }
+ },
+ "$defs": {
+  "name": {
+   "type": "string",
+   "pattern": "^[A-Za-z0-9_-]{1,64}$"
+  },
+  "interval": {
+   "enum": [
+    "1m",
+    "3m",
+    "5m",
+    "10m",
+    "15m",
+    "30m",
+    "1h",
+    "D",
+    "W",
+    "M",
+    "1d",
+    "d",
+    "day",
+    "1w",
+    "w",
+    "week",
+    "month",
+    "60m"
+   ]
+  },
+  "time": {
+   "type": "string",
+   "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+  },
+  "number": {
+   "type": "number",
+   "minimum": -1000000000000000.0,
+   "maximum": 1000000000000000.0
+  },
+  "expr": {
+   "oneOf": [
+    {
+     "$ref": "#/$defs/number"
+    },
+    {
+     "type": "boolean"
+    },
+    {
+     "$ref": "#/$defs/time"
+    },
+    {
+     "type": "object",
+     "required": [
+      "col"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "col": {
+       "type": "string",
+       "pattern": "^(open|high|low|close|volume|typical|hl2|\\$[A-Za-z0-9_-]{1,64})$"
+      },
+      "tf": {
+       "$ref": "#/$defs/interval"
+      }
+     }
+    },
+    {
+     "type": "object",
+     "required": [
+      "sig"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "sig": {
+       "$ref": "#/$defs/name"
+      }
+     }
+    },
+    {
+     "type": "object",
+     "required": [
+      "param"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "param": {
+       "$ref": "#/$defs/name"
+      }
+     }
+    },
+    {
+     "type": "object",
+     "required": [
+      "fn"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "fn": {
+       "type": "string"
+      },
+      "args": {
+       "type": "array",
+       "items": {
+        "$ref": "#/$defs/expr"
+       }
+      },
+      "out": {
+       "type": "string"
+      },
+      "tf": {
+       "$ref": "#/$defs/interval"
+      }
+     }
+    }
+   ]
+  },
+  "param": {
+   "type": "object",
+   "required": [
+    "type",
+    "default"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "type": {
+     "enum": [
+      "int",
+      "float",
+      "bool",
+      "choice"
+     ]
+    },
+    "default": {
+     "oneOf": [
+      {
+       "$ref": "#/$defs/number"
+      },
+      {
+       "type": "boolean"
+      }
+     ]
+    },
+    "min": {
+     "$ref": "#/$defs/number"
+    },
+    "max": {
+     "$ref": "#/$defs/number"
+    },
+    "step": {
+     "type": "number",
+     "exclusiveMinimum": 0
+    },
+    "choices": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/number"
+     },
+     "minItems": 1
+    },
+    "prior": {
+     "enum": [
+      "uniform",
+      "log_uniform"
+     ]
+    },
+    "description": {
+     "type": "string"
+    }
+   }
+  },
+  "level": {
+   "oneOf": [
+    {
+     "type": "null"
+    },
+    {
+     "type": "object",
+     "required": [
+      "pct"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "pct": {
+       "$ref": "#/$defs/expr"
+      }
+     }
+    },
+    {
+     "type": "object",
+     "required": [
+      "price"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "price": {
+       "$ref": "#/$defs/expr"
+      }
+     }
+    }
+   ]
+  },
+  "entry": {
+   "type": "object",
+   "additionalProperties": false,
+   "properties": {
+    "order": {
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+      "type": {
+       "enum": [
+        "market",
+        "limit",
+        "stop",
+        "stop_limit"
+       ]
+      },
+      "price": {
+       "$ref": "#/$defs/expr"
+      },
+      "offset_pct": {
+       "$ref": "#/$defs/expr"
+      },
+      "limit": {
+       "$ref": "#/$defs/expr"
+      }
+     }
+    },
+    "size": {
+     "type": "object",
+     "minProperties": 1,
+     "maxProperties": 1,
+     "additionalProperties": false,
+     "properties": {
+      "all_in": {
+       "const": true
+      },
+      "pct_equity": {
+       "$ref": "#/$defs/expr"
+      },
+      "fixed_qty": {
+       "$ref": "#/$defs/expr"
+      },
+      "fixed_value": {
+       "$ref": "#/$defs/expr"
+      },
+      "risk_pct": {
+       "$ref": "#/$defs/expr"
+      }
+     }
+    },
+    "bracket": {
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+      "stop": {
+       "$ref": "#/$defs/level"
+      },
+      "target": {
+       "$ref": "#/$defs/level"
+      },
+      "trail_pct": {
+       "oneOf": [
+        {
+         "type": "null"
+        },
+        {
+         "$ref": "#/$defs/expr"
+        }
+       ]
+      },
+      "time_stop_bars": {
+       "oneOf": [
+        {
+         "type": "null"
+        },
+        {
+         "$ref": "#/$defs/expr"
+        }
+       ]
+      }
+     }
+    },
+    "expiry_bars": {
+     "$ref": "#/$defs/expr"
+    }
+   }
+  },
+  "exit": {
+   "type": "object",
+   "maxProperties": 0
+  },
+  "rule": {
+   "type": "object",
+   "required": [
+    "when",
+    "do"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "id": {
+     "$ref": "#/$defs/name"
+    },
+    "when": {
+     "$ref": "#/$defs/expr"
+    },
+    "do": {
+     "type": "object",
+     "minProperties": 1,
+     "maxProperties": 1,
+     "additionalProperties": false,
+     "properties": {
+      "enter_long": {
+       "$ref": "#/$defs/entry"
+      },
+      "enter_short": {
+       "$ref": "#/$defs/entry"
+      },
+      "exit_long": {
+       "$ref": "#/$defs/exit"
+      },
+      "exit_short": {
+       "$ref": "#/$defs/exit"
+      },
+      "exit_all": {
+       "$ref": "#/$defs/exit"
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,13 @@
+{
+  "observed_seconds": 130,
+  "bind_addresses": [
+    "http://127.0.0.1:5001",
+    "http://192.0.2.2:5001"
+  ],
+  "listens_on_all_interfaces": true,
+  "werkzeug_debugger_active": true,
+  "reloader_active": true,
+  "python_processes": 2,
+  "scheduled_history_calls": 4,
+  "expected_calls_single_scheduler": 2
+}

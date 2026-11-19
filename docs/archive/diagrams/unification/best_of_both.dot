@@ -1,0 +1,33 @@
+digraph B {
+  graph [rankdir=LR, fontname="Helvetica", fontsize=22, labelloc=t, pad=0.3, nodesep=0.12, ranksep=0.4,
+         label="Unifying flagfix1 + flagfix2: which fix each unified component comes from\n "];
+  node [shape=plaintext, fontname="Helvetica"];
+  t [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6">
+<TR><TD BGCOLOR="#1f2937"><FONT COLOR="white"><B>Area</B></FONT></TD>
+    <TD BGCOLOR="#1d4ed8"><FONT COLOR="white"><B>flagfix1 (hbt Lab)</B></FONT></TD>
+    <TD BGCOLOR="#c2410c"><FONT COLOR="white"><B>flagfix2 (P1-P6)</B></FONT></TD>
+    <TD BGCOLOR="#15803d"><FONT COLOR="white"><B>Unified = best of both</B></FONT></TD></TR>
+<TR><TD ALIGN="LEFT"><B>Strategy definition</B></TD><TD BGCOLOR="#bbf7d0">IR: causal by construction (E-CAUSAL) ✅</TD><TD BGCOLOR="#fecaca">Python exec_module: accepted a peeking strategy (+2,204 %) ❌</TD><TD ALIGN="LEFT">IR for ideas; Python via hbt Python tier (LookAheadError) + look-ahead gate at freeze</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Execution kernel</B></TD><TD BGCOLOR="#bbf7d0">Rust, ~10× faster, deterministic</TD><TD BGCOLOR="#fef9c3">Python, portfolio-level, F&amp;O, Track L</TD><TD ALIGN="LEFT">hbt-core + portfolio mode; sim kept for F&amp;O / Track L / event studies</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Cost model</B></TD><TD BGCOLOR="#bbf7d0">12 brokers, correct pre-2024 options fee, fixed point</TD><TD BGCOLOR="#fef9c3">contract-note rounding; used by P5 / P6a</TD><TD ALIGN="LEFT">flagfix1 data + flagfix2 rounding, one file, both kernels (identical today: ₹36.85 + ₹80.85)</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Snapshots</B></TD><TD BGCOLOR="#fef9c3">readable per-series export; full copy each time</TD><TD BGCOLOR="#bbf7d0">content-addressed (+20 KB rebuild vs +540 KB), PIT bundle</TD><TD ALIGN="LEFT">lab snapshot v2 for backtests; core snapshot = export</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Point-in-time</B></TD><TD BGCOLOR="#bbf7d0">available_at = planner finality, per broker</TD><TD BGCOLOR="#fecaca">research intraday lag 0 s (optimistic)</TD><TD ALIGN="LEFT">flagfix1 rule, one module</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Corporate actions</B></TD><TD BGCOLOR="#fef9c3">CSV import + candidates from broker revisions</TD><TD BGCOLOR="#bbf7d0">automatic NSE feed, bhavcopy-verified, lineage</TD><TD ALIGN="LEFT">flagfix2 master + flagfix1 overrides / candidates</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Calendar</B></TD><TD BGCOLOR="#fef9c3">OpenAlgo sync (all exchanges, Muhurat, MCX)</TD><TD BGCOLOR="#bbf7d0">NSE master + derived from bhavcopy</TD><TD ALIGN="LEFT">both, ownership by source (done at integration)</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Research statistics</B></TD><TD BGCOLOR="#bbf7d0">protocol proven: noise rejected, control accepted</TD><TD BGCOLOR="#bbf7d0">PBO, Monte Carlo, regimes, purge gap</TD><TD ALIGN="LEFT">one library (DSR identical: 0.9004 both)</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Trial registry / hold-out</B></TD><TD BGCOLOR="#bbf7d0">append-only (triggers), cohort cut-off D-18</TD><TD BGCOLOR="#fef9c3">run groups; 12-month frozen-code lock</TD><TD ALIGN="LEFT">one append-only registry + both hold-out rules</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Job dispatch</B></TD><TD BGCOLOR="#fef9c3">back-pressure, low priority, hard cancel</TD><TD BGCOLOR="#fef9c3">reused pool, fan-out, memory cap</TD><TD ALIGN="LEFT">one dispatcher with all five properties</TD></TR>
+<TR><TD ALIGN="LEFT"><B>OMS / idempotency</B></TD><TD BGCOLOR="#bbf7d0">journal-first CAS, per-order tag, never blind resend</TD><TD BGCOLOR="#fecaca">DUPLICATE order under lost ack + book lag ❌</TD><TD ALIGN="LEFT">flagfix1 OMS</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Protective stops</B></TD><TD BGCOLOR="#fecaca">held in the engine (unprotected if the app dies) ❌</TD><TD BGCOLOR="#bbf7d0">SL-M + LIMIT resting at the broker, OCO</TD><TD ALIGN="LEFT">flagfix2 broker-side protectives on the flagfix1 OMS</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Risk controls</B></TD><TD BGCOLOR="#bbf7d0">19 guardrails (collar, fat finger, stale, clock …)</TD><TD BGCOLOR="#fef9c3">global caps, event days, exits never blocked</TD><TD ALIGN="LEFT">union</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Lifecycle / promotion</B></TD><TD BGCOLOR="#fef9c3">cohorts, readiness checklist, drills</TD><TD BGCOLOR="#bbf7d0">deployments, stages, evidence gates, journal</TD><TD ALIGN="LEFT">flagfix2 lifecycle + flagfix1 readiness and drills as gate inputs</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Parity</B></TD><TD BGCOLOR="#fef9c3">as-seen bars journal, replay equality</TD><TD BGCOLOR="#bbf7d0">divergence classes, auto-pause on logic</TD><TD ALIGN="LEFT">classes + as-seen hashes</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Live trading</B></TD><TD BGCOLOR="#fecaca">not built (G3 planned)</TD><TD BGCOLOR="#bbf7d0">live gate, dry run, Analyzer-OFF check, caps</TD><TD ALIGN="LEFT">flagfix2 gate on the unified gateway</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Notifications</B></TD><TD BGCOLOR="#bbf7d0">system alerts, throttling, OpenAlgo relay</TD><TD BGCOLOR="#bbf7d0">HMAC webhook, retries, dead letter, SSE</TD><TD ALIGN="LEFT">one bus, one Telegram config</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Live bars for paper</B></TD><TD BGCOLOR="#fef9c3">bar_feeds (REST, latency measured)</TD><TD BGCOLOR="#bbf7d0">UniverseFollow + WebSocket builder</TD><TD ALIGN="LEFT">one market-data service</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Security</B></TD><TD BGCOLOR="#bbf7d0">WSGI guard, strict broker-host policy</TD><TD BGCOLOR="#bbf7d0">users, sessions, scoped routes, audit log</TD><TD ALIGN="LEFT">both (unified at integration)</TD></TR>
+<TR><TD ALIGN="LEFT"><B>Test infrastructure</B></TD><TD BGCOLOR="#bbf7d0">Rust build, determinism, fault mock, drills</TD><TD BGCOLOR="#bbf7d0">parallel runs, instance templates, sandbox demo</TD><TD ALIGN="LEFT">both (one runner)</TD></TR>
+</TABLE>>];
+  legend [label=<<TABLE BORDER="0" CELLSPACING="4"><TR><TD BGCOLOR="#bbf7d0">  stronger  </TD><TD BGCOLOR="#fef9c3">  partial / complementary  </TD><TD BGCOLOR="#fecaca">  defect or missing  </TD></TR></TABLE>>];
+}

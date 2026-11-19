@@ -1,0 +1,20 @@
+{
+ "bars": 39150,
+ "ema_signals_ms": 5.24,
+ "ema_ir_run_ms": 16.14,
+ "ema_array_run_ms": 11.7,
+ "fills": 1746,
+ "big_program_nodes": 32,
+ "big_program_ms": 24.07,
+ "node_updates_per_s_M": 52.1,
+ "sweep_variants": 256,
+ "sweep_s": 0.508,
+ "sweep_runs_per_s": 503,
+ "sweep_shared_market_nodes": 33,
+ "sweep_unshared_would_be": 513,
+ "sweep_signals_unshared_ms": 851.6,
+ "compile_ms_small": 0.042,
+ "compile_ms_4000_nodes": 17.9,
+ "stream_step_us_per_symbol": 0.43,
+ "stream_step_us_100_symbols": 43.3
+}

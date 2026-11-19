@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en" data-theme="historify-light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Watchlists · Historify</title>
+  <link rel="stylesheet" href="assets/app.css">
+  <script defer src="assets/lightweight-charts.standalone.production.js"></script>
+  
+  <script defer src="assets/proto.js"></script>
+  <script defer src="assets/alpine-csp.min.js"></script>
+</head>
+<body class="min-h-screen bg-base-200 font-sans text-base-content antialiased" data-editor="closed">
+<div class="flex min-h-screen">
+  
+  <aside class="w-60 shrink-0 border-r border-base-300 bg-base-100">
+   <div class="sticky top-0 flex h-screen flex-col">
+    <div class="flex h-14 items-center gap-2 border-b border-base-300 px-4">
+      <div class="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-content"><svg class="h-5 w-5" aria-hidden="true" class="lucide lucide-chart-candlestick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 5v4" /> <rect width="4" height="6" x="7" y="9" rx="1" /> <path d="M9 15v2" /> <path d="M17 3v2" /> <rect width="4" height="8" x="15" y="5" rx="1" /> <path d="M17 13v3" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> </svg></div>
+      <div class="leading-tight">
+        <div class="font-semibold">Historify</div>
+        <div class="text-[11px] text-base-content/50">market data manager</div>
+      </div>
+    </div>
+    <nav class="flex-1 overflow-y-auto px-2 pb-4">
+      
+      
+        <div class="nav-group">Monitor</div>
+        
+          <a href="dashboard.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-layout-dashboard" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="7" height="9" x="3" y="3" rx="1" /> <rect width="7" height="5" x="14" y="3" rx="1" /> <rect width="7" height="9" x="14" y="12" rx="1" /> <rect width="7" height="5" x="3" y="16" rx="1" /> </svg><span class="flex-1">Dashboard</span>
+            
+          </a>
+        
+          <a href="watchlists.html" class="nav-item active">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-list" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 5h.01" /> <path d="M3 12h.01" /> <path d="M3 19h.01" /> <path d="M8 5h13" /> <path d="M8 12h13" /> <path d="M8 19h13" /> </svg><span class="flex-1">Watchlists</span>
+            
+          </a>
+        
+          <a href="charts.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-chart-candlestick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 5v4" /> <rect width="4" height="6" x="7" y="9" rx="1" /> <path d="M9 15v2" /> <path d="M17 3v2" /> <rect width="4" height="8" x="15" y="5" rx="1" /> <path d="M17 13v3" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> </svg><span class="flex-1">Charts</span>
+            
+          </a>
+        
+      
+        <div class="nav-group">Data</div>
+        
+          <a href="data.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-database" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /> </svg><span class="flex-1">Data Manager</span>
+            
+          </a>
+        
+          <a href="jobs.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-list-checks" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M13 5h8" /> <path d="M13 12h8" /> <path d="M13 19h8" /> <path d="m3 17 2 2 4-4" /> <path d="m3 7 2 2 4-4" /> </svg><span class="flex-1">Jobs</span>
+            <span class="chip chip-info">1</span>
+          </a>
+        
+          <a href="import.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-file-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M12 12v6" /> <path d="m15 15-3-3-3 3" /> </svg><span class="flex-1">Import</span>
+            
+          </a>
+        
+          <a href="export.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-file-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M12 18v-6" /> <path d="m9 15 3 3 3-3" /> </svg><span class="flex-1">Export</span>
+            
+          </a>
+        
+      
+        <div class="nav-group">Automation</div>
+        
+          <a href="scheduler.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-calendar-clock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M16 14v2.2l1.6 1" /> <path d="M16 2v3" /> <path d="M21 7.338V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h2.338" /> <path d="M3 9h5.859" /> <path d="M8 2v3" /> <circle cx="16" cy="16" r="6" /> </svg><span class="flex-1">Scheduler</span>
+            
+          </a>
+        
+      
+        <div class="nav-group">System</div>
+        
+          <a href="settings.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-settings" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /> </svg><span class="flex-1">Settings</span>
+            
+          </a>
+        
+      
+    </nav>
+    <div class="border-t border-base-300 p-3 text-[11px] text-base-content/50">
+      <div class="flex justify-between"><span>v2.0.0-dev</span><span>Python 3.14</span></div>
+      <div class="mt-1">Bars: DuckDB · Meta: SQLite</div>
+    </div>
+   </div>
+  </aside>
+
+  
+  <div class="flex min-w-0 flex-1 flex-col">
+    <header class="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-base-300 bg-base-100/95 px-5 backdrop-blur">
+      <div class="min-w-0">
+        <h1 class="truncate text-[15px] font-semibold">Watchlists</h1>
+      </div>
+      <button class="btn btn-sm ml-4 w-80 justify-start gap-2 border-base-300 bg-base-200 font-normal text-base-content/60 shadow-none">
+        <svg class="icon" aria-hidden="true" class="lucide lucide-search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /> </svg> Search symbols, pages, actions…
+        <kbd class="kbd kbd-xs ml-auto">Ctrl K</kbd>
+      </button>
+      <div class="ml-auto flex items-center gap-2">
+        
+          <span class="chip chip-ok py-1" title="OpenAlgo 127.0.0.1:5000 → Angel One">
+            <span class="h-1.5 w-1.5 rounded-full bg-success"></span> OpenAlgo · Angel One
+          </span>
+        
+        <div class="flex items-center gap-2 rounded-lg border border-base-300 px-2.5 py-1" title="History API budget used this hour (80% of Angel One's 5,000/h)">
+          <svg class="h-3.5 w-3.5 text-base-content/60" aria-hidden="true" class="lucide lucide-gauge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m12 14 4-4" /> <path d="M3.34 19a10 10 0 1 1 17.32 0" /> </svg>
+          <div class="w-20">
+            <div class="flex justify-between text-[10px] text-base-content/60"><span>API/h</span><span class="num">312/4k</span></div>
+            <progress class="progress progress-primary h-1 w-full" value="312" max="4000"></progress>
+          </div>
+        </div>
+        <a href="jobs.html" class="flex items-center gap-2 rounded-lg border border-base-300 px-2.5 py-1 text-xs hover:bg-base-200">
+          <span class="loading loading-spinner loading-xs text-primary"></span> 1 job · <span class="num">62%</span>
+        </a>
+        <button class="btn btn-ghost btn-sm btn-square" aria-label="Toggle theme"><svg class="icon" aria-hidden="true" class="lucide lucide-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /> </svg></button>
+      </div>
+    </header>
+
+    
+
+    <main class="flex-1 p-5">
+      
+<div class="mb-3 flex items-center gap-3">
+  <div role="tablist" class="tabs tabs-box tabs-sm">
+    <a role="tab" class="tab tab-active">Default <span class="ml-1 text-base-content/50">32</span></a>
+    <a role="tab" class="tab">F&amp;O <span class="ml-1 text-base-content/50">10</span></a>
+    <a role="tab" class="tab">Indices <span class="ml-1 text-base-content/50">6</span></a>
+    <a role="tab" class="tab"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg> New list</a>
+  </div>
+  <span class="chip chip-ok ml-2"><span class="h-1.5 w-1.5 animate-pulse rounded-full bg-success"></span> Live · OpenAlgo WebSocket</span>
+  <div class="relative ml-auto">
+    <label class="input input-sm w-80"><svg class="h-3.5 w-3.5 opacity-50" aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg><input value="TATA" placeholder="Add symbol (validated against the instrument master)"></label>
+    <div class="absolute right-0 z-10 mt-1 w-80 overflow-hidden rounded-box border border-base-300 bg-base-100 text-sm shadow-lg">
+      
+        <div class="flex items-center justify-between px-3 py-2 bg-primary/10"><div><b>TATAMOTORS</b> <span class="text-xs text-base-content/50">NSE</span><div class="text-[11px] text-base-content/50">Tata Motors</div></div><span class="chip chip-idle">EQ</span></div>
+      
+        <div class="flex items-center justify-between px-3 py-2 "><div><b>TATASTEEL</b> <span class="text-xs text-base-content/50">NSE</span><div class="text-[11px] text-base-content/50">Tata Steel</div></div><span class="chip chip-idle">EQ</span></div>
+      
+        <div class="flex items-center justify-between px-3 py-2 "><div><b>TATAPOWER</b> <span class="text-xs text-base-content/50">BSE</span><div class="text-[11px] text-base-content/50">Tata Power</div></div><span class="chip chip-idle">EQ</span></div>
+      
+        <div class="flex items-center justify-between px-3 py-2 "><div><b>TATAMOTORS25APRFUT</b> <span class="text-xs text-base-content/50">NFO</span><div class="text-[11px] text-base-content/50">Tata Motors Apr fut</div></div><span class="chip chip-idle">FUT</span></div>
+      
+    </div>
+  </div>
+</div>
+
+<section class="card-h overflow-hidden">
+  <table class="w-full">
+    <thead class="bg-base-200/60"><tr><th class="th">Symbol</th><th class="th text-right">LTP</th><th class="th text-right">Change</th><th class="th text-right">Volume</th><th class="th">Day range</th><th class="th">Stored data</th><th class="th"></th></tr></thead>
+    <tbody>
+    
+      <tr class="hover:bg-base-200/60">
+        <td class="td"><b>SBIN</b> <span class="text-xs text-base-content/50">NSE</span></td>
+        <td class="td num text-right">771.85</td>
+        <td class="td num text-right text-success">+0.42%</td>
+        <td class="td num text-right text-xs text-base-content/70">1.24 Cr</td>
+        <td class="td"><div class="flex items-center gap-2 text-[11px] text-base-content/50"><span class="num">764.10</span><div class="relative h-1 w-24 rounded bg-base-300"><div class="absolute -top-0.5 h-2 w-1 rounded bg-base-content/70" style="left: 68%"></div></div><span class="num">775.30</span></div></td>
+        <td class="td"><div class="flex gap-1"><span class="chip chip-ok">D</span><span class="chip chip-warn">5m</span><span class="chip chip-ok">1m</span></div></td>
+        <td class="td text-right whitespace-nowrap">
+          <a href="charts.html" class="btn btn-ghost btn-xs" title="Chart"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-chart-candlestick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 5v4" /> <rect width="4" height="6" x="7" y="9" rx="1" /> <path d="M9 15v2" /> <path d="M17 3v2" /> <rect width="4" height="8" x="15" y="5" rx="1" /> <path d="M17 13v3" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> </svg></a>
+          <button class="btn btn-ghost btn-xs" title="Download"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-download" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /> </svg></button>
+          <button class="btn btn-ghost btn-xs" title="Remove"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-trash-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 11v6" /> <path d="M14 11v6" /> <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /> <path d="M3 6h18" /> <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /> </svg></button>
+        </td>
+      </tr>
+    
+      <tr class="hover:bg-base-200/60">
+        <td class="td"><b>RELIANCE</b> <span class="text-xs text-base-content/50">NSE</span></td>
+        <td class="td num text-right">1,278.40</td>
+        <td class="td num text-right text-error">-0.86%</td>
+        <td class="td num text-right text-xs text-base-content/70">98.3 L</td>
+        <td class="td"><div class="flex items-center gap-2 text-[11px] text-base-content/50"><span class="num">1,271.00</span><div class="relative h-1 w-24 rounded bg-base-300"><div class="absolute -top-0.5 h-2 w-1 rounded bg-base-content/70" style="left: 32%"></div></div><span class="num">1,294.50</span></div></td>
+        <td class="td"><div class="flex gap-1"><span class="chip chip-ok">D</span><span class="chip chip-ok">5m</span><span class="chip chip-ok">1m</span></div></td>
+        <td class="td text-right whitespace-nowrap">
+          <a href="charts.html" class="btn btn-ghost btn-xs" title="Chart"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-chart-candlestick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 5v4" /> <rect width="4" height="6" x="7" y="9" rx="1" /> <path d="M9 15v2" /> <path d="M17 3v2" /> <rect width="4" height="8" x="15" y="5" rx="1" /> <path d="M17 13v3" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> </svg></a>
+          <button class="btn btn-ghost btn-xs" title="Download"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-download" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /> </svg></button>
+          <button class="btn btn-ghost btn-xs" title="Remove"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-trash-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 11v6" /> <path d="M14 11v6" /> <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /> <path d="M3 6h18" /> <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /> </svg></button>
+        </td>
+      </tr>
+    
+      <tr class="hover:bg-base-200/60">
+        <td class="td"><b>TCS</b> <span class="text-xs text-base-content/50">NSE</span></td>
+        <td class="td num text-right">3,612.15</td>
+        <td class="td num text-right text-success">+1.12%</td>
+        <td class="td num text-right text-xs text-base-content/70">21.7 L</td>
+        <td class="td"><div class="flex items-center gap-2 text-[11px] text-base-content/50"><span class="num">3,560.00</span><div class="relative h-1 w-24 rounded bg-base-300"><div class="absolute -top-0.5 h-2 w-1 rounded bg-base-content/70" style="left: 91%"></div></div><span class="num">3,620.90</span></div></td>
+        <td class="td"><div class="flex gap-1"><span class="chip chip-ok">D</span><span class="chip chip-ok">5m</span></div></td>
+        <td class="td text-right whitespace-nowrap">
+          <a href="charts.html" class="btn btn-ghost btn-xs" title="Chart"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-chart-candlestick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 5v4" /> <rect width="4" height="6" x="7" y="9" rx="1" /> <path d="M9 15v2" /> <path d="M17 3v2" /> <rect width="4" height="8" x="15" y="5" rx="1" /> <path d="M17 13v3" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> </svg></a>
+          <button class="btn btn-ghost btn-xs" title="Download"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-download" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /> </svg></button>
+          <button class="btn btn-ghost btn-xs" title="Remove"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-trash-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 11v6" /> <path d="M14 11v6" /> <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /> <path d="M3 6h18" /> <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /> </svg></button>
+        </td>
+      </tr>
+    
+      <tr class="hover:bg-base-200/60">
+        <td class="td"><b>TCS</b> <span class="text-xs text-base-content/50">BSE</span></td>
+        <td class="td num text-right">3,611.80</td>
+        <td class="td num text-right text-success">+1.10%</td>
+        <td class="td num text-right text-xs text-base-content/70">1.02 L</td>
+        <td class="td"><div class="flex items-center gap-2 text-[11px] text-base-content/50"><span class="num">3,561.20</span><div class="relative h-1 w-24 rounded bg-base-300"><div class="absolute -top-0.5 h-2 w-1 rounded bg-base-content/70" style="left: 90%"></div></div><span class="num">3,620.00</span></div></td>
+        <td class="td"><div class="flex gap-1"><span class="chip chip-ok">D</span></div></td>
+        <td class="td text-right whitespace-nowrap">
+          <a href="charts.html" class="btn btn-ghost btn-xs" title="Chart"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-chart-candlestick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 5v4" /> <rect width="4" height="6" x="7" y="9" rx="1" /> <path d="M9 15v2" /> <path d="M17 3v2" /> <rect width="4" height="8" x="15" y="5" rx="1" /> <path d="M17 13v3" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> </svg></a>
+          <button class="btn btn-ghost btn-xs" title="Download"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-download" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /> </svg></button>
+          <button class="btn btn-ghost btn-xs" title="Remove"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-trash-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 11v6" /> <path d="M14 11v6" /> <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /> <path d="M3 6h18" /> <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /> </svg></button>
+        </td>
+      </tr>
+    
+      <tr class="hover:bg-base-200/60">
+        <td class="td"><b>NIFTY</b> <span class="text-xs text-base-content/50">NSE_INDEX</span></td>
+        <td class="td num text-right">23,519.35</td>
+        <td class="td num text-right text-success">+0.21%</td>
+        <td class="td num text-right text-xs text-base-content/70">-</td>
+        <td class="td"><div class="flex items-center gap-2 text-[11px] text-base-content/50"><span class="num">23,401.70</span><div class="relative h-1 w-24 rounded bg-base-300"><div class="absolute -top-0.5 h-2 w-1 rounded bg-base-content/70" style="left: 66%"></div></div><span class="num">23,581.10</span></div></td>
+        <td class="td"><div class="flex gap-1"><span class="chip chip-ok">D</span><span class="chip chip-ok">5m</span><span class="chip chip-ok">1m</span></div></td>
+        <td class="td text-right whitespace-nowrap">
+          <a href="charts.html" class="btn btn-ghost btn-xs" title="Chart"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-chart-candlestick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 5v4" /> <rect width="4" height="6" x="7" y="9" rx="1" /> <path d="M9 15v2" /> <path d="M17 3v2" /> <rect width="4" height="8" x="15" y="5" rx="1" /> <path d="M17 13v3" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> </svg></a>
+          <button class="btn btn-ghost btn-xs" title="Download"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-download" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /> </svg></button>
+          <button class="btn btn-ghost btn-xs" title="Remove"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-trash-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 11v6" /> <path d="M14 11v6" /> <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /> <path d="M3 6h18" /> <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /> </svg></button>
+        </td>
+      </tr>
+    
+      <tr class="hover:bg-base-200/60">
+        <td class="td"><b>M&amp;M</b> <span class="text-xs text-base-content/50">NSE</span></td>
+        <td class="td num text-right">2,734.00</td>
+        <td class="td num text-right text-error">-1.94%</td>
+        <td class="td num text-right text-xs text-base-content/70">24.1 L</td>
+        <td class="td"><div class="flex items-center gap-2 text-[11px] text-base-content/50"><span class="num">2,720.50</span><div class="relative h-1 w-24 rounded bg-base-300"><div class="absolute -top-0.5 h-2 w-1 rounded bg-base-content/70" style="left: 17%"></div></div><span class="num">2,801.00</span></div></td>
+        <td class="td"><div class="flex gap-1"><span class="chip chip-ok">D</span><span class="chip chip-warn">5m</span></div></td>
+        <td class="td text-right whitespace-nowrap">
+          <a href="charts.html" class="btn btn-ghost btn-xs" title="Chart"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-chart-candlestick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 5v4" /> <rect width="4" height="6" x="7" y="9" rx="1" /> <path d="M9 15v2" /> <path d="M17 3v2" /> <rect width="4" height="8" x="15" y="5" rx="1" /> <path d="M17 13v3" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> </svg></a>
+          <button class="btn btn-ghost btn-xs" title="Download"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-download" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /> </svg></button>
+          <button class="btn btn-ghost btn-xs" title="Remove"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-trash-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 11v6" /> <path d="M14 11v6" /> <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /> <path d="M3 6h18" /> <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /> </svg></button>
+        </td>
+      </tr>
+    
+      <tr class="hover:bg-base-200/60">
+        <td class="td"><b>CRUDEOIL</b> <span class="text-xs text-base-content/50">MCX</span></td>
+        <td class="td num text-right">5,912</td>
+        <td class="td num text-right text-success">+0.68%</td>
+        <td class="td num text-right text-xs text-base-content/70">8.4 K</td>
+        <td class="td"><div class="flex items-center gap-2 text-[11px] text-base-content/50"><span class="num">5,861</span><div class="relative h-1 w-24 rounded bg-base-300"><div class="absolute -top-0.5 h-2 w-1 rounded bg-base-content/70" style="left: 74%"></div></div><span class="num">5,930</span></div></td>
+        <td class="td"><div class="flex gap-1"><span class="chip chip-ok">D</span><span class="chip chip-ok">5m</span><span class="chip chip-ok">15m</span></div></td>
+        <td class="td text-right whitespace-nowrap">
+          <a href="charts.html" class="btn btn-ghost btn-xs" title="Chart"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-chart-candlestick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 5v4" /> <rect width="4" height="6" x="7" y="9" rx="1" /> <path d="M9 15v2" /> <path d="M17 3v2" /> <rect width="4" height="8" x="15" y="5" rx="1" /> <path d="M17 13v3" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> </svg></a>
+          <button class="btn btn-ghost btn-xs" title="Download"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-download" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /> </svg></button>
+          <button class="btn btn-ghost btn-xs" title="Remove"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-trash-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 11v6" /> <path d="M14 11v6" /> <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /> <path d="M3 6h18" /> <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /> </svg></button>
+        </td>
+      </tr>
+    
+    </tbody>
+  </table>
+  <div class="border-t border-base-300 px-3 py-2 text-xs text-base-content/55">Showing 7 of 32 · quotes stream via the OpenAlgo WebSocket (REST fallback: 8 req/s, 3 s cache) · the same symbol on two exchanges is two instruments</div>
+</section>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+digraph U {
+  graph [rankdir=TB, fontname="Helvetica", fontsize=24, labelloc=t, newrank=true, nodesep=0.3, ranksep=0.32, pad=0.4,
+         label="Backtesting: two flows today  →  ONE backtest process\n "];
+  node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=12, width=3.6, height=0.62, margin="0.12,0.06", color="#666666"];
+  edge  [color="#666666", penwidth=1.3, arrowsize=0.8];
+
+  subgraph cluster_today {
+    label="TODAY (after the integration): two independent pipelines"; style="rounded,filled"; fillcolor="#fafafa"; color="#999999"; fontsize=17;
+    subgraph cluster_f1 {
+      label="Flow A · hbt Lab (flagfix1)"; style="rounded,filled"; fillcolor="#eff6ff"; color="#1d4ed8"; fontsize=14; fontcolor="#1e3a8a";
+      a1 [label="Strategy: IR JSON\nlab_strategies / lab_strategy_versions (ir_sha)", fillcolor="#dbeafe"];
+      a2 [label="Data: core snapshot v2 · replica · live store\nper series, single instrument", fillcolor="#dbeafe"];
+      a3 [label="Exec: ExecSpec v1 · costs: hbt.costs\n(brokers.json + statutory_nse.json)\nMIS square-off 15:10 · intrabar pessimistic", fillcolor="#dbeafe"];
+      a4 [label="Jobs: LabDispatcher\nlab_run · lab_sweep · lab_research", fillcolor="#dbeafe"];
+      a5 [label="Engine: Rust hbt-core\nsingle instrument, deterministic", fillcolor="#dbeafe"];
+      a6 [label="Registry: lab_runs · lab_run_metrics\nlab_trials (append-only) · cohorts", fillcolor="#dbeafe"];
+      a7 [label="Evaluation: hbt.research\nWFO · DSR · robustness", fillcolor="#dbeafe"];
+      a8 [label="API/UI: /api/v2/lab/* · Lab pages", fillcolor="#dbeafe"];
+      a9 [label="Consumer: lab_paper (G1/G2)", fillcolor="#dbeafe"];
+      a1->a2->a3->a4->a5->a6->a7->a8->a9;
+    }
+    subgraph cluster_f2 {
+      label="Flow B · P3 backtests (flagfix2)"; style="rounded,filled"; fillcolor="#fff7ed"; color="#c2410c"; fontsize=14; fontcolor="#7c2d12";
+      b1 [label="Strategy: Python files (exec_module)\nstrategy_versions (code_sha, freeze)", fillcolor="#ffedd5"];
+      b2 [label="Data: lab snapshot v2 + DataPortal\nuniverse, content-addressed, PIT bundle", fillcolor="#ffedd5"];
+      b3 [label="Exec: ExecConfig · costs: market/costs\n(DEFAULT_SCHEDULE)\nMIS square-off 15:15 · intrabar stop_first", fillcolor="#ffedd5"];
+      b4 [label="Jobs: LabRunner process pool\nbacktest · sweep · WFO · event study · portfolio · F&O", fillcolor="#ffedd5"];
+      b5 [label="Engine: Python sim\nportfolio, 1m execution, F&O, Track L", fillcolor="#ffedd5"];
+      b6 [label="Registry: backtest_runs · run_groups", fillcolor="#ffedd5"];
+      b7 [label="Evaluation: app/lab/eval\nWFO · DSR · PBO · Monte Carlo · regimes", fillcolor="#ffedd5"];
+      b8 [label="API/UI: /api/v2/bt/* · Backtests page", fillcolor="#ffedd5"];
+      b9 [label="Consumer: signals deployments (P4)", fillcolor="#ffedd5"];
+      b1->b2->b3->b4->b5->b6->b7->b8->b9;
+    }
+    warn [shape=note, style="filled", fillcolor="#fee2e2", color="#b91c1c", width=3.4, fontsize=12,
+          label="Same idea, two verdicts:\n• 2 cost schedules, 2 execution defaults\n• 2 snapshot formats, 2 run registries\n• trial counts split → DSR too optimistic\n• 2 job dispatchers compete for CPU\n• 2 UIs, 2 APIs, 2 paper consumers"];
+  }
+
+  subgraph cluster_target {
+    label="TARGET: one backtest process (Phase 1)"; style="rounded,filled"; fillcolor="#f0fdf4"; color="#15803d"; fontsize=17; fontcolor="#14532d";
+    u1 [label="1 · RunRequest (one API: /api/v2/backtests, one CLI, one page)\nstrategy ref · params / grid · universe · period · mode\nmode = single | sweep | walk_forward | research | event_study", fillcolor="#dcfce7", width=6.2];
+    u2 [label="2 · Strategy registry (one table, kind = ir | python_tier | sim_legacy)\ncontent sha · frozen flag · hold-out lock (D-18 + 12-month lock)", fillcolor="#dcfce7", width=6.2];
+    u3 [label="3 · Data: lab snapshot v2 ONLY (content-addressed, PIT bundle)\nreadiness check + data-quality policy (warn | exclude | fail)\nhbt Dataset adapter  ✅ spike: bit-identical to the core-snapshot path", fillcolor="#dcfce7", width=6.2];
+    u4 [label="4 · One ExecSpec + one versioned cost schedule\n(statutory by trade date + broker tariff; one defaults table)", fillcolor="#dcfce7", width=6.2];
+    u5 [label="5 · One compute dispatcher\nprocess pool · sweep fan-out · below-normal priority\ndownload back-pressure · cancel · restart-safe", fillcolor="#dcfce7", width=6.2];
+    u6 [label="6 · Engine router\nhbt-core kernel (IR + Python tier, portfolio mode)  │  sim (F&O basket, Track L, event study until ported)", fillcolor="#bbf7d0", color="#15803d", penwidth=2.2, width=6.2];
+    u7 [label="7 · Artefacts: one format\nmanifest.json + trades / fills / intents / equity Parquet (file + content sha)", fillcolor="#dcfce7", width=6.2];
+    u8 [label="8 · One run registry + ONE append-only trial registry\n(every variant of every flow counted → honest DSR)", fillcolor="#dcfce7", width=6.2];
+    u9 [label="9 · One evaluation library\nmetrics · WFO · DSR · PBO · Monte Carlo · regimes · robustness · capacity", fillcolor="#dcfce7", width=6.2];
+    u10 [label="10 · Evidence bundle (hash) → idea lifecycle gates → paper / live\nthe same kernel + ExecSpec run paper and live (parity by construction)", fillcolor="#bbf7d0", color="#15803d", penwidth=2.2, width=6.2];
+    u1->u2->u3->u4->u5->u6->u7->u8->u9->u10;
+  }
+
+  {rank=same; a1; b1; u1;}
+  {rank=same; a9; b9; warn;}
+}

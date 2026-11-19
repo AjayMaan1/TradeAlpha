@@ -1,0 +1,32 @@
+[
+ {
+  "stop": 0.005,
+  "target": 0.0075,
+  "symbols": 20,
+  "bracket_exits": 11086,
+  "ambiguous_bars": 0,
+  "ambiguous_share_of_bracket_exits": 0.0,
+  "median_equity_gap_optimistic_vs_pessimistic": 0.0,
+  "magnifier_position_between_pess_and_opt_median": null
+ },
+ {
+  "stop": 0.003,
+  "target": 0.0045,
+  "symbols": 20,
+  "bracket_exits": 15197,
+  "ambiguous_bars": 9,
+  "ambiguous_share_of_bracket_exits": 0.0005922221491083767,
+  "median_equity_gap_optimistic_vs_pessimistic": 0.0,
+  "magnifier_position_between_pess_and_opt_median": 0.7245292531881992
+ },
+ {
+  "stop": 0.002,
+  "target": 0.003,
+  "symbols": 20,
+  "bracket_exits": 16040,
+  "ambiguous_bars": 215,
+  "ambiguous_share_of_bracket_exits": 0.013403990024937655,
+  "median_equity_gap_optimistic_vs_pessimistic": 0.020214957969918124,
+  "magnifier_position_between_pess_and_opt_median": 0.34913576535202684
+ }
+]

@@ -1,0 +1,47 @@
+digraph U {
+  graph [rankdir=LR, fontname="Helvetica", fontsize=22, labelloc=t, pad=0.3, nodesep=0.25, ranksep=0.55, newrank=true,
+         label="Historify after unification U0-U5 + gaps closed (ADR-003): ONE flow from idea to paper (live = Phase 4)\n "];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=12, fillcolor="#bbf7d0", color="#15803d", penwidth=1.4];
+  edge [fontname="Helvetica", fontsize=10, color="#374151"];
+
+  subgraph cluster_research {
+    label="Research (U1 + U2)"; fontsize=15; style="rounded"; color="#9ca3af";
+    idea   [label="Idea\n(IR JSON, causal by construction)\nor Python (look-ahead gate, D2)"];
+    bt     [label="ONE backtest process\nP3 pipeline: snapshot v2, hold-out lock,\nsweeps / WFO, evaluation library\nengine kind: hbt (IR) | sim (Python)"];
+    reg    [label="ONE append-only trial registry\n(lab_trials, DSR N counts every trial, D5)"];
+    found  [label="Shared foundations\nADR-001 defaults · one cost schedule (D7)\navailable_at (D4) · merged corporate actions\nONE worker budget lab_workers (D6, U5)"];
+    port   [label="Rust portfolio mode (shared cash, max positions)\n8 flagfix2 built-ins ported to IR + PIT extras\nONE execution model (ADR-003)"];
+  }
+  subgraph cluster_life {
+    label="ONE lifecycle (U4): deployments"; fontsize=15; style="rounded"; color="#9ca3af";
+    freeze [label="freeze + look-ahead verdict\n(IR: verified; Python: corrupt-the-future)\nnot forceable for order stages"];
+    stages [label="draft → signals → shadow → paper → eligible_live → live\nevidence gates · audit · versions · pinned IR version\ncohorts become draft deployments"];
+    gates  [label="Gate inputs\nP3 evidence (WFO, DSR, PBO, 2× slippage)\nhost journal: sessions, parity, slippage, loss stops\ndrills + readiness sign-off (paper → eligible_live)"];
+  }
+  subgraph cluster_run {
+    label="Runtime per stage"; fontsize=15; style="rounded"; color="#9ca3af";
+    host   [label="hbt per-bar host (IR deployments)\nas-seen journal · nightly parity (as-seen hash)\nsignals/shadow: simulated · paper: OpenAlgo Analyzer"];
+    replay [label="P4 replay runtime (Python deployments)\ntriggers · completeness gate · parity classes\n(by design until step_bar, Phase 4)"];
+    feed   [label="ONE follow service (U5)\nFeedService.follow: feeds, hosted + replay deployments\nWebSocket stream wakes it at bar close"];
+  }
+  subgraph cluster_orders {
+    label="Order path (U0 + U3)"; fontsize=15; style="rounded"; color="#9ca3af";
+    oms    [label="OMS: journal-first, per-order tag,\nnever blind resend (D1)\nresting broker stop on broker routes (D3)"];
+    guard  [label="ONE guardrail set\n(G-PRE collar / notional / fat finger / rate\non both order paths; exits never blocked)"];
+    kill   [label="ONE kill switch + ONE orders view\n/api/v2/trading/*"];
+    tbl    [label="ONE orders table (migration 0019)\none mock trading engine"];
+    live   [label="Execution Gateway live route\n(trading-engine phase 4)\nlive refused for hosted deployments", fillcolor="#e5e7eb", color="#6b7280"];
+  }
+  broker [label="OpenAlgo\n(Analyzer today; live later)", shape=cylinder, fillcolor="#dbeafe", color="#1d4ed8"];
+  bus    [label="ONE notification bus (U5)\nkill switch · paused deployments · jobs · data issues\nsignals: HMAC webhook + the ONE Telegram bot", fillcolor="#bbf7d0"];
+  out    [label="Trade data for analysis\nsignals · journal · fills · parity · reports", shape=note, fillcolor="#dbeafe", color="#1d4ed8"];
+
+  idea -> bt -> reg; found -> bt [style=dashed]; port -> bt [style=dotted];
+  bt -> freeze [label="evidence"]; freeze -> stages; gates -> stages [style=dashed];
+  stages -> host [label="IR"]; stages -> replay [label="Python"];
+  feed -> host [style=dashed, label="bars"]; feed -> replay [style=dashed];
+  host -> oms; replay -> guard; guard -> oms [style=dashed]; oms -> broker; kill -> oms [style=dashed];
+  tbl -> kill [style=dashed]; live -> broker [style=dotted];
+  host -> bus [label="decisions = signals"]; replay -> bus; oms -> out; host -> out;
+  legend [shape=plaintext, style="", label=<<TABLE BORDER="0" CELLSPACING="4"><TR><TD BGCOLOR="#bbf7d0">  done  </TD><TD BGCOLOR="#e5e7eb">  next phase  </TD></TR></TABLE>>];
+}

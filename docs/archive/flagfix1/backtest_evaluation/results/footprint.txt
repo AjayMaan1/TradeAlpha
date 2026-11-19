@@ -1,0 +1,10 @@
+vectorbt | +59 packages | +480 MB
+backtesting | +8 packages | +53 MB
+backtrader | +1 packages | +1 MB
+nautilus_trader | +8 packages | +761 MB
+bt | +20 packages | +221 MB
+numba | +2 packages | +186 MB
+optuna | +5 packages | +5 MB
+TA-Lib | +1 packages | +30 MB
+exchange-calendars | +4 packages | +1 MB
+quantstats | +25 packages | +237 MB

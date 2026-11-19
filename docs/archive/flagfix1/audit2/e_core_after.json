@@ -1,0 +1,127 @@
+{
+ "X01_daily_defaults": {
+  "fills": 1,
+  "rejects": {}
+ },
+ "X02_daily_limit_entry": {
+  "fills": [
+   [
+    2,
+    1,
+    9900,
+    101.0,
+    "entry"
+   ]
+  ]
+ },
+ "X03_exit_then_reentry": {
+  "fills": [
+   [
+    1,
+    1,
+    30,
+    100.0,
+    "entry"
+   ],
+   [
+    2,
+    0,
+    30,
+    100.0,
+    "signal"
+   ]
+  ],
+  "final_position": 0
+ },
+ "X03b_reversal": {
+  "fills": [
+   [
+    1,
+    1,
+    30,
+    100.0,
+    "entry"
+   ],
+   [
+    2,
+    0,
+    30,
+    100.0,
+    "signal"
+   ],
+   [
+    2,
+    0,
+    50,
+    100.0,
+    "entry"
+   ]
+  ],
+  "final_position": -50
+ },
+ "X04_adjusted_bars": {
+  "signal_close": [
+   619.175,
+   623.725,
+   627.775
+  ],
+  "exec_close_paise": [
+   123835,
+   124745,
+   125555
+  ]
+ },
+ "X04b_raw_through_bonus": {
+  "position": 160,
+  "equity_before": 101240.0,
+  "equity_after_ex_date": 100204.0
+ },
+ "X05_zero_volume_fill": {
+  "fills": []
+ },
+ "X06_forced_partial": {
+  "fills": [
+   [
+    1,
+    1,
+    100,
+    100.0,
+    "entry"
+   ],
+   [
+    2,
+    0,
+    30,
+    104.0,
+    "forced"
+   ],
+   [
+    3,
+    0,
+    70,
+    104.0,
+    "forced"
+   ]
+  ],
+  "final_mis_position": 0
+ },
+ "X07_nan_prices_frame": "refused: ValueError: low has NaN / infinite prices",
+ "X07_nan_prices_arrow": "refused: ValueError: price NaN is not a finite number",
+ "X08_ts_unit": "refused: ValueError: ts must be integer epoch seconds, got dtype datetime64[us, Asia/Kolkata] (convert datetimes with .astype('int64') // 10*",
+ "X09_periods_per_year": {
+  "D": 248.0,
+  "W": 49.6,
+  "M": 12.0
+ },
+ "X10_nan_signal": "refused: ValueError: signal array contains NaN: fill it (e.g. .fillna(False)) before the backtest",
+ "X11_manifest_identity": {
+  "identical_manifests_for_different_runs": false
+ },
+ "X12_cnc_squareoff_in_spec": null,
+ "X13_unvalidated_inputs": {
+  "stop_pct=-0.05": "refused: stop_pct must be in (0, 1) (a fraction: 0.01 = 1 %), got -0.05",
+  "target_pct=-0.05": "refused: target_pct must be in (0, 1) (a fraction: 0.01 = 1 %), got -0.05",
+  "squareoff_at=25:99": "refused: time '25:99' is not a time of day",
+  "slippage pct 3.0 (300 %)": "refused: slippage_value (pct) must be within 0..0.05"
+ }
+}

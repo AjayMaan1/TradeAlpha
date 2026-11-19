@@ -1,0 +1,61 @@
+{% extends "_layout.html" %}
+{% block page_scripts %}<script defer src="{{ url_for('static', filename='js/v2/pages/setup.js') }}"></script>{% endblock %}
+{% block content %}
+<div x-data="setupPage" x-cloak class="mx-auto mt-8 max-w-2xl">
+  <div class="mb-6 flex items-center gap-3">
+    <div class="grid h-10 w-10 place-items-center rounded-lg bg-primary text-primary-content">{{ icon("chart-candlestick", "h-6 w-6") }}</div>
+    <div><h1 class="text-xl font-semibold">Welcome to TradeAlpha</h1><div class="text-sm text-base-content/60">Research, backtest, generate signals and trade Indian markets through OpenAlgo.</div></div>
+  </div>
+  <ul class="steps mb-5 w-full text-xs">
+    <template x-for="(st, i) in steps" :key="st.key"><li class="step" :class="i <= idx ? 'step-primary' : ''" x-text="st.label"></li></template>
+  </ul>
+
+  {# ---------------------------------------------------------------- legacy #}
+  <section class="card-h p-6" x-show="cur === 'legacy'" id="setup-legacy">
+    <h2 class="section-title">Bring over your Historify v1 data</h2>
+    <p class="mt-1 text-sm text-base-content/65">A v1 database was found (<span class="num text-xs" x-text="legacy ? legacy.v1_db : ''"></span>): <b x-text="legacy ? legacy.tables : 0"></b> data tables and <b x-text="legacy ? (legacy.watchlist || 0) : 0"></b> watchlist entries.
+      Importing copies bars, watchlists, schedules and your OpenAlgo settings into the new storage. The v1 file is opened read-only and backed up first.</p>
+    <div class="mt-4 rounded-lg border border-base-300 p-3 text-sm" x-show="job">
+      <div class="flex items-center gap-2"><span class="loading loading-spinner loading-xs text-primary" x-show="running"></span><span class="chip" :class="job ? chip(job.status) : ''" x-text="job ? label(job.status) : ''"></span>
+        <span class="text-xs" x-text="resultText"></span></div>
+      <div class="mt-1 text-xs text-error" x-show="job && job.error" x-text="job ? job.error : ''"></div>
+    </div>
+    <div class="mt-5 flex justify-between">
+      <button type="button" class="btn btn-ghost btn-sm" @click="next" :disabled="running">Skip for now</button>
+      <div class="flex gap-2">
+        <button type="button" class="btn btn-primary btn-sm" id="setup-import" @click="importLegacy" x-show="!done_" :disabled="running">Import v1 data</button>
+        <button type="button" class="btn btn-primary btn-sm" @click="next" x-show="done_">Continue</button>
+      </div>
+    </div>
+  </section>
+
+  {# ---------------------------------------------------------------- connection #}
+  <section class="card-h p-6" x-show="cur === 'connection'" id="setup-connection">
+    <h2 class="section-title">Connect to OpenAlgo</h2>
+    <p class="mt-1 text-sm text-base-content/65">TradeAlpha downloads through your OpenAlgo server (it talks to the broker). Find the API key in OpenAlgo under <i>API Key</i>. The key is stored encrypted and never shown again.</p>
+    <div class="mt-4 space-y-3 text-sm">
+      <label class="block"><span class="field-label">OpenAlgo host</span><input id="setup-host" class="input input-sm w-full" x-model="host" placeholder="http://127.0.0.1:5000"></label>
+      <label class="block"><span class="field-label">API key <span class="font-normal" x-show="keyConfigured" x-text="'(configured ' + keyHint + ' - leave empty to keep)'"></span></span>
+        <input id="setup-key" type="password" class="input input-sm w-full" x-model="key" autocomplete="new-password" placeholder="OpenAlgo API key"></label>
+    </div>
+    <div class="mt-3 flex items-center gap-2" x-show="test.message"><span class="chip py-1" :class="test.ok ? 'chip-ok' : 'chip-err'" x-text="test.message"></span></div>
+    <div class="mt-5 flex justify-end gap-2">
+      <button type="button" class="btn btn-sm" @click="next" x-show="saved && !test.ok">Continue anyway</button>
+      <button type="button" id="setup-save" class="btn btn-primary btn-sm" @click="saveAndTest" :disabled="busy"><span class="loading loading-spinner loading-xs" x-show="busy"></span> Save &amp; test</button>
+    </div>
+  </section>
+
+  {# ---------------------------------------------------------------- done #}
+  <section class="card-h p-6" x-show="cur === 'done'" id="setup-done">
+    <h2 class="section-title">You're set</h2>
+    <p class="mt-1 text-sm text-base-content/65">Recommended next steps:</p>
+    <ul class="mt-3 space-y-2 text-sm">
+      <li class="flex items-center justify-between rounded-lg border border-base-300 p-3"><div><b>Keep everything current automatically</b><div class="text-xs text-base-content/55">A schedule 15 minutes after the NSE close (15:45 IST) on trading days, daily bars for all watchlists.</div></div>
+        <button type="button" class="btn btn-sm" id="setup-schedule" @click="createSchedule" :disabled="scheduleCreated" x-text="scheduleCreated ? 'Created' : 'Create'"></button></li>
+      <li class="flex items-center justify-between rounded-lg border border-base-300 p-3"><div><b>Add symbols</b><div class="text-xs text-base-content/55">Type them into a watchlist or import a CSV / Excel list.</div></div>
+        <a class="btn btn-sm" href="/import">Import a list</a></li>
+    </ul>
+    <div class="mt-5 flex justify-end"><a class="btn btn-primary btn-sm" href="/" id="setup-finish">Open the dashboard</a></div>
+  </section>
+</div>
+{% endblock %}

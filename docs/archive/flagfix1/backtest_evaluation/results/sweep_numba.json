@@ -1,0 +1,1 @@
+{"engine": "numba_kernel", "backtests": 5000, "seconds": 0.06395311000005677, "jit_s": 0.3753456350000306}

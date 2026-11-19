@@ -1,0 +1,218 @@
+{
+ "X01_daily_defaults": {
+  "fills": 0,
+  "rejects": {
+   "entry_cutoff": 1
+  },
+  "warnings": []
+ },
+ "X02_daily_limit_entry": {
+  "limit_price": 101.0,
+  "next_bar_low": 101.0,
+  "fills": 0,
+  "rejects": {
+   "expired": 1
+  }
+ },
+ "X03_exit_then_reentry": {
+  "fills": [
+   [
+    1,
+    1,
+    30,
+    100.0,
+    "entry"
+   ],
+   [
+    2,
+    0,
+    30,
+    100.0,
+    "signal"
+   ],
+   [
+    2,
+    1,
+    20,
+    100.0,
+    "entry"
+   ]
+  ],
+  "final_position": 20,
+  "expected_final_position": 0
+ },
+ "X03b_reversal": {
+  "fills": [
+   [
+    1,
+    1,
+    30,
+    100.0,
+    "entry"
+   ],
+   [
+    2,
+    0,
+    30,
+    100.0,
+    "signal"
+   ],
+   [
+    2,
+    1,
+    20,
+    100.0,
+    "entry"
+   ]
+  ],
+  "final_position": 20,
+  "expected": "short"
+ },
+ "X04_adjusted_bars": "refused: open has prices that are not multiples of 1/100 rupee",
+ "X04b_raw_through_bonus": {
+  "position": 80,
+  "equity_first": 100592.0,
+  "equity_after_ex_date": 50500.0,
+  "true_change": "about +0.6 % (1 bonus share per share held)"
+ },
+ "X05_zero_volume_fill": {
+  "fills": [
+   [
+    1,
+    1,
+    98,
+    102.0,
+    "entry"
+   ]
+  ],
+  "bar1_volume": 0
+ },
+ "X06_forced_partial": {
+  "fills": [
+   [
+    1,
+    1,
+    100,
+    100.0,
+    "entry"
+   ],
+   [
+    2,
+    0,
+    30,
+    104.0,
+    "forced"
+   ]
+  ],
+  "final_mis_position": 70
+ },
+ "X07_nan_prices": {
+  "frame_low": -9223372036854775808,
+  "arrow_low": 0,
+  "fills_with_nan_bar": [
+   [
+    1,
+    1,
+    100,
+    100.0,
+    "entry"
+   ],
+   [
+    1,
+    0,
+    100,
+    99.0,
+    "stop"
+   ]
+  ]
+ },
+ "X08_ts_unit": {
+  "ts": [
+   1743047100000000,
+   1743047400000000
+  ],
+  "day": [
+   20174156250,
+   20174159722,
+   20174163194
+  ]
+ },
+ "X09_periods_per_year": {
+  "D": 248.0,
+  "W": 35.43,
+  "M": 8.27,
+  "expected_W": "~49.6 (248/5)",
+  "expected_M": 12
+ },
+ "X10_nan_signal": {
+  "fills": 1
+ },
+ "X11_manifest_identity": {
+  "identical_manifests_for_different_runs": true,
+  "keys": [
+   "bar_seconds",
+   "bars",
+   "cash0_paise",
+   "costs_sha256",
+   "engine",
+   "exec_spec_sha256",
+   "instrument_sha256",
+   "order_plan_sha256",
+   "periods_per_year",
+   "provenance"
+  ]
+ },
+ "X12_cnc_squareoff_in_spec": "15:10",
+ "X13_unvalidated_inputs": {
+  "stop_pct=-0.05": [
+   [
+    1,
+    1,
+    98,
+    102.0,
+    "entry"
+   ],
+   [
+    1,
+    0,
+    98,
+    102.0,
+    "stop"
+   ]
+  ],
+  "target_pct=-0.05": [
+   [
+    1,
+    1,
+    98,
+    102.0,
+    "entry"
+   ],
+   [
+    1,
+    0,
+    98,
+    102.0,
+    "target"
+   ]
+  ],
+  "squareoff_at=25:99": [
+   [
+    1,
+    1,
+    98,
+    102.0,
+    "entry"
+   ]
+  ],
+  "slippage pct 3.0 (300 %)": [
+   [
+    1,
+    1,
+    24,
+    408.0,
+    "entry"
+   ]
+  ]
+ }
+}

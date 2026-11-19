@@ -1,0 +1,248 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://historify.local/schemas/exec-spec-v1.json",
+ "title": "Historify Lab ExecSpec v1 + OrderPlan (defaults: decision D-09, v1 errata F1-F12)",
+ "type": "object",
+ "additionalProperties": false,
+ "properties": {
+  "spec": {
+   "type": "object",
+   "additionalProperties": false,
+   "properties": {
+    "exec_spec_version": {
+     "const": 1,
+     "default": 1
+    },
+    "fill_timing": {
+     "enum": [
+      "next_open",
+      "close"
+     ],
+     "default": "next_open"
+    },
+    "decision_latency_s": {
+     "type": "integer",
+     "minimum": 0,
+     "maximum": 3600,
+     "default": 0
+    },
+    "intrabar_policy": {
+     "enum": [
+      "pessimistic",
+      "ohlc_direction",
+      "magnifier_1m"
+     ],
+     "default": "pessimistic"
+    },
+    "bracket_live_on_entry_bar": {
+     "type": "boolean",
+     "default": true
+    },
+    "same_bar_priority": {
+     "enum": [
+      "chronological",
+      "stop_first"
+     ],
+     "default": "chronological"
+    },
+    "slippage_model": {
+     "enum": [
+      "none",
+      "ticks",
+      "pct"
+     ],
+     "default": "none"
+    },
+    "slippage_value": {
+     "type": "number",
+     "minimum": 0,
+     "default": 0.0
+    },
+    "participation_cap": {
+     "oneOf": [
+      {
+       "const": "auto"
+      },
+      {
+       "type": "null"
+      },
+      {
+       "type": "number",
+       "exclusiveMinimum": 0,
+       "maximum": 1
+      }
+     ],
+     "default": "auto"
+    },
+    "participation_remainder": {
+     "enum": [
+      "carry",
+      "cancel"
+     ],
+     "default": "carry"
+    },
+    "zero_volume_fills": {
+     "type": "boolean",
+     "default": false
+    },
+    "no_new_entries_after": {
+     "oneOf": [
+      {
+       "type": "null"
+      },
+      {
+       "type": "string",
+       "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+      }
+     ],
+     "default": "14:55"
+    },
+    "squareoff_at": {
+     "oneOf": [
+      {
+       "type": "null"
+      },
+      {
+       "type": "string",
+       "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+      }
+     ],
+     "default": "15:10"
+    },
+    "product": {
+     "enum": [
+      "auto",
+      "MIS",
+      "CNC",
+      "NRML"
+     ],
+     "default": "auto"
+    },
+    "allow_short": {
+     "type": [
+      "boolean",
+      "null"
+     ],
+     "default": null
+    },
+    "leverage": {
+     "type": "number",
+     "minimum": 1,
+     "maximum": 20,
+     "default": 1.0
+    },
+    "price_band_pct": {
+     "oneOf": [
+      {
+       "type": "null"
+      },
+      {
+       "type": "number",
+       "exclusiveMinimum": 0,
+       "maximum": 0.5
+      }
+     ],
+     "default": null
+    },
+    "dividends": {
+     "enum": [
+      "credit",
+      "ignore"
+     ],
+     "default": "credit"
+    }
+   }
+  },
+  "plan": {
+   "type": "object",
+   "additionalProperties": false,
+   "properties": {
+    "entry_type": {
+     "enum": [
+      "market",
+      "limit",
+      "stop"
+     ],
+     "default": "market"
+    },
+    "entry_offset_pct": {
+     "type": "number",
+     "minimum": 0,
+     "exclusiveMaximum": 0.5,
+     "default": 0.0
+    },
+    "entry_expiry_bars": {
+     "type": "integer",
+     "minimum": 0,
+     "default": 0
+    },
+    "stop_pct": {
+     "oneOf": [
+      {
+       "type": "null"
+      },
+      {
+       "type": "number",
+       "exclusiveMinimum": 0,
+       "exclusiveMaximum": 1
+      }
+     ],
+     "default": null
+    },
+    "target_pct": {
+     "oneOf": [
+      {
+       "type": "null"
+      },
+      {
+       "type": "number",
+       "exclusiveMinimum": 0,
+       "exclusiveMaximum": 1
+      }
+     ],
+     "default": null
+    },
+    "trail_pct": {
+     "oneOf": [
+      {
+       "type": "null"
+      },
+      {
+       "type": "number",
+       "exclusiveMinimum": 0,
+       "exclusiveMaximum": 1
+      }
+     ],
+     "default": null
+    },
+    "time_stop_bars": {
+     "oneOf": [
+      {
+       "type": "null"
+      },
+      {
+       "type": "integer",
+       "minimum": 1
+      }
+     ],
+     "default": null
+    },
+    "sizing": {
+     "enum": [
+      "all_in",
+      "fixed_qty",
+      "fixed_value",
+      "pct_equity",
+      "risk_pct"
+     ],
+     "default": "all_in"
+    },
+    "sizing_value": {
+     "type": "number",
+     "minimum": 0,
+     "default": 0.0
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,78 @@
+{% extends "_layout.j2" %}
+{% set active = "settings" %}
+{% block title %}Settings{% endblock %}
+{% block heading %}Settings{% endblock %}
+{% block content %}
+<div class="flex gap-5">
+  <nav class="w-48 shrink-0 space-y-1 text-sm">
+    {% for label, on in [("Connection", True), ("Broker & limits", False), ("Data & storage", False), ("Market calendar", False), ("Appearance", False), ("About", False)] %}
+      <a class="nav-item {{ 'active' if on }}">{{ label }}</a>
+    {% endfor %}
+  </nav>
+  <div class="max-w-3xl flex-1 space-y-4">
+    <section class="card-h p-5">
+      <h2 class="font-semibold">OpenAlgo connection</h2>
+      <p class="mb-4 text-xs text-base-content/55">Historify talks to your OpenAlgo server, which talks to the broker.</p>
+      <div class="grid grid-cols-2 gap-4 text-sm">
+        <label><span class="mb-1 block text-xs font-medium text-base-content/60">Host</span><input class="input input-sm w-full" value="http://127.0.0.1:5000"></label>
+        <label><span class="mb-1 block text-xs font-medium text-base-content/60">API key <span class="font-normal">(write-only, encrypted at rest)</span></span>
+          <div class="join w-full"><input class="input input-sm join-item w-full" placeholder="Configured ••••••••1234"><button class="btn btn-sm join-item">Replace</button></div></label>
+      </div>
+      <div class="mt-4 flex items-center gap-3">
+        <button class="btn btn-sm btn-primary">{{ icon("plug") }} Test connection</button>
+        <span class="chip chip-ok">OK · RELIANCE LTP ₹1,278.40 · 142 ms</span>
+        <span class="text-xs text-base-content/55">Broker session: active · checked 10:02 IST</span>
+      </div>
+    </section>
+
+    <section class="card-h p-5">
+      <h2 class="font-semibold">Broker profile &amp; limits</h2>
+      <p class="mb-4 text-xs text-base-content/55">Limits are Angel One's published SmartAPI limits. Historify uses a share of them so other tools on the same account keep working.</p>
+      <div class="grid grid-cols-2 gap-4 text-sm">
+        <label><span class="mb-1 block text-xs font-medium text-base-content/60">Profile</span><select class="select select-sm w-full"><option>Angel One (SmartAPI)</option><option>Generic</option></select></label>
+        <label><span class="mb-1 block text-xs font-medium text-base-content/60">Budget share: <b>80%</b></span><input type="range" class="range range-primary range-xs mt-2" min="10" max="100" value="80"></label>
+      </div>
+      <div class="mt-3 grid grid-cols-3 gap-3 text-center">
+        {% for lbl, raw, eff in [("per second", "3", "2.4"), ("per minute", "180", "144"), ("per hour", "5,000", "4,000")] %}
+          <div class="rounded-lg bg-base-200/70 p-2"><div class="kpi-label">History {{ lbl }}</div><div class="num text-lg font-semibold">{{ eff }}</div><div class="text-[11px] text-base-content/50">broker limit {{ raw }}</div></div>
+        {% endfor %}
+      </div>
+      <div class="mt-4 text-xs font-medium text-base-content/60">Max calendar days per request (chunk size)</div>
+      <div class="mt-1 grid grid-cols-8 gap-2">
+        {% for iv, days in [("1m", 30), ("3m", 60), ("5m", 100), ("10m", 100), ("15m", 200), ("30m", 200), ("1h", 400), ("D", 2000)] %}
+          <label class="text-center"><span class="block text-[11px] text-base-content/55">{{ iv }}</span><input class="input input-xs num w-full text-center" value="{{ days }}"></label>
+        {% endfor %}
+      </div>
+      <div class="mt-4 grid grid-cols-3 gap-4 text-sm">
+        <label><span class="mb-1 block text-xs font-medium text-base-content/60">Request timeout</span><input class="input input-sm w-full" value="60 s"></label>
+        <label><span class="mb-1 block text-xs font-medium text-base-content/60">Retries (transient errors)</span><input class="input input-sm w-full" value="3"></label>
+        <label><span class="mb-1 block text-xs font-medium text-base-content/60">Parallel downloads</span><input class="input input-sm w-full" value="3"></label>
+      </div>
+    </section>
+
+    <section class="card-h p-5">
+      <h2 class="mb-3 font-semibold">Data &amp; storage</h2>
+      <div class="grid grid-cols-3 gap-3 text-sm">
+        <div class="rounded-lg bg-base-200/70 p-3"><div class="kpi-label">Bars (DuckDB)</div><div class="num font-semibold">196 MB</div><div class="text-[11px] text-base-content/50">12.4 M bars · 16 B / bar</div></div>
+        <div class="rounded-lg bg-base-200/70 p-3"><div class="kpi-label">Metadata (SQLite)</div><div class="num font-semibold">1.2 MB</div><div class="text-[11px] text-base-content/50">jobs, schedules, sync state</div></div>
+        <div class="rounded-lg bg-base-200/70 p-3"><div class="kpi-label">Last backup</div><div class="font-semibold">Sun 23 Mar</div><div class="text-[11px] text-base-content/50">instance/backups</div></div>
+      </div>
+      <div class="mt-3 flex gap-2"><button class="btn btn-sm">{{ icon("download") }} Back up now</button><button class="btn btn-sm">{{ icon("wrench") }} Compact storage</button></div>
+      <div class="mt-4 flex items-center gap-3 rounded-lg border border-base-300 p-3 text-sm">
+        {{ icon("database", "h-5 w-5 text-base-content/50") }}
+        <div class="flex-1"><b>Legacy v1 database</b><div class="text-xs text-base-content/55">Imported 28 Mar · 11 series reconciled · 1 collision, 1 orphan reported · v1 file kept read-only</div></div>
+        <button class="btn btn-xs">View report</button><button class="btn btn-xs btn-ghost text-error">Retire legacy data…</button>
+      </div>
+    </section>
+
+    <section class="card-h p-5">
+      <h2 class="mb-3 font-semibold">Market calendar</h2>
+      <div class="flex items-center gap-3 text-sm">
+        <span class="chip chip-warn">NSE/BSE 2025 · sample list</span>
+        <span class="text-xs text-base-content/55">13 holidays · MCX sessions 09:00-23:30/23:55 · special sessions: none</span>
+        <button class="btn btn-xs ml-auto">{{ icon("file-up", "h-3 w-3") }} Import official list (CSV)</button>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %}

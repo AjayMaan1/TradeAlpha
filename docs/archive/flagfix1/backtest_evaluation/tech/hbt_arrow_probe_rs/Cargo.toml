@@ -1,0 +1,13 @@
+[package]
+name = "hbt_arrow_probe"
+version = "0.1.0"
+edition = "2024"
+[lib]
+crate-type = ["cdylib"]
+[dependencies]
+pyo3 = { version = "0.30", features = ["extension-module", "abi3-py312"] }
+pyo3-arrow = "0.20"
+arrow-array = "59"
+arrow-schema = "59"
+[profile.release]
+lto = "thin"

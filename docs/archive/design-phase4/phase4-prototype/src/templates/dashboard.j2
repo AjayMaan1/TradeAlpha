@@ -1,0 +1,100 @@
+{% extends "_layout.j2" %}
+{% set active = "dashboard" %}
+{% block title %}Dashboard{% endblock %}
+{% block heading %}Dashboard{% endblock %}
+{% block content %}
+<div class="grid grid-cols-4 gap-4">
+  {% for label, value, sub, ic, tone in [
+      ("Instruments tracked", "48", "3 watchlists · 5 exchanges", "list", "text-primary"),
+      ("Bars stored", "12.4 M", "144 series · 196 MB on disk", "database", "text-secondary"),
+      ("Coverage vs calendar", "97.8 %", "5 series have gaps", "layers", "text-warning"),
+      ("Last bar written", "15:46 IST", "today · post-close job running", "circle-check", "text-success")] %}
+  <div class="card-h p-4">
+    <div class="flex items-start justify-between">
+      <div class="kpi-label">{{ label }}</div>
+      <span class="{{ tone }}">{{ icon(ic) }}</span>
+    </div>
+    <div class="kpi-value">{{ value }}</div>
+    <div class="mt-1 text-xs text-base-content/55">{{ sub }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="mt-4 grid grid-cols-3 gap-4">
+  {# ------------------------------------------------------------ active jobs #}
+  <section class="card-h col-span-2 p-4">
+    <div class="mb-3 flex items-center justify-between">
+      <h2 class="font-semibold">Active jobs</h2>
+      <a class="link link-hover text-sm text-primary" href="jobs.html">All jobs</a>
+    </div>
+    <div class="rounded-lg border border-base-300 p-3">
+      <div class="flex items-center gap-3">
+        {% if auth_expired %}{{ icon("pause", "h-5 w-5 text-error") }}{% else %}<span class="loading loading-spinner loading-sm text-primary"></span>{% endif %}
+        <div class="flex-1">
+          <div class="font-medium">Post-close update <span class="chip chip-info ml-1">schedule</span>{% if auth_expired %} <span class="chip chip-err ml-1">paused · waiting for broker login</span>{% endif %}</div>
+          <div class="text-xs text-base-content/60">All watchlists · 48 instruments × D, 5m, 1m · incremental</div>
+        </div>
+        <div class="text-right text-xs text-base-content/60">
+          <div><span class="num">89 / 144</span> tasks · <span class="num">{{ "0" if auth_expired else "2.4" }}</span> req/s</div>
+          <div>{% if auth_expired %}resumes after login{% else %}ETA <span class="num">~3 min</span>{% endif %}</div>
+        </div>
+      </div>
+      <progress class="progress progress-primary mt-3 w-full" value="62" max="100"></progress>
+      <div class="mt-2 flex gap-4 text-xs text-base-content/60">
+        <span><b class="num text-base-content">1.21 M</b> rows written</span>
+        <span><b class="num text-success">87</b> succeeded</span>
+        <span><b class="num">2</b> empty (holiday)</span>
+        <span><b class="num text-warning">0</b> retrying</span>
+        <span><b class="num text-error">0</b> failed</span>
+      </div>
+    </div>
+    <div class="mt-3 flex items-center gap-3 rounded-lg border border-dashed border-base-300 p-3 text-sm text-base-content/60">
+      {{ icon("clock") }} Queued: <b class="text-base-content">Backfill 1m · 5 instruments · 1 year</b> - starts when the post-close job finishes (lower priority)
+    </div>
+  </section>
+
+  {# ------------------------------------------------------------ needs attention #}
+  <section class="card-h p-4">
+    <h2 class="mb-3 font-semibold">Needs attention</h2>
+    <ul class="space-y-3 text-sm">
+      <li class="flex gap-2">{{ icon("triangle-alert", "icon mt-0.5 text-warning") }}
+        <div class="flex-1"><b>SBIN · 5m</b> missing 1 session (26 Mar)<div class="text-xs text-base-content/55">broker returned no bars on a trading day</div></div>
+        <button class="btn btn-xs">{{ icon("wrench", "h-3 w-3") }} Repair</button></li>
+      <li class="flex gap-2">{{ icon("triangle-alert", "icon mt-0.5 text-warning") }}
+        <div class="flex-1"><b>4 series</b> not updated for 3 trading days<div class="text-xs text-base-content/55">not covered by any schedule</div></div>
+        <a class="btn btn-xs" href="data.html">Review</a></li>
+      <li class="flex gap-2">{{ icon("info", "icon mt-0.5 text-info") }}
+        <div class="flex-1">Holiday calendar is a <b>sample list</b><div class="text-xs text-base-content/55">import the official NSE 2025 list</div></div>
+        <a class="btn btn-xs" href="settings.html">Fix</a></li>
+    </ul>
+  </section>
+</div>
+
+<div class="mt-4 grid grid-cols-3 gap-4">
+  <section class="card-h p-4">
+    <div class="mb-3 flex items-center justify-between"><h2 class="font-semibold">Upcoming runs</h2><a class="link link-hover text-sm text-primary" href="scheduler.html">Scheduler</a></div>
+    <ul class="divide-y divide-base-300/70 text-sm">
+      {% for name, when, rel in [("Weekly gap repair", "Sun 30 Mar · 10:00", "in 1 d 18 h"), ("Pre-open daily check", "Tue 01 Apr · 08:45", "in 3 d 17 h"), ("Post-close update", "Tue 01 Apr · 15:45", "in 4 d")] %}
+      <li class="flex items-center justify-between py-2"><div><div class="font-medium">{{ name }}</div><div class="text-xs text-base-content/55">{{ when }} IST</div></div><span class="text-xs text-base-content/55">{{ rel }}</span></li>
+      {% endfor %}
+    </ul>
+    <div class="mt-2 text-xs text-base-content/50">Mon 31 Mar is an NSE holiday: market-event schedules skip it automatically.</div>
+  </section>
+  <section class="card-h col-span-2 p-4">
+    <div class="mb-3 flex items-center justify-between"><h2 class="font-semibold">Recent runs</h2><a class="link link-hover text-sm text-primary" href="jobs.html">History</a></div>
+    <table class="w-full">
+      <thead><tr><th class="th">Run</th><th class="th">Started (IST)</th><th class="th">Duration</th><th class="th text-right">Rows</th><th class="th">Result</th></tr></thead>
+      <tbody>
+      {% for run, started, dur, rows, res, cls in [
+          ("Intraday 5m · F&O", "Fri 28 Mar 15:25", "14s", "3,150", "succeeded", "chip-ok"),
+          ("Manual: Backfill D · NIFTY 50", "Fri 28 Mar 11:02", "1m 40s", "123,400", "partial · 1 failed", "chip-warn"),
+          ("Pre-open daily check", "Fri 28 Mar 08:45", "38s", "48", "succeeded", "chip-ok"),
+          ("Post-close update", "Thu 27 Mar 15:45", "48m 20s", "1,198,200", "succeeded after login wait", "chip-warn"),
+          ("Post-close update", "Wed 26 Mar 17:02", "6m 05s", "1,201,330", "catch-up (app closed at 15:45)", "chip-info")] %}
+        <tr><td class="td font-medium">{{ run }}</td><td class="td num text-xs">{{ started }}</td><td class="td num text-xs">{{ dur }}</td><td class="td num text-right text-xs">{{ rows }}</td><td class="td"><span class="chip {{ cls }}">{{ res }}</span></td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
+{% endblock %}

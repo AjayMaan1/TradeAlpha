@@ -1,0 +1,43 @@
+# Trading profiles to price. Edit to match your strategy (one round trip = one buy + one sell executed order).
+trading_days_per_month = 21
+as_of = "2025-01-15"            # which statutory schedule applies
+
+[[scenario]]
+id = "S1"
+name = "Equity intraday (MIS): 10 round trips/day, Rs 2 lakh per trade"
+segment = "EQ_INTRADAY"
+leg = "eq_intraday"
+round_trips_per_day = 10
+value_per_leg = 200000
+
+[[scenario]]
+id = "S2"
+name = "Index options buying: 10 round trips/day, 2 lots NIFTY (150 units) at Rs 150 premium"
+segment = "OPTIONS"
+leg = "options"
+round_trips_per_day = 10
+value_per_leg = 22500            # premium x quantity
+
+[[scenario]]
+id = "S3"
+name = "Index futures: 4 round trips/day, 1 lot NIFTY (75 units) at 24,000"
+segment = "FUTURES"
+leg = "futures"
+round_trips_per_day = 4
+value_per_leg = 1800000
+
+[[scenario]]
+id = "S4"
+name = "Swing / positional delivery (CNC): 30 round trips/month, Rs 1 lakh each"
+segment = "EQ_DELIVERY"
+leg = "eq_delivery"
+round_trips_per_month = 30
+value_per_leg = 100000
+dp_sell_days_per_month = 30
+
+[data_target]
+# Historify Lab's research universe (from the agreed storage plan): hybrid roll-up = download 1m + D only
+symbols = 200
+daily_years = 10
+minute_years = 10               # capped by each broker's 1m depth
+budget_share = 0.8              # Historify uses 80 % of broker limits by default

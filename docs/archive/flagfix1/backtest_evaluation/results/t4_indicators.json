@@ -1,0 +1,6 @@
+{
+ "Polars expressions (lazy, multi-threaded, .over)": 0.442,
+ "TA-Lib (C), per symbol": 0.25,
+ "numba, one fused parallel pass": 0.114,
+ "pandas (wide frame)": 1.592
+}

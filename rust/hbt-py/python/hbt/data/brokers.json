@@ -1,0 +1,278 @@
+{
+ "_comment": "Broker tariffs for the Lab cost model, generated from broker_evaluation/broker_tariffs.toml. Rupees EXCLUDING GST; pct as fractions. UNVERIFIED: confirm on each broker's pricing page (decision D-13).",
+ "verified": false,
+ "as_of": "assistant knowledge + SDK inspection; sandbox could not reach broker sites - VERIFY",
+ "brokers": {
+  "zerodha": {
+   "name": "Zerodha (Kite Connect)",
+   "brokerage": {
+    "EQ_DELIVERY": {
+     "pct": 0.0
+    },
+    "EQ_INTRADAY": {
+     "pct": 0.0003,
+     "cap": 20
+    },
+    "FUTURES": {
+     "pct": 0.0003,
+     "cap": 20
+    },
+    "OPTIONS": {
+     "flat": 20
+    }
+   },
+   "dp_charge": 13.5,
+   "auto_squareoff_fee": 50,
+   "confidence": "H",
+   "verify_at": "https://zerodha.com/charges  \u00b7  https://kite.trade/docs/connect/v3/"
+  },
+  "angelone": {
+   "name": "Angel One (SmartAPI)",
+   "brokerage": {
+    "EQ_DELIVERY": {
+     "pct": 0.001,
+     "cap": 20,
+     "min": 2
+    },
+    "EQ_INTRADAY": {
+     "pct": 0.0003,
+     "cap": 20
+    },
+    "FUTURES": {
+     "pct": 0.0003,
+     "cap": 20
+    },
+    "OPTIONS": {
+     "flat": 20
+    }
+   },
+   "dp_charge": 20,
+   "auto_squareoff_fee": 20,
+   "confidence": "M",
+   "verify_at": "https://www.angelone.in/exchange-transaction-charges  \u00b7  https://smartapi.angelbroking.com/docs"
+  },
+  "upstox": {
+   "name": "Upstox (Upstox API v2/v3)",
+   "brokerage": {
+    "EQ_DELIVERY": {
+     "flat": 20
+    },
+    "EQ_INTRADAY": {
+     "pct": 0.001,
+     "cap": 20
+    },
+    "FUTURES": {
+     "pct": 0.0005,
+     "cap": 20
+    },
+    "OPTIONS": {
+     "flat": 20
+    }
+   },
+   "dp_charge": 18.5,
+   "auto_squareoff_fee": 30,
+   "confidence": "L",
+   "verify_at": "https://upstox.com/brokerage-charges/  \u00b7  https://upstox.com/developer/api-documentation"
+  },
+  "dhan": {
+   "name": "Dhan (DhanHQ)",
+   "brokerage": {
+    "EQ_DELIVERY": {
+     "pct": 0.0
+    },
+    "EQ_INTRADAY": {
+     "pct": 0.0003,
+     "cap": 20
+    },
+    "FUTURES": {
+     "pct": 0.0003,
+     "cap": 20
+    },
+    "OPTIONS": {
+     "flat": 20
+    }
+   },
+   "dp_charge": 12.5,
+   "auto_squareoff_fee": 20,
+   "confidence": "H",
+   "verify_at": "https://dhan.co/pricing/  \u00b7  https://dhanhq.co/docs/"
+  },
+  "fyers": {
+   "name": "Fyers (API v3)",
+   "brokerage": {
+    "EQ_DELIVERY": {
+     "pct": 0.003,
+     "cap": 20
+    },
+    "EQ_INTRADAY": {
+     "pct": 0.0003,
+     "cap": 20
+    },
+    "FUTURES": {
+     "pct": 0.0003,
+     "cap": 20
+    },
+    "OPTIONS": {
+     "flat": 20
+    }
+   },
+   "dp_charge": 12,
+   "auto_squareoff_fee": 50,
+   "confidence": "L",
+   "verify_at": "https://fyers.in/pricing/  \u00b7  https://myapi.fyers.in/docsv3"
+  },
+  "icici_breeze": {
+   "name": "ICICI Direct (Breeze)",
+   "brokerage": {
+    "EQ_DELIVERY": {
+     "pct": 0.00275
+    },
+    "EQ_INTRADAY": {
+     "flat": 20
+    },
+    "FUTURES": {
+     "flat": 20
+    },
+    "OPTIONS": {
+     "flat": 20
+    }
+   },
+   "dp_charge": 20,
+   "auto_squareoff_fee": 50,
+   "confidence": "L",
+   "verify_at": "https://www.icicidirect.com/brokerage-plans  \u00b7  https://api.icicidirect.com/breezeapi/documents/"
+  },
+  "groww": {
+   "name": "Groww (Trade API)",
+   "brokerage": {
+    "EQ_DELIVERY": {
+     "pct": 0.001,
+     "cap": 20,
+     "min": 5
+    },
+    "EQ_INTRADAY": {
+     "pct": 0.001,
+     "cap": 20,
+     "min": 5
+    },
+    "FUTURES": {
+     "flat": 20
+    },
+    "OPTIONS": {
+     "flat": 20
+    }
+   },
+   "dp_charge": 13.5,
+   "auto_squareoff_fee": 50,
+   "confidence": "M",
+   "verify_at": "https://groww.in/pricing  \u00b7  https://groww.in/trade-api/docs"
+  },
+  "kotak_neo": {
+   "name": "Kotak Securities (Neo API)",
+   "brokerage": {
+    "EQ_DELIVERY": {
+     "pct": 0.0
+    },
+    "EQ_INTRADAY": {
+     "pct": 0.0
+    },
+    "FUTURES": {
+     "flat": 10
+    },
+    "OPTIONS": {
+     "flat": 10
+    }
+   },
+   "dp_charge": 20,
+   "auto_squareoff_fee": 0,
+   "confidence": "L",
+   "verify_at": "https://www.kotaksecurities.com/pricing/  \u00b7  Neo API docs"
+  },
+  "flattrade": {
+   "name": "Flattrade (Noren API)",
+   "brokerage": {
+    "EQ_DELIVERY": {
+     "pct": 0.0
+    },
+    "EQ_INTRADAY": {
+     "pct": 0.0
+    },
+    "FUTURES": {
+     "pct": 0.0
+    },
+    "OPTIONS": {
+     "pct": 0.0
+    }
+   },
+   "dp_charge": 0,
+   "auto_squareoff_fee": 0,
+   "confidence": "M",
+   "verify_at": "https://flattrade.in/pricing"
+  },
+  "shoonya": {
+   "name": "Shoonya by Finvasia (Noren API)",
+   "brokerage": {
+    "EQ_DELIVERY": {
+     "pct": 0.0
+    },
+    "EQ_INTRADAY": {
+     "pct": 0.0
+    },
+    "FUTURES": {
+     "pct": 0.0
+    },
+    "OPTIONS": {
+     "pct": 0.0
+    }
+   },
+   "dp_charge": 0,
+   "auto_squareoff_fee": 0,
+   "confidence": "L",
+   "verify_at": "https://shoonya.com/pricing"
+  },
+  "fivepaisa": {
+   "name": "5paisa (Xtream / OpenAPI)",
+   "brokerage": {
+    "EQ_DELIVERY": {
+     "flat": 20
+    },
+    "EQ_INTRADAY": {
+     "flat": 20
+    },
+    "FUTURES": {
+     "flat": 20
+    },
+    "OPTIONS": {
+     "flat": 20
+    }
+   },
+   "dp_charge": 12.5,
+   "auto_squareoff_fee": 0,
+   "confidence": "M",
+   "verify_at": "https://www.5paisa.com/brokerage-charges"
+  },
+  "aliceblue": {
+   "name": "Alice Blue (ANT API)",
+   "brokerage": {
+    "EQ_DELIVERY": {
+     "pct": 0.0
+    },
+    "EQ_INTRADAY": {
+     "pct": 0.0005,
+     "cap": 20
+    },
+    "FUTURES": {
+     "pct": 0.0005,
+     "cap": 20
+    },
+    "OPTIONS": {
+     "flat": 20
+    }
+   },
+   "dp_charge": 15,
+   "auto_squareoff_fee": 0,
+   "confidence": "L",
+   "verify_at": "https://aliceblueonline.com/pricing/"
+  }
+ }
+}

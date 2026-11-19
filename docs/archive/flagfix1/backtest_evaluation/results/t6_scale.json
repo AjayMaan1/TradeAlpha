@@ -1,0 +1,12 @@
+{
+ "symbols": 200,
+ "bars_per_symbol": 937500,
+ "total_bars": 187500000,
+ "backtests": 800,
+ "bar_steps": 750000000,
+ "kernel_seconds": 10.3,
+ "data_gen_seconds": 13.3,
+ "peak_rss_mb": 227,
+ "bar_steps_per_second_M": 72.5,
+ "trades": 8100768
+}

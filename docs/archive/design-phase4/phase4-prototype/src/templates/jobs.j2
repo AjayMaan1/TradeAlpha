@@ -1,0 +1,77 @@
+{% extends "_layout.j2" %}
+{% set active = "jobs" %}
+{% block title %}Jobs{% endblock %}
+{% block heading %}Jobs{% endblock %}
+{% block content %}
+<div class="mb-4 flex items-center justify-between">
+  <div role="tablist" class="tabs tabs-border">
+    <a role="tab" class="tab tab-active">Active <span class="badge badge-sm badge-primary ml-2">1</span></a>
+    <a role="tab" class="tab">Queued <span class="badge badge-sm ml-2">1</span></a>
+    <a role="tab" class="tab">History</a>
+    <a role="tab" class="tab">Failed tasks <span class="badge badge-sm badge-error ml-2">2</span></a>
+  </div>
+  <button class="btn btn-primary btn-sm">{{ icon("download") }} New download</button>
+</div>
+
+<section class="card-h p-4">
+  <div class="flex items-start gap-3">
+    <span class="loading loading-spinner loading-md mt-1 text-primary"></span>
+    <div class="flex-1">
+      <div class="flex items-center gap-2"><h2 class="text-base font-semibold">Post-close update</h2><span class="chip chip-info">schedule</span><span class="chip chip-idle">priority: scheduled</span></div>
+      <div class="text-xs text-base-content/60">Job <span class="num">#a41f</span> · started 15:45:02 IST by Scheduler · all watchlists · 48 instruments × D, 5m, 1m · incremental</div>
+    </div>
+    <button class="btn btn-sm">{{ icon("pause") }} Pause</button>
+    <button class="btn btn-sm btn-ghost text-error">{{ icon("square") }} Cancel</button>
+  </div>
+  <progress class="progress progress-primary mt-4 w-full" value="62" max="100"></progress>
+  <div class="mt-3 grid grid-cols-6 gap-3">
+    {% for label, value, sub in [
+        ("Tasks", "89 / 144", "62%"),
+        ("Rows written", "1.21 M", "single writer · 1 txn / task"),
+        ("Request rate", "2.4 /s", "limit 3/s · 180/min · 5000/h × 80%"),
+        ("Budget this hour", "312 / 4,000", "resets on rolling window"),
+        ("ETA", "~3 min", "55 requests left"),
+        ("Retries", "3", "all transient (timeout / 5xx)")] %}
+    <div class="rounded-lg bg-base-200/70 p-2.5"><div class="kpi-label">{{ label }}</div><div class="num mt-0.5 text-lg font-semibold">{{ value }}</div><div class="text-[11px] text-base-content/50">{{ sub }}</div></div>
+    {% endfor %}
+  </div>
+
+  <div class="mt-4 overflow-hidden rounded-lg border border-base-300">
+    <table class="w-full">
+      <thead class="bg-base-200/60"><tr><th class="th">Instrument</th><th class="th">Interval</th><th class="th">Chunk (IST dates)</th><th class="th">Attempts</th><th class="th text-right">Rows</th><th class="th">Status</th></tr></thead>
+      <tbody>
+      {% for inst, iv, chunk, att, rows, status, cls in [
+          ("SBIN · NSE", "D", "26 Mar → 28 Mar", "1", "3", "succeeded", "chip-ok"),
+          ("SBIN · NSE", "5m", "27 Mar → 28 Mar", "1", "150", "succeeded (re-fetched last session)", "chip-ok"),
+          ("RELIANCE · NSE", "5m", "27 Mar → 28 Mar", "2", "-", "retry in 4 s · timed out after 60 s", "chip-warn"),
+          ("NIFTY · NSE_INDEX", "1m", "27 Mar → 28 Mar", "1", "-", "running", "chip-info"),
+          ("TCS · BSE", "D", "26 Mar → 28 Mar", "1", "3", "succeeded", "chip-ok"),
+          ("NEWLISTCO · NSE", "D", "26 Mar → 28 Mar", "1", "0", "empty · no data is expected", "chip-idle"),
+          ("M&M · NSE", "1m", "27 Mar → 28 Mar", "0", "-", "queued", "chip-idle")] %}
+        <tr><td class="td font-medium">{{ inst }}</td><td class="td num text-xs">{{ iv }}</td><td class="td num text-xs">{{ chunk }}</td><td class="td num text-xs">{{ att }}</td><td class="td num text-right text-xs">{{ rows }}</td><td class="td"><span class="chip {{ cls }}">{{ status }}</span></td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <div class="border-t border-base-300 px-3 py-2 text-xs text-base-content/55">Showing 7 of 144 tasks · filter: all · <a class="link">only problems</a></div>
+  </div>
+</section>
+
+<div class="mt-4 grid grid-cols-2 gap-4">
+  <section class="card-h p-4">
+    <h2 class="mb-3 font-semibold">Queued</h2>
+    <div class="flex items-center gap-3 rounded-lg border border-base-300 p-3 text-sm">
+      {{ icon("clock", "h-5 w-5 text-base-content/50") }}
+      <div class="flex-1"><div class="font-medium">Backfill 1m · 5 instruments · 1 year</div><div class="text-xs text-base-content/55">manual · priority: backfill · 65 requests planned (13 chunks × 5; 30-day cap)</div></div>
+      <span class="text-xs text-base-content/55">starts after #a41f</span>
+    </div>
+    <p class="mt-3 text-xs text-base-content/55">Priority order: interactive (chart follow, "download now") → scheduled → backfill/repair. Long backfills yield to scheduled runs between tasks.</p>
+  </section>
+  <section class="card-h p-4">
+    <div class="mb-3 flex items-center justify-between"><h2 class="font-semibold">Failed tasks</h2><button class="btn btn-xs">{{ icon("rotate-ccw", "h-3 w-3") }} Retry failed</button></div>
+    <ul class="space-y-2 text-sm">
+      <li class="rounded-lg border border-base-300 p-2.5"><div class="flex justify-between"><b>XYZLTD · NSE · D</b><span class="chip chip-err">permanent</span></div><div class="text-xs text-base-content/60">Symbol XYZLTD not found (check the symbol on the instrument master). Not retried.</div></li>
+      <li class="rounded-lg border border-base-300 p-2.5"><div class="flex justify-between"><b>GOLDM · MCX · 15m</b><span class="chip chip-warn">transient × 4</span></div><div class="text-xs text-base-content/60">HTTP 502 from OpenAlgo after 4 attempts (backoff 1 → 8 s). Safe to retry.</div></li>
+    </ul>
+  </section>
+</div>
+{% endblock %}

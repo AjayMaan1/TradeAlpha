@@ -1,0 +1,20 @@
+[package]
+name = "hbt-py"
+description = "Python bindings of hbt-core (module hbt_core)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+name = "hbt_core"
+crate-type = ["cdylib"]
+
+[dependencies]
+engine_core = { package = "hbt-core", path = "../hbt-core" }
+pyo3.workspace = true
+numpy.workspace = true
+pyo3-arrow.workspace = true
+arrow-array.workspace = true
+arrow-schema.workspace = true
+rayon.workspace = true
+serde_json.workspace = true

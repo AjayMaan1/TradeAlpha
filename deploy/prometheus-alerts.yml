@@ -1,0 +1,44 @@
+# Prometheus alert rules for the trader node (scrape http://127.0.0.1:5002/metrics from the same host, or with an
+# API token). Metric names: app/web/metrics.py.
+groups:
+  - name: historify-trader
+    rules:
+      - alert: HistorifyDown
+        expr: up{job="historify-trader"} == 0
+        for: 1m
+        labels: {severity: page}
+        annotations: {summary: "the trader node is not answering /metrics"}
+      - alert: HistorifyKillSwitchOn
+        expr: historify_kill_switch == 1
+        for: 1m
+        labels: {severity: page}
+        annotations: {summary: "the global kill switch is ON - no orders are placed"}
+      - alert: HistorifyDecisionLatencyHigh
+        expr: histogram_quantile(0.95, sum by (le, source) (rate(historify_decision_seconds_bucket[15m]))) > 1
+        for: 10m
+        labels: {severity: warn}
+        annotations: {summary: "decision latency p95 above 1 s ({{ $labels.source }} bars)"}
+      - alert: HistorifyFeedLagHigh
+        expr: histogram_quantile(0.95, sum by (le, source) (rate(historify_bar_feed_lag_seconds_bucket[15m]))) > 60
+        for: 10m
+        labels: {severity: warn}
+        annotations: {summary: "bars reach the host more than 60 s after the close ({{ $labels.source }})"}
+      - alert: HistorifyClockOffset
+        expr: abs(historify_clock_offset_seconds) > 0.5
+        for: 5m
+        labels: {severity: page}
+        annotations: {summary: "clock offset {{ $value }} s - G-SYS-3 blocks entries above 1 s"}
+      - alert: HistorifyReconciliationDiverged
+        expr: historify_broker_reconciliations_7d{status="diverged"} > 0
+        labels: {severity: page}
+        annotations: {summary: "a broker reconciliation found an unexplained difference (live deployments demote)"}
+      - alert: HistorifyBrokerAuthBlocked
+        expr: historify_broker_auth_blocked == 1
+        for: 5m
+        labels: {severity: page}
+        annotations: {summary: "the broker session expired (OpenAlgo login needed)"}
+      - alert: HistorifyStreamDown
+        expr: historify_stream_connected == 0 and on() historify_host_sessions{mode="live",status="running"} > 0
+        for: 5m
+        labels: {severity: warn}
+        annotations: {summary: "WebSocket feed down while a live session runs (REST bars decide - slower)"}

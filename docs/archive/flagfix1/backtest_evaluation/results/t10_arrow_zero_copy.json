@@ -1,0 +1,14 @@
+{
+ "duckdb -> Arrow C stream -> Rust": {
+  "s": 0.175,
+  "rows": 9787500,
+  "batches": 80,
+  "sum_close": 21972861133.21886
+ },
+ "duckdb -> fetchnumpy -> numpy": {
+  "s": 0.698,
+  "rows": 9787500,
+  "batches": 0,
+  "sum_close": 21972861133.22
+ }
+}

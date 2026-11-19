@@ -1,0 +1,13 @@
+{
+ "combos": 244,
+ "symbols": 50,
+ "backtests": 12200,
+ "bars": 39150,
+ "seconds": 2.926289498999722,
+ "backtests_per_s": 4169.102204060897,
+ "wf_is_mean_sharpe": 1.331668866306657,
+ "wf_oos_mean_sharpe": -0.823307548822843,
+ "best_sharpe_ann": 1.2649256163314861,
+ "dsr": 0.0035966129799129103,
+ "trials": 12200
+}

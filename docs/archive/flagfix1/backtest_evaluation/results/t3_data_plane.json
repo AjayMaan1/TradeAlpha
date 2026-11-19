@@ -1,0 +1,17 @@
+{
+ "DuckDB store -> numpy (fetchnumpy)": 1.089,
+ "DuckDB store -> Polars via Arrow PyCapsule (zero-copy, no pyarrow)": 0.337,
+ "snapshot Parquet zstd (50 files) -> Polars (parallel)": 0.604,
+ "Arrow IPC uncompressed -> Polars": 0.356,
+ "Arrow IPC uncompressed -> close column as numpy": 0.089,
+ "Arrow IPC LZ4 -> Polars": 0.145,
+ "single Parquet zstd -> Polars": 0.254,
+ "Polars lazy scan: 1 symbol, 3 months (predicate pushdown)": 0.011,
+ "sizes_mb": {
+  "m1.parquet": 133.3,
+  "m1_lz4.arrow": 233.2,
+  "m1.arrow": 509.0,
+  "bars.duckdb (all intervals)": 217.3,
+  "snapshot 1m parquet (50 files)": 142.1
+ }
+}

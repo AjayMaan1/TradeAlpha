@@ -1,0 +1,38 @@
+{
+  "instruments": 500,
+  "days": 60,
+  "interval": "1m",
+  "rows": 11250000,
+  "write_rows_per_s": 888258,
+  "interleaved": {
+    "file_mb": 135.3,
+    "bytes_per_bar": 12.6,
+    "tail_1500_ms": 10.2,
+    "full_series_ms": 23.1
+  },
+  "duplicate_audit": {
+    "duplicates": 0,
+    "seconds": 4.75
+  },
+  "cluster_rewrite_s": 7.3,
+  "clustered": {
+    "file_mb": 137.5,
+    "bytes_per_bar": 12.8,
+    "tail_1500_ms": 16.6,
+    "full_series_ms": 11.0
+  },
+  "purge_delete_half": {
+    "rows_deleted": 5625000,
+    "seconds": 1.7,
+    "file_mb_before": 137.5,
+    "file_mb_after_delete_checkpoint": 205.0,
+    "rewrite_s": 1.4,
+    "file_mb_after_rewrite": 69.3
+  },
+  "parquet_archive": {
+    "file_mb": 150.8,
+    "bytes_per_bar": 14.1,
+    "write_s": 9.6,
+    "read_one_series_ms": 71.0
+  }
+}

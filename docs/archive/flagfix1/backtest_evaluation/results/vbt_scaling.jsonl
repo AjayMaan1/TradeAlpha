@@ -1,0 +1,4 @@
+{"K": 4, "backtests": 200, "signal_build_s": 8.47, "vectorbt_s": 63.31, "peak_rss_mb": 1393}
+{"K": 16, "backtests": 800, "signal_build_s": 35.89, "vectorbt_s": 151.51, "peak_rss_mb": 3848}
+{"K": 32, "backtests": 1600, "signal_build_s": 87.09, "vectorbt_s": 126.07, "peak_rss_mb": 7039}
+{"K": 64, "skipped": "projected ~14 GB RSS on a 15 GB machine"}

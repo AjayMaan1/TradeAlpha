@@ -1,0 +1,20 @@
+{
+  "instruments": 800,
+  "years": 10,
+  "rows": 789000000,
+  "file_gb": 10.17,
+  "bytes_per_bar": 12.9,
+  "build_rows_per_s": 394613,
+  "chart_tail_1500_ms": 57.3,
+  "chart_scrollback_page_ms": 114.2,
+  "backtest_load_1y_1m_ms": 116.0,
+  "backtest_load_10y_1m_ms": 137.9,
+  "rollup_5m_1y_ms": 42.5,
+  "rollup_5m_10y_ms": 119.7,
+  "backtest_load_50_symbols_1y_ms": 4865.2,
+  "integrity_duplicate_scan": {
+    "duplicates": 0,
+    "seconds": 268.4
+  },
+  "rewrite_compaction_s": 458.8
+}

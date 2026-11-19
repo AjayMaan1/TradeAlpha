@@ -1,0 +1,10 @@
+{
+  "before_mb": 369,
+  "after_mb": 298,
+  "before_packages": 36,
+  "after_packages": 41,
+  "python": "3.12",
+  "note": "fresh venv, pip install -r requirements.txt (py3.14 figure includes pip-licenses, <1 MB)",
+  "after_py314_mb": 312,
+  "after_py314_packages": 33
+}

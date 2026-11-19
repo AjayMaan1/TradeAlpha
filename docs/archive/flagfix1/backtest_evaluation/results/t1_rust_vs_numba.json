@@ -1,0 +1,10 @@
+{
+ "rust_parity_max_rel_err": 9.802586653603544e-14,
+ "numba_50_runs_ms": 21.8,
+ "rust_50_runs_ms": 17.3,
+ "numba_sweep_s": 3.04,
+ "rust_sweep_s": 3.16,
+ "sweep_max_rel_diff": 0.0,
+ "numba_cold_start_s": 0.85,
+ "rust_cold_start_s": 0.29
+}

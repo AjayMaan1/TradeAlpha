@@ -1,0 +1,6 @@
+# /etc/chrony/chrony.conf (trader VM) - keep the clock disciplined; Historify verifies it independently (SNTP,
+# setting ntp_server) and G-SYS-3 blocks entries above 1 s of offset.
+pool time.google.com iburst maxsources 2
+pool in.pool.ntp.org iburst maxsources 2
+makestep 1.0 3
+rtcsync

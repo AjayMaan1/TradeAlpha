@@ -1,0 +1,168 @@
+{
+  "version": "after",
+  "create_app_s": 1.705,
+  "scheduler_started_by_create_app": false,
+  "root_log_level_after_create_app": 20,
+  "bootstrap": {
+    "default_settings_rows": 9,
+    "unconfigured_api_status": 401,
+    "unconfigured_api_is_json": true,
+    "_elapsed_s": 0.01
+  },
+  "settings": {
+    "api_key_returned_in_plaintext": false,
+    "optimize_db_success": true,
+    "optimize_msg": "Database optimized successfully",
+    "_elapsed_s": 0.02
+  },
+  "multi_symbol_daily": {
+    "symbols": 20,
+    "succeeded": 20,
+    "failed": 0,
+    "upstream_429": 0,
+    "elapsed_s": 8.18,
+    "_elapsed_s": 8.18
+  },
+  "range_1m_90d": {
+    "succeeded": true,
+    "rows_stored": 22875,
+    "error": null,
+    "elapsed_s": 2.09,
+    "_elapsed_s": 2.1
+  },
+  "range_5m_150d": {
+    "succeeded": true,
+    "rows_stored": 7800,
+    "error": null,
+    "elapsed_s": 0.88,
+    "_elapsed_s": 0.88
+  },
+  "range_d_10y": {
+    "succeeded": true,
+    "rows_stored": 2606,
+    "error": null,
+    "elapsed_s": 0.58,
+    "_elapsed_s": 0.58
+  },
+  "weekend_range": {
+    "reported_failure": false,
+    "_elapsed_s": 0.29
+  },
+  "weekly_interval": {
+    "reported_success": false,
+    "rows_in_weekly_table": 0,
+    "expected_weekly_bars": 13,
+    "note": "rows are DAILY bars if > expected",
+    "_elapsed_s": 0.0
+  },
+  "slow_upstream_6_5s": {
+    "succeeded": true,
+    "elapsed_s": 6.92,
+    "error": null,
+    "_elapsed_s": 6.92
+  },
+  "transient_5xx_30pct": {
+    "symbols": 10,
+    "succeeded": 10,
+    "upstream_5xx": 4,
+    "elapsed_s": 6.85,
+    "_elapsed_s": 6.85
+  },
+  "session_expired": {
+    "failed": 5,
+    "upstream_calls_while_expired": 1,
+    "message": "Failed to fetch data for SE0: [auth HTTP 403] Invalid Token. Please login to your broker again. Log in to Open",
+    "recovered_after_relogin_and_test_connection": true,
+    "_elapsed_s": 0.86
+  },
+  "write_path_1m_30d": {
+    "rows": 7500,
+    "first_download_s": 0.53,
+    "redownload_s": 0.47,
+    "upstream_fetch_s": 0.245,
+    "rows_per_s_end_to_end": 14151,
+    "db_write_share_pct": 53.7,
+    "_elapsed_s": 3.62
+  },
+  "chart_full_history": {
+    "latency_s": 0.679,
+    "latency_min_s": 0.64,
+    "payload_kb": 1372,
+    "candles": 7500,
+    "_elapsed_s": 4.9
+  },
+  "quotes_50": {
+    "latency_s": 6.16,
+    "ok": 50,
+    "errors": 0,
+    "_elapsed_s": 6.16
+  },
+  "concurrent_write": {
+    "download_rows": 47625,
+    "download_s": 4.15,
+    "concurrent_writes": 8,
+    "concurrent_write_failures": 0,
+    "max_write_latency_s": 0.97,
+    "_elapsed_s": 4.41
+  },
+  "excel_import": {
+    "returns_uploaded_rows": true,
+    "first_data_row": [
+      [
+        "HDFCBANK",
+        "NSE"
+      ]
+    ],
+    "_elapsed_s": 0.16
+  },
+  "pages": {
+    "pages_ok": 9,
+    "pages_total": 9,
+    "profile_status": 404,
+    "pages_offering_weekly": 0,
+    "watchlist_nav_highlighted": true,
+    "_elapsed_s": 0.11
+  },
+  "export_cookie_800_symbols": {
+    "set_cookie_bytes": 7746,
+    "browser_limit": 4096,
+    "_elapsed_s": 0.04
+  },
+  "storage_engine": {
+    "rows": 937500,
+    "data": "random-walk prices (2 dp) + random volumes, identical for both versions",
+    "duckdb_rows_per_s": 478941,
+    "duckdb_bytes_per_row": 16.2,
+    "duckdb_range_read_s": 0.032,
+    "duckdb_range_read_rows": 41760,
+    "sqlite_rows_per_s": 122476,
+    "sqlite_bytes_per_row": 66.0,
+    "sqlite_range_read_s": 0.189,
+    "sqlite_range_read_rows": 41760,
+    "tables_for_data": 1,
+    "resample_50_instruments_W_and_M_s": 1.369,
+    "_elapsed_s": 14.02
+  },
+  "correctness": {
+    "v1_path_first_daily_row_for_2025_01_01": "2024-12-31 18:30:00.000000",
+    "v1_path_tables_for_M&M_and_M-M": 1,
+    "v2_first_daily_trading_date_by_broker_convention": {
+      "ist_midnight": "2025-01-01",
+      "utc_midnight": "2025-01-01"
+    },
+    "v2_series_for_M&M_and_M-M": 2,
+    "_elapsed_s": 2.67
+  },
+  "legacy_import": {
+    "available": true,
+    "reconciled": true,
+    "legacy_db_unchanged": true,
+    "series": 11,
+    "rows_imported": 2783,
+    "duplicates_merged": 80,
+    "collisions_reported": 1,
+    "orphans_reported": 1,
+    "duration_s": 1.173,
+    "_elapsed_s": 1.88
+  }
+}

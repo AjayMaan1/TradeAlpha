@@ -1,0 +1,2894 @@
+{
+ "schema": 1,
+ "version": "india-seed-2025.11",
+ "as_of": "2025-11-15",
+ "disclaimer": "Seed knowledge for research, not advice. Company exposures are approximate shares of revenue / profit sensitivity from public business descriptions and need analyst review; 'since' dates are approximate public-knowledge dates (used to keep backtests from using links before they were knowable). Event dates should be verified; import corrections through the knowledge API.",
+ "themes": [
+  {
+   "id": "ev_adoption",
+   "name": "EV adoption in India",
+   "kind": "structural",
+   "since": "2019-04-01",
+   "thesis": "Rising electric-vehicle penetration (FAME-II from Apr-2019, PLI-ACC, PM E-DRIVE) shifts auto value from engines and lubricants to batteries, power electronics, copper/aluminium and charging.",
+   "keywords": [
+    "electric vehicle",
+    "ev sales",
+    "ev penetration",
+    "fame ii",
+    "pm e-drive",
+    "lithium-ion",
+    "battery cell",
+    "pli acc",
+    "ev charging",
+    "electric two-wheeler",
+    "e2w",
+    "electric bus"
+   ],
+   "horizons": [
+    "positional",
+    "long_term",
+    "swing"
+   ],
+   "catalysts": []
+  },
+  {
+   "id": "ai_compute_boom",
+   "name": "AI compute & data-centre build-out",
+   "kind": "structural",
+   "since": "2023-01-01",
+   "thesis": "Generative AI drives data-centre capacity: power, transformers, switchgear, cables and cooling are the picks-and-shovels; labour-based IT services and seat-based software face price deflation.",
+   "keywords": [
+    "artificial intelligence",
+    "generative ai",
+    "genai",
+    "data centre",
+    "data center",
+    "gpu",
+    "hyperscaler",
+    "ai server",
+    "llm",
+    "nvidia",
+    "ai capex"
+   ],
+   "horizons": [
+    "positional",
+    "long_term",
+    "swing"
+   ],
+   "catalysts": []
+  },
+  {
+   "id": "solar_buildout",
+   "name": "Solar & renewable capacity build-out",
+   "kind": "structural",
+   "since": "2019-01-01",
+   "thesis": "India's 500 GW non-fossil target: modules and EPC are visible; solar glass, silver paste and transmission conductors are the less-visible inputs.",
+   "keywords": [
+    "solar",
+    "renewable energy",
+    "solar module",
+    "solar capacity",
+    "green energy",
+    "500 gw",
+    "pm surya ghar",
+    "almm",
+    "wind energy",
+    "transmission line"
+   ],
+   "horizons": [
+    "positional",
+    "long_term",
+    "swing"
+   ],
+   "catalysts": []
+  },
+  {
+   "id": "cricket_season",
+   "name": "IPL & home cricket consumption",
+   "kind": "seasonal",
+   "since": "2010-01-01",
+   "thesis": "During the IPL (and home World Cups) at-home viewing lifts delivery food, beverages and alcobev; multiplex footfalls suffer.",
+   "keywords": [
+    "ipl",
+    "indian premier league",
+    "world cup",
+    "cricket",
+    "t20"
+   ],
+   "horizons": [
+    "swing"
+   ],
+   "catalysts": [
+    "ipl_season",
+    "icc_cwc_india"
+   ]
+  },
+  {
+   "id": "travel_tourism",
+   "name": "Travel & tourism demand",
+   "kind": "cyclical",
+   "since": "2010-01-01",
+   "thesis": "Domestic and outbound travel growth (and event travel such as FIFA / ICC tournaments) lifts airlines, hotels and booking platforms; luggage makers are a less-watched second-order beneficiary.",
+   "keywords": [
+    "tourism",
+    "travel demand",
+    "air traffic",
+    "passenger traffic",
+    "hotel occupancy",
+    "room rates",
+    "arr",
+    "outbound travel",
+    "world cup travel",
+    "visa"
+   ],
+   "horizons": [
+    "swing",
+    "positional"
+   ],
+   "catalysts": [
+    "fifa_world_cup",
+    "icc_cwc_india",
+    "diwali"
+   ]
+  },
+  {
+   "id": "festive_season",
+   "name": "Diwali festive demand",
+   "kind": "seasonal",
+   "since": "2010-01-01",
+   "thesis": "Festive-season purchases (autos, gold jewellery, durables, apparel) concentrate in the weeks before Diwali; e-commerce logistics and card issuers carry the less-visible volume.",
+   "keywords": [
+    "festive season",
+    "diwali",
+    "dhanteras",
+    "navratri",
+    "festive demand",
+    "festive sales"
+   ],
+   "horizons": [
+    "swing"
+   ],
+   "catalysts": [
+    "diwali"
+   ]
+  },
+  {
+   "id": "monsoon_rural",
+   "name": "Monsoon & rural demand",
+   "kind": "seasonal",
+   "since": "2010-01-01",
+   "thesis": "A timely, normal monsoon lifts kharif sowing: fertilisers, agrochemicals, seeds and tractors first, then rural consumption; pumps and PVC pipes are the less-visible irrigation plays.",
+   "keywords": [
+    "monsoon",
+    "imd",
+    "kharif",
+    "sowing",
+    "rainfall",
+    "rural demand",
+    "el nino",
+    "la nina"
+   ],
+   "horizons": [
+    "swing",
+    "positional"
+   ],
+   "catalysts": [
+    "monsoon_onset"
+   ]
+  },
+  {
+   "id": "summer_cooling",
+   "name": "Summer & heatwaves",
+   "kind": "seasonal",
+   "since": "2010-01-01",
+   "thesis": "Hot summers lift room-AC, cooler and fan sales, beverages and ice cream, and power-exchange prices; AC contract manufacturers are the less-visible play.",
+   "keywords": [
+    "heatwave",
+    "heat wave",
+    "summer",
+    "temperature",
+    "peak power demand",
+    "room ac",
+    "air conditioner"
+   ],
+   "horizons": [
+    "swing"
+   ],
+   "catalysts": [
+    "summer_season"
+   ]
+  },
+  {
+   "id": "crude_spike",
+   "name": "Crude-oil price spike",
+   "kind": "macro_shock",
+   "since": "2010-01-01",
+   "thesis": "Higher crude helps upstream producers and hurts crude-derivative consumers: oil marketers, paints, tyres and airlines.",
+   "keywords": [
+    "crude oil",
+    "brent",
+    "oil price",
+    "opec",
+    "crude price",
+    "oil prices surge"
+   ],
+   "horizons": [
+    "swing",
+    "positional"
+   ],
+   "catalysts": []
+  },
+  {
+   "id": "rate_cut_cycle",
+   "name": "RBI easing cycle",
+   "kind": "macro_shock",
+   "since": "2010-01-01",
+   "thesis": "Policy-rate cuts lower funding costs for NBFCs and housing finance, revive housing demand and - one step removed - building materials (pipes, tiles, plywood, cement).",
+   "keywords": [
+    "rate cut",
+    "repo rate",
+    "monetary policy",
+    "rbi cuts",
+    "mpc",
+    "easing cycle",
+    "liquidity infusion"
+   ],
+   "horizons": [
+    "swing",
+    "positional"
+   ],
+   "catalysts": [
+    "rbi_policy"
+   ]
+  },
+  {
+   "id": "defence_indigenisation",
+   "name": "Defence indigenisation",
+   "kind": "structural",
+   "since": "2020-05-01",
+   "thesis": "Positive indigenisation lists (from 2020) and rising capital outlay move orders to domestic primes; special alloys, electronics sub-systems and simulators are the second-order suppliers.",
+   "keywords": [
+    "defence",
+    "defense",
+    "indigenisation",
+    "make in india defence",
+    "defence order",
+    "defence ministry",
+    "dac approval",
+    "positive indigenisation list",
+    "defence exports"
+   ],
+   "horizons": [
+    "positional",
+    "long_term",
+    "swing"
+   ],
+   "catalysts": [
+    "union_budget"
+   ]
+  },
+  {
+   "id": "railway_capex",
+   "name": "Railway modernisation capex",
+   "kind": "structural",
+   "since": "2020-01-01",
+   "thesis": "Record railway capex (wagons, Vande Bharat, Kavach, station redevelopment) flows to EPC, wagon makers and less-visible suppliers of signalling and forged wheels.",
+   "keywords": [
+    "railway",
+    "indian railways",
+    "vande bharat",
+    "kavach",
+    "wagon order",
+    "rail budget",
+    "dedicated freight"
+   ],
+   "horizons": [
+    "positional",
+    "swing"
+   ],
+   "catalysts": [
+    "union_budget"
+   ]
+  },
+  {
+   "id": "electronics_pli",
+   "name": "Electronics manufacturing (China+1, PLI)",
+   "kind": "structural",
+   "since": "2020-04-01",
+   "thesis": "PLI schemes and China+1 sourcing move phone, IT-hardware and component assembly to India: EMS makers first, then OSAT / semiconductor packaging.",
+   "keywords": [
+    "pli scheme",
+    "electronics manufacturing",
+    "china plus one",
+    "china+1",
+    "ems",
+    "semiconductor",
+    "osat",
+    "iphone production",
+    "smartphone exports"
+   ],
+   "horizons": [
+    "positional",
+    "long_term",
+    "swing"
+   ],
+   "catalysts": []
+  },
+  {
+   "id": "gold_rally",
+   "name": "Gold price rally",
+   "kind": "macro_shock",
+   "since": "2010-01-01",
+   "thesis": "Higher gold prices raise collateral values for gold-loan NBFCs (more lending per gram, lower LTV risk); jewellers gain on inventory but lose volumes.",
+   "keywords": [
+    "gold price",
+    "gold prices",
+    "gold rally",
+    "bullion",
+    "gold hits record"
+   ],
+   "horizons": [
+    "swing",
+    "positional"
+   ],
+   "catalysts": []
+  },
+  {
+   "id": "data_5g",
+   "name": "Mobile data & 5G roll-out",
+   "kind": "structural",
+   "since": "2021-01-01",
+   "thesis": "5G roll-out and data growth lift telecom tariffs; optical fibre and telecom-equipment makers are the less-visible beneficiaries of densification.",
+   "keywords": [
+    "5g",
+    "tariff hike",
+    "telecom tariff",
+    "data consumption",
+    "fibre roll-out",
+    "arpu"
+   ],
+   "horizons": [
+    "positional",
+    "long_term"
+   ],
+   "catalysts": []
+  },
+  {
+   "id": "infra_capex",
+   "name": "Government infrastructure capex",
+   "kind": "structural",
+   "since": "2014-01-01",
+   "thesis": "Roads, water (Jal Jeevan) and urban infrastructure spending lifts EPC, cement and steel; explosives, construction cranes and water pipes are the less-visible plays.",
+   "keywords": [
+    "infrastructure",
+    "capex",
+    "capital expenditure",
+    "road construction",
+    "jal jeevan",
+    "national infrastructure pipeline",
+    "gati shakti"
+   ],
+   "horizons": [
+    "positional",
+    "long_term",
+    "swing"
+   ],
+   "catalysts": [
+    "union_budget"
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "id": "ev_oem",
+   "label": "EV makers (2W/4W/CV)",
+   "description": "Vehicle OEMs selling EVs - the visible first-order names"
+  },
+  {
+   "id": "ev_components",
+   "label": "EV drivetrain & electronics",
+   "description": "Traction motors, drivelines, controllers, EV software"
+  },
+  {
+   "id": "cells_packs",
+   "label": "Li-ion cells & packs",
+   "description": "Cell manufacturing / pack assembly (PLI-ACC)"
+  },
+  {
+   "id": "battery_materials",
+   "label": "Battery materials",
+   "description": "Cathode/anode active material, electrolyte salts, binders"
+  },
+  {
+   "id": "ev_metals",
+   "label": "Copper & aluminium",
+   "description": "An EV uses ~3-4x the copper of an ICE car; aluminium for light-weighting"
+  },
+  {
+   "id": "charging",
+   "label": "Charging infrastructure",
+   "description": "Public/fleet charging networks"
+  },
+  {
+   "id": "ice_aftermarket",
+   "label": "ICE-only consumables",
+   "description": "Engine oil and ICE-specific parts (victims)"
+  },
+  {
+   "id": "datacentres",
+   "label": "Data-centre operators & AI servers",
+   "description": ""
+  },
+  {
+   "id": "dc_power",
+   "label": "Power generation for data centres",
+   "description": ""
+  },
+  {
+   "id": "grid_equipment",
+   "label": "Transformers, switchgear & grid equipment",
+   "description": ""
+  },
+  {
+   "id": "cables",
+   "label": "Power cables & wires",
+   "description": ""
+  },
+  {
+   "id": "dc_cooling",
+   "label": "Cooling / HVAC for data centres",
+   "description": ""
+  },
+  {
+   "id": "it_services",
+   "label": "Labour-based IT services (victims)",
+   "description": ""
+  },
+  {
+   "id": "seat_saas",
+   "label": "Seat-based software / CPaaS (victims)",
+   "description": ""
+  },
+  {
+   "id": "re_developers",
+   "label": "Renewable developers / IPPs",
+   "description": ""
+  },
+  {
+   "id": "modules_epc",
+   "label": "Solar modules, turbines & EPC",
+   "description": ""
+  },
+  {
+   "id": "solar_glass",
+   "label": "Solar glass",
+   "description": ""
+  },
+  {
+   "id": "pv_silver",
+   "label": "Silver (PV paste)",
+   "description": "each cell uses ~10 mg/W of silver paste"
+  },
+  {
+   "id": "transmission",
+   "label": "Transmission & conductors",
+   "description": ""
+  },
+  {
+   "id": "home_viewing_food",
+   "label": "QSR & food delivery",
+   "description": ""
+  },
+  {
+   "id": "beverages",
+   "label": "Soft drinks & alcobev",
+   "description": ""
+  },
+  {
+   "id": "sports_media",
+   "label": "Sports media / gaming",
+   "description": ""
+  },
+  {
+   "id": "multiplex",
+   "label": "Multiplexes (victims)",
+   "description": ""
+  },
+  {
+   "id": "airlines_airports",
+   "label": "Airlines & airports",
+   "description": ""
+  },
+  {
+   "id": "hotels",
+   "label": "Hotels",
+   "description": ""
+  },
+  {
+   "id": "travel_platforms",
+   "label": "Travel booking / forex",
+   "description": ""
+  },
+  {
+   "id": "luggage",
+   "label": "Luggage makers",
+   "description": ""
+  },
+  {
+   "id": "festive_autos",
+   "label": "Autos (festive registrations)",
+   "description": ""
+  },
+  {
+   "id": "jewellery",
+   "label": "Gold jewellery",
+   "description": ""
+  },
+  {
+   "id": "durables_retail",
+   "label": "Consumer durables & retail",
+   "description": ""
+  },
+  {
+   "id": "ecom_logistics",
+   "label": "E-commerce logistics & payments",
+   "description": ""
+  },
+  {
+   "id": "agri_inputs",
+   "label": "Fertilisers, agrochemicals & seeds",
+   "description": ""
+  },
+  {
+   "id": "farm_machinery",
+   "label": "Tractors & farm machinery",
+   "description": ""
+  },
+  {
+   "id": "irrigation",
+   "label": "Pumps & PVC pipes",
+   "description": ""
+  },
+  {
+   "id": "rural_consumption",
+   "label": "Rural consumption & lending",
+   "description": ""
+  },
+  {
+   "id": "cooling_products",
+   "label": "ACs, coolers & fans",
+   "description": ""
+  },
+  {
+   "id": "ac_manufacturing",
+   "label": "AC contract manufacturing & components",
+   "description": ""
+  },
+  {
+   "id": "summer_consumption",
+   "label": "Beverages & ice cream",
+   "description": ""
+  },
+  {
+   "id": "power_trading",
+   "label": "Power exchange",
+   "description": ""
+  },
+  {
+   "id": "upstream",
+   "label": "Upstream oil producers",
+   "description": ""
+  },
+  {
+   "id": "omc",
+   "label": "Oil marketing companies (victims)",
+   "description": ""
+  },
+  {
+   "id": "crude_derivatives",
+   "label": "Paints & tyres (victims: crude-linked raw materials)",
+   "description": ""
+  },
+  {
+   "id": "aviation_fuel",
+   "label": "Airlines (victims: ATF)",
+   "description": ""
+  },
+  {
+   "id": "nbfc",
+   "label": "NBFCs",
+   "description": ""
+  },
+  {
+   "id": "housing_finance",
+   "label": "Housing finance",
+   "description": ""
+  },
+  {
+   "id": "real_estate",
+   "label": "Real estate developers",
+   "description": ""
+  },
+  {
+   "id": "building_materials",
+   "label": "Building materials",
+   "description": ""
+  },
+  {
+   "id": "defence_primes",
+   "label": "Defence primes & shipyards",
+   "description": ""
+  },
+  {
+   "id": "defence_subsystems",
+   "label": "Defence electronics & sub-systems",
+   "description": ""
+  },
+  {
+   "id": "special_alloys",
+   "label": "Special alloys & energetics",
+   "description": ""
+  },
+  {
+   "id": "rail_epc",
+   "label": "Rail EPC & financing",
+   "description": ""
+  },
+  {
+   "id": "rolling_stock",
+   "label": "Wagons & rolling stock",
+   "description": ""
+  },
+  {
+   "id": "rail_suppliers",
+   "label": "Signalling & forged components",
+   "description": ""
+  },
+  {
+   "id": "ems",
+   "label": "Electronics manufacturing services",
+   "description": ""
+  },
+  {
+   "id": "semis",
+   "label": "Semiconductor packaging (OSAT)",
+   "description": ""
+  },
+  {
+   "id": "gold_lenders",
+   "label": "Gold-loan NBFCs",
+   "description": ""
+  },
+  {
+   "id": "telcos",
+   "label": "Telecom operators & towers",
+   "description": ""
+  },
+  {
+   "id": "telecom_equipment",
+   "label": "Optical fibre & telecom equipment",
+   "description": ""
+  },
+  {
+   "id": "infra_epc",
+   "label": "Infrastructure EPC",
+   "description": ""
+  },
+  {
+   "id": "construction_materials",
+   "label": "Cement & steel",
+   "description": ""
+  },
+  {
+   "id": "construction_inputs",
+   "label": "Explosives, cranes & water pipes",
+   "description": ""
+  }
+ ],
+ "edges": [
+  {
+   "from": "ev_adoption",
+   "to": "ev_oem",
+   "sign": 1,
+   "strength": 0.9,
+   "lag_days": 0,
+   "mechanism": "EV unit sales are the theme itself"
+  },
+  {
+   "from": "ev_oem",
+   "to": "ev_components",
+   "sign": 1,
+   "strength": 0.8,
+   "lag_days": 20,
+   "mechanism": "every EV needs a motor, driveline and controller"
+  },
+  {
+   "from": "ev_oem",
+   "to": "cells_packs",
+   "sign": 1,
+   "strength": 0.8,
+   "lag_days": 20,
+   "mechanism": "the battery is ~35-40 % of an EV's bill of materials"
+  },
+  {
+   "from": "cells_packs",
+   "to": "battery_materials",
+   "sign": 1,
+   "strength": 0.7,
+   "lag_days": 60,
+   "mechanism": "cell capacity build-out pulls cathode/anode/electrolyte demand"
+  },
+  {
+   "from": "ev_oem",
+   "to": "ev_metals",
+   "sign": 1,
+   "strength": 0.4,
+   "lag_days": 40,
+   "mechanism": "copper-intensive motors/wiring; aluminium body and battery enclosures"
+  },
+  {
+   "from": "ev_adoption",
+   "to": "charging",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 40,
+   "mechanism": "charger roll-out follows the EV parc"
+  },
+  {
+   "from": "ev_adoption",
+   "to": "ice_aftermarket",
+   "sign": -1,
+   "strength": 0.5,
+   "lag_days": 120,
+   "mechanism": "EVs need no engine oil or ICE parts: a slow volume headwind"
+  },
+  {
+   "from": "ai_compute_boom",
+   "to": "datacentres",
+   "sign": 1,
+   "strength": 0.9,
+   "lag_days": 0,
+   "mechanism": "AI capacity is built in data centres"
+  },
+  {
+   "from": "datacentres",
+   "to": "dc_power",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 60,
+   "mechanism": "a 100 MW campus needs firm power"
+  },
+  {
+   "from": "datacentres",
+   "to": "grid_equipment",
+   "sign": 1,
+   "strength": 0.7,
+   "lag_days": 40,
+   "mechanism": "substations, transformers, switchgear per MW of IT load"
+  },
+  {
+   "from": "grid_equipment",
+   "to": "cables",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 20,
+   "mechanism": "MV/LV cabling for every substation and hall"
+  },
+  {
+   "from": "datacentres",
+   "to": "dc_cooling",
+   "sign": 1,
+   "strength": 0.5,
+   "lag_days": 40,
+   "mechanism": "AI racks run at 40-100 kW: chillers / liquid cooling"
+  },
+  {
+   "from": "ai_compute_boom",
+   "to": "it_services",
+   "sign": -1,
+   "strength": 0.4,
+   "lag_days": 120,
+   "mechanism": "AI coding/automation deflates billable-effort contracts"
+  },
+  {
+   "from": "ai_compute_boom",
+   "to": "seat_saas",
+   "sign": -1,
+   "strength": 0.4,
+   "lag_days": 120,
+   "mechanism": "AI agents compress seat counts and undercut point software"
+  },
+  {
+   "from": "solar_buildout",
+   "to": "re_developers",
+   "sign": 1,
+   "strength": 0.8,
+   "lag_days": 0,
+   "mechanism": "capacity additions are the theme"
+  },
+  {
+   "from": "re_developers",
+   "to": "modules_epc",
+   "sign": 1,
+   "strength": 0.8,
+   "lag_days": 30,
+   "mechanism": "every GW needs modules/turbines + EPC"
+  },
+  {
+   "from": "modules_epc",
+   "to": "solar_glass",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 30,
+   "mechanism": "module output pulls tempered solar glass"
+  },
+  {
+   "from": "modules_epc",
+   "to": "pv_silver",
+   "sign": 1,
+   "strength": 0.4,
+   "lag_days": 60,
+   "mechanism": "PV is a fast-growing share of silver demand"
+  },
+  {
+   "from": "re_developers",
+   "to": "transmission",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 60,
+   "mechanism": "remote RE parks need new evacuation lines"
+  },
+  {
+   "from": "cricket_season",
+   "to": "home_viewing_food",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 0,
+   "mechanism": "match-night delivery orders spike"
+  },
+  {
+   "from": "cricket_season",
+   "to": "beverages",
+   "sign": 1,
+   "strength": 0.5,
+   "lag_days": 0,
+   "mechanism": "summer + match viewing lifts volumes"
+  },
+  {
+   "from": "cricket_season",
+   "to": "sports_media",
+   "sign": 1,
+   "strength": 0.4,
+   "lag_days": 0,
+   "mechanism": "ad inventory and fantasy-gaming engagement"
+  },
+  {
+   "from": "cricket_season",
+   "to": "multiplex",
+   "sign": -1,
+   "strength": 0.6,
+   "lag_days": 0,
+   "mechanism": "studios avoid IPL weeks; footfalls fall"
+  },
+  {
+   "from": "travel_tourism",
+   "to": "airlines_airports",
+   "sign": 1,
+   "strength": 0.7,
+   "lag_days": 0,
+   "mechanism": "passenger volumes"
+  },
+  {
+   "from": "travel_tourism",
+   "to": "hotels",
+   "sign": 1,
+   "strength": 0.7,
+   "lag_days": 0,
+   "mechanism": "occupancy and room rates"
+  },
+  {
+   "from": "travel_tourism",
+   "to": "travel_platforms",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 0,
+   "mechanism": "gross bookings"
+  },
+  {
+   "from": "travel_tourism",
+   "to": "luggage",
+   "sign": 1,
+   "strength": 0.4,
+   "lag_days": 20,
+   "mechanism": "trips drive luggage replacement cycles"
+  },
+  {
+   "from": "festive_season",
+   "to": "festive_autos",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 0,
+   "mechanism": "festive registrations are a large share of annual sales"
+  },
+  {
+   "from": "festive_season",
+   "to": "jewellery",
+   "sign": 1,
+   "strength": 0.7,
+   "lag_days": 0,
+   "mechanism": "Dhanteras / Diwali gold buying"
+  },
+  {
+   "from": "festive_season",
+   "to": "durables_retail",
+   "sign": 1,
+   "strength": 0.5,
+   "lag_days": 0,
+   "mechanism": "gifting and upgrades"
+  },
+  {
+   "from": "festive_season",
+   "to": "ecom_logistics",
+   "sign": 1,
+   "strength": 0.5,
+   "lag_days": 0,
+   "mechanism": "online festive sales volumes move through couriers and cards"
+  },
+  {
+   "from": "monsoon_rural",
+   "to": "agri_inputs",
+   "sign": 1,
+   "strength": 0.7,
+   "lag_days": 0,
+   "mechanism": "sowing drives input demand"
+  },
+  {
+   "from": "monsoon_rural",
+   "to": "farm_machinery",
+   "sign": 1,
+   "strength": 0.5,
+   "lag_days": 60,
+   "mechanism": "farm incomes drive tractor purchases"
+  },
+  {
+   "from": "monsoon_rural",
+   "to": "irrigation",
+   "sign": 1,
+   "strength": 0.4,
+   "lag_days": 20,
+   "mechanism": "pumps / pipes for sowing season"
+  },
+  {
+   "from": "farm_machinery",
+   "to": "rural_consumption",
+   "sign": 1,
+   "strength": 0.5,
+   "lag_days": 90,
+   "mechanism": "income effect spreads to rural consumption"
+  },
+  {
+   "from": "summer_cooling",
+   "to": "cooling_products",
+   "sign": 1,
+   "strength": 0.7,
+   "lag_days": 0,
+   "mechanism": "seasonal volumes"
+  },
+  {
+   "from": "cooling_products",
+   "to": "ac_manufacturing",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 20,
+   "mechanism": "brands outsource AC units / components"
+  },
+  {
+   "from": "summer_cooling",
+   "to": "summer_consumption",
+   "sign": 1,
+   "strength": 0.5,
+   "lag_days": 0,
+   "mechanism": "heat lifts beverage / ice-cream volumes"
+  },
+  {
+   "from": "summer_cooling",
+   "to": "power_trading",
+   "sign": 1,
+   "strength": 0.4,
+   "lag_days": 0,
+   "mechanism": "peak demand lifts exchange volumes / prices"
+  },
+  {
+   "from": "crude_spike",
+   "to": "upstream",
+   "sign": 1,
+   "strength": 0.8,
+   "lag_days": 0,
+   "mechanism": "realisations rise with crude"
+  },
+  {
+   "from": "crude_spike",
+   "to": "omc",
+   "sign": -1,
+   "strength": 0.6,
+   "lag_days": 0,
+   "mechanism": "marketing margins compress when retail prices lag"
+  },
+  {
+   "from": "crude_spike",
+   "to": "crude_derivatives",
+   "sign": -1,
+   "strength": 0.5,
+   "lag_days": 20,
+   "mechanism": "monomers, solvents, synthetic rubber, carbon black costs rise"
+  },
+  {
+   "from": "crude_spike",
+   "to": "aviation_fuel",
+   "sign": -1,
+   "strength": 0.6,
+   "lag_days": 0,
+   "mechanism": "ATF is ~40 % of airline costs"
+  },
+  {
+   "from": "rate_cut_cycle",
+   "to": "nbfc",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 0,
+   "mechanism": "lower cost of funds"
+  },
+  {
+   "from": "rate_cut_cycle",
+   "to": "housing_finance",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 0,
+   "mechanism": "cheaper mortgages lift disbursals"
+  },
+  {
+   "from": "housing_finance",
+   "to": "real_estate",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 30,
+   "mechanism": "mortgage affordability drives pre-sales"
+  },
+  {
+   "from": "real_estate",
+   "to": "building_materials",
+   "sign": 1,
+   "strength": 0.5,
+   "lag_days": 120,
+   "mechanism": "construction starts pull materials 6-18 months later"
+  },
+  {
+   "from": "defence_indigenisation",
+   "to": "defence_primes",
+   "sign": 1,
+   "strength": 0.9,
+   "lag_days": 0,
+   "mechanism": "orders go to domestic primes"
+  },
+  {
+   "from": "defence_primes",
+   "to": "defence_subsystems",
+   "sign": 1,
+   "strength": 0.7,
+   "lag_days": 60,
+   "mechanism": "primes source radars, EW and electronics locally"
+  },
+  {
+   "from": "defence_primes",
+   "to": "special_alloys",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 60,
+   "mechanism": "titanium / superalloys and energetics for platforms"
+  },
+  {
+   "from": "railway_capex",
+   "to": "rail_epc",
+   "sign": 1,
+   "strength": 0.8,
+   "lag_days": 0,
+   "mechanism": "project awards"
+  },
+  {
+   "from": "railway_capex",
+   "to": "rolling_stock",
+   "sign": 1,
+   "strength": 0.8,
+   "lag_days": 0,
+   "mechanism": "wagon / train-set orders"
+  },
+  {
+   "from": "rolling_stock",
+   "to": "rail_suppliers",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 60,
+   "mechanism": "wheels, bogies, Kavach per route-km"
+  },
+  {
+   "from": "electronics_pli",
+   "to": "ems",
+   "sign": 1,
+   "strength": 0.9,
+   "lag_days": 0,
+   "mechanism": "assembly contracts"
+  },
+  {
+   "from": "ems",
+   "to": "semis",
+   "sign": 1,
+   "strength": 0.4,
+   "lag_days": 180,
+   "mechanism": "local assembly pulls local packaging over time"
+  },
+  {
+   "from": "gold_rally",
+   "to": "gold_lenders",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 0,
+   "mechanism": "loan book grows with the collateral value"
+  },
+  {
+   "from": "data_5g",
+   "to": "telcos",
+   "sign": 1,
+   "strength": 0.8,
+   "lag_days": 0,
+   "mechanism": "ARPU and subscriber upgrades"
+  },
+  {
+   "from": "telcos",
+   "to": "telecom_equipment",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 60,
+   "mechanism": "densification needs fibre backhaul and radios"
+  },
+  {
+   "from": "infra_capex",
+   "to": "infra_epc",
+   "sign": 1,
+   "strength": 0.8,
+   "lag_days": 0,
+   "mechanism": "order inflows"
+  },
+  {
+   "from": "infra_epc",
+   "to": "construction_materials",
+   "sign": 1,
+   "strength": 0.6,
+   "lag_days": 30,
+   "mechanism": "tonnage per km of road / project"
+  },
+  {
+   "from": "infra_epc",
+   "to": "construction_inputs",
+   "sign": 1,
+   "strength": 0.5,
+   "lag_days": 60,
+   "mechanism": "quarrying explosives, cranes, pipelines"
+  }
+ ],
+ "exposures": [
+  {
+   "node": "ev_oem",
+   "symbol": "NSE:M&M",
+   "exposure": 0.25,
+   "note": "XEV / BE electric SUVs"
+  },
+  {
+   "node": "ev_oem",
+   "symbol": "NSE:TVSMOTOR",
+   "exposure": 0.25,
+   "note": "iQube electric scooter"
+  },
+  {
+   "node": "ev_oem",
+   "symbol": "NSE:BAJAJ-AUTO",
+   "exposure": 0.2,
+   "note": "Chetak EV"
+  },
+  {
+   "node": "ev_oem",
+   "symbol": "NSE:OLAELEC",
+   "exposure": 1.0,
+   "note": "pure-play electric 2W",
+   "since": "2024-08-09"
+  },
+  {
+   "node": "ev_oem",
+   "symbol": "NSE:ATHERENERG",
+   "exposure": 1.0,
+   "note": "pure-play electric 2W",
+   "since": "2025-05-06"
+  },
+  {
+   "node": "ev_oem",
+   "symbol": "NSE:TATAMOTORS",
+   "exposure": 0.3,
+   "note": "EV passenger cars (renamed TMPV after the Oct-2025 demerger)"
+  },
+  {
+   "node": "ev_oem",
+   "symbol": "NSE:HEROMOTOCO",
+   "exposure": 0.1,
+   "note": "Vida EV + Ather stake"
+  },
+  {
+   "node": "ev_components",
+   "symbol": "NSE:SONACOMS",
+   "exposure": 0.6,
+   "note": "EV driveline, traction motors",
+   "since": "2021-06-24"
+  },
+  {
+   "node": "ev_components",
+   "symbol": "NSE:UNOMINDA",
+   "exposure": 0.3,
+   "note": "EV powertrain components"
+  },
+  {
+   "node": "ev_components",
+   "symbol": "NSE:TIINDIA",
+   "exposure": 0.3,
+   "note": "TI Clean Mobility (EV 3W/CV)",
+   "since": "2022-01-01"
+  },
+  {
+   "node": "ev_components",
+   "symbol": "NSE:KPITTECH",
+   "exposure": 0.5,
+   "note": "EV / powertrain software for OEMs"
+  },
+  {
+   "node": "ev_components",
+   "symbol": "NSE:TATAELXSI",
+   "exposure": 0.2,
+   "note": "EV design services"
+  },
+  {
+   "node": "cells_packs",
+   "symbol": "NSE:EXIDEIND",
+   "exposure": 0.35,
+   "note": "Li-ion cell plant (Exide Energy Solutions)",
+   "since": "2022-03-01"
+  },
+  {
+   "node": "cells_packs",
+   "symbol": "NSE:ARE&M",
+   "exposure": 0.35,
+   "note": "Li-ion gigafactory (Amara Raja)",
+   "since": "2022-06-01"
+  },
+  {
+   "node": "battery_materials",
+   "symbol": "NSE:HIMADRI",
+   "exposure": 0.35,
+   "note": "LFP cathode + anode material projects",
+   "since": "2022-09-01"
+  },
+  {
+   "node": "battery_materials",
+   "symbol": "NSE:NEOGEN",
+   "exposure": 0.4,
+   "note": "lithium electrolyte salts (Neogen Ionics)",
+   "since": "2022-01-01"
+  },
+  {
+   "node": "battery_materials",
+   "symbol": "NSE:GUJFLUORO",
+   "exposure": 0.3,
+   "note": "LiPF6 / PVDF battery chemicals",
+   "since": "2021-10-01"
+  },
+  {
+   "node": "battery_materials",
+   "symbol": "NSE:HEG",
+   "exposure": 0.15,
+   "note": "graphite anode subsidiary (TACC)",
+   "since": "2023-06-01"
+  },
+  {
+   "node": "battery_materials",
+   "symbol": "NSE:TATACHEM",
+   "exposure": 0.1,
+   "note": "Li-ion cell materials / recycling plans",
+   "since": "2022-06-01"
+  },
+  {
+   "node": "ev_metals",
+   "symbol": "NSE:HINDALCO",
+   "exposure": 0.3,
+   "note": "copper + aluminium; battery foil"
+  },
+  {
+   "node": "ev_metals",
+   "symbol": "NSE:HINDCOPPER",
+   "exposure": 0.8,
+   "note": "copper mining"
+  },
+  {
+   "node": "ev_metals",
+   "symbol": "NSE:NATIONALUM",
+   "exposure": 0.5,
+   "note": "aluminium"
+  },
+  {
+   "node": "ev_metals",
+   "symbol": "NSE:VEDL",
+   "exposure": 0.2,
+   "note": "aluminium"
+  },
+  {
+   "node": "charging",
+   "symbol": "NSE:TATAPOWER",
+   "exposure": 0.1,
+   "note": "EZ Charge network"
+  },
+  {
+   "node": "ice_aftermarket",
+   "symbol": "NSE:CASTROLIND",
+   "exposure": 0.8,
+   "note": "engine oil"
+  },
+  {
+   "node": "ice_aftermarket",
+   "symbol": "NSE:GULFOILLUB",
+   "exposure": 0.7,
+   "note": "lubricants"
+  },
+  {
+   "node": "ice_aftermarket",
+   "symbol": "NSE:BOSCHLTD",
+   "exposure": 0.3,
+   "note": "diesel fuel-injection systems"
+  },
+  {
+   "node": "datacentres",
+   "symbol": "NSE:ANANTRAJ",
+   "exposure": 0.4,
+   "note": "data-centre campuses",
+   "since": "2023-01-01"
+  },
+  {
+   "node": "datacentres",
+   "symbol": "NSE:NETWEB",
+   "exposure": 0.6,
+   "note": "AI / HPC servers",
+   "since": "2023-07-27"
+  },
+  {
+   "node": "datacentres",
+   "symbol": "NSE:TATACOMM",
+   "exposure": 0.2,
+   "note": "data-centre & network services"
+  },
+  {
+   "node": "datacentres",
+   "symbol": "NSE:E2E",
+   "exposure": 0.9,
+   "note": "GPU cloud",
+   "since": "2023-01-01"
+  },
+  {
+   "node": "dc_power",
+   "symbol": "NSE:NTPC",
+   "exposure": 0.05,
+   "note": "base-load power"
+  },
+  {
+   "node": "dc_power",
+   "symbol": "NSE:JSWENERGY",
+   "exposure": 0.1,
+   "note": "IPP"
+  },
+  {
+   "node": "dc_power",
+   "symbol": "NSE:TATAPOWER",
+   "exposure": 0.1,
+   "note": "IPP + distribution"
+  },
+  {
+   "node": "dc_power",
+   "symbol": "NSE:IEX",
+   "exposure": 0.3,
+   "note": "power exchange volumes"
+  },
+  {
+   "node": "grid_equipment",
+   "symbol": "NSE:SIEMENS",
+   "exposure": 0.3,
+   "note": "switchgear / automation"
+  },
+  {
+   "node": "grid_equipment",
+   "symbol": "NSE:ABB",
+   "exposure": 0.3,
+   "note": "electrification"
+  },
+  {
+   "node": "grid_equipment",
+   "symbol": "NSE:CGPOWER",
+   "exposure": 0.4,
+   "note": "transformers / switchgear"
+  },
+  {
+   "node": "grid_equipment",
+   "symbol": "NSE:POWERINDIA",
+   "exposure": 0.6,
+   "note": "Hitachi Energy India: HV grid"
+  },
+  {
+   "node": "grid_equipment",
+   "symbol": "NSE:TARIL",
+   "exposure": 0.8,
+   "note": "transformers"
+  },
+  {
+   "node": "grid_equipment",
+   "symbol": "NSE:BHEL",
+   "exposure": 0.1,
+   "note": "power equipment"
+  },
+  {
+   "node": "cables",
+   "symbol": "NSE:POLYCAB",
+   "exposure": 0.5,
+   "note": "cables & wires"
+  },
+  {
+   "node": "cables",
+   "symbol": "NSE:KEI",
+   "exposure": 0.6,
+   "note": "power cables"
+  },
+  {
+   "node": "cables",
+   "symbol": "NSE:APARINDS",
+   "exposure": 0.3,
+   "note": "conductors & cables"
+  },
+  {
+   "node": "dc_cooling",
+   "symbol": "NSE:BLUESTARCO",
+   "exposure": 0.2,
+   "note": "MEP / data-centre cooling"
+  },
+  {
+   "node": "dc_cooling",
+   "symbol": "NSE:VOLTAS",
+   "exposure": 0.1,
+   "note": "projects / HVAC"
+  },
+  {
+   "node": "it_services",
+   "symbol": "NSE:TCS",
+   "exposure": 0.6,
+   "note": "IT services"
+  },
+  {
+   "node": "it_services",
+   "symbol": "NSE:INFY",
+   "exposure": 0.6,
+   "note": "IT services"
+  },
+  {
+   "node": "it_services",
+   "symbol": "NSE:WIPRO",
+   "exposure": 0.6,
+   "note": "IT services"
+  },
+  {
+   "node": "it_services",
+   "symbol": "NSE:HCLTECH",
+   "exposure": 0.5,
+   "note": "IT services"
+  },
+  {
+   "node": "it_services",
+   "symbol": "NSE:TECHM",
+   "exposure": 0.6,
+   "note": "IT services"
+  },
+  {
+   "node": "it_services",
+   "symbol": "NSE:LTIM",
+   "exposure": 0.6,
+   "note": "IT services"
+  },
+  {
+   "node": "seat_saas",
+   "symbol": "NSE:NEWGEN",
+   "exposure": 0.5,
+   "note": "low-code platform licences"
+  },
+  {
+   "node": "seat_saas",
+   "symbol": "NSE:RATEGAIN",
+   "exposure": 0.5,
+   "note": "travel SaaS"
+  },
+  {
+   "node": "seat_saas",
+   "symbol": "NSE:TANLA",
+   "exposure": 0.5,
+   "note": "CPaaS messaging"
+  },
+  {
+   "node": "seat_saas",
+   "symbol": "NSE:INTELLECT",
+   "exposure": 0.4,
+   "note": "banking software"
+  },
+  {
+   "node": "re_developers",
+   "symbol": "NSE:ADANIGREEN",
+   "exposure": 1.0,
+   "note": "RE developer"
+  },
+  {
+   "node": "re_developers",
+   "symbol": "NSE:NTPCGREEN",
+   "exposure": 1.0,
+   "note": "RE developer",
+   "since": "2024-11-27"
+  },
+  {
+   "node": "re_developers",
+   "symbol": "NSE:JSWENERGY",
+   "exposure": 0.5,
+   "note": "RE developer"
+  },
+  {
+   "node": "re_developers",
+   "symbol": "NSE:TATAPOWER",
+   "exposure": 0.3,
+   "note": "RE + rooftop"
+  },
+  {
+   "node": "re_developers",
+   "symbol": "NSE:KPIGREEN",
+   "exposure": 0.9,
+   "note": "RE developer"
+  },
+  {
+   "node": "modules_epc",
+   "symbol": "NSE:WAAREEENER",
+   "exposure": 1.0,
+   "note": "solar modules",
+   "since": "2024-10-28"
+  },
+  {
+   "node": "modules_epc",
+   "symbol": "NSE:PREMIERENE",
+   "exposure": 1.0,
+   "note": "cells + modules",
+   "since": "2024-09-03"
+  },
+  {
+   "node": "modules_epc",
+   "symbol": "NSE:SUZLON",
+   "exposure": 1.0,
+   "note": "wind turbines"
+  },
+  {
+   "node": "modules_epc",
+   "symbol": "NSE:INOXWIND",
+   "exposure": 1.0,
+   "note": "wind turbines"
+  },
+  {
+   "node": "modules_epc",
+   "symbol": "NSE:SWSOLAR",
+   "exposure": 0.9,
+   "note": "solar EPC"
+  },
+  {
+   "node": "solar_glass",
+   "symbol": "NSE:BORORENEW",
+   "exposure": 0.9,
+   "note": "solar glass"
+  },
+  {
+   "node": "pv_silver",
+   "symbol": "NSE:HINDZINC",
+   "exposure": 0.35,
+   "note": "India's primary silver producer (silver ~35-40 % of profit)"
+  },
+  {
+   "node": "transmission",
+   "symbol": "NSE:POWERGRID",
+   "exposure": 0.6,
+   "note": "transmission utility"
+  },
+  {
+   "node": "transmission",
+   "symbol": "NSE:KEC",
+   "exposure": 0.5,
+   "note": "T&D EPC"
+  },
+  {
+   "node": "transmission",
+   "symbol": "NSE:KPIL",
+   "exposure": 0.4,
+   "note": "T&D EPC"
+  },
+  {
+   "node": "transmission",
+   "symbol": "NSE:APARINDS",
+   "exposure": 0.4,
+   "note": "conductors"
+  },
+  {
+   "node": "home_viewing_food",
+   "symbol": "NSE:JUBLFOOD",
+   "exposure": 0.8,
+   "note": "Domino's delivery"
+  },
+  {
+   "node": "home_viewing_food",
+   "symbol": "NSE:DEVYANI",
+   "exposure": 0.7,
+   "note": "KFC / Pizza Hut"
+  },
+  {
+   "node": "home_viewing_food",
+   "symbol": "NSE:WESTLIFE",
+   "exposure": 0.6,
+   "note": "McDonald's west & south"
+  },
+  {
+   "node": "home_viewing_food",
+   "symbol": "NSE:ETERNAL",
+   "exposure": 0.6,
+   "note": "Zomato food delivery"
+  },
+  {
+   "node": "home_viewing_food",
+   "symbol": "NSE:SWIGGY",
+   "exposure": 0.6,
+   "note": "food delivery",
+   "since": "2024-11-13"
+  },
+  {
+   "node": "beverages",
+   "symbol": "NSE:VBL",
+   "exposure": 0.7,
+   "note": "PepsiCo bottler"
+  },
+  {
+   "node": "beverages",
+   "symbol": "NSE:UBL",
+   "exposure": 0.7,
+   "note": "beer"
+  },
+  {
+   "node": "beverages",
+   "symbol": "NSE:RADICO",
+   "exposure": 0.4,
+   "note": "spirits"
+  },
+  {
+   "node": "beverages",
+   "symbol": "NSE:UNITDSPR",
+   "exposure": 0.4,
+   "note": "spirits"
+  },
+  {
+   "node": "sports_media",
+   "symbol": "NSE:NAZARA",
+   "exposure": 0.3,
+   "note": "gaming / esports"
+  },
+  {
+   "node": "multiplex",
+   "symbol": "NSE:PVRINOX",
+   "exposure": 0.9,
+   "note": "multiplex screens"
+  },
+  {
+   "node": "airlines_airports",
+   "symbol": "NSE:INDIGO",
+   "exposure": 0.9,
+   "note": "largest domestic airline"
+  },
+  {
+   "node": "airlines_airports",
+   "symbol": "NSE:GMRAIRPORT",
+   "exposure": 0.7,
+   "note": "airports"
+  },
+  {
+   "node": "hotels",
+   "symbol": "NSE:INDHOTEL",
+   "exposure": 0.9,
+   "note": "Taj / IHCL"
+  },
+  {
+   "node": "hotels",
+   "symbol": "NSE:LEMONTREE",
+   "exposure": 0.9,
+   "note": "mid-market hotels"
+  },
+  {
+   "node": "hotels",
+   "symbol": "NSE:CHALET",
+   "exposure": 0.8,
+   "note": "hotels"
+  },
+  {
+   "node": "hotels",
+   "symbol": "NSE:EIHOTEL",
+   "exposure": 0.9,
+   "note": "Oberoi hotels"
+  },
+  {
+   "node": "travel_platforms",
+   "symbol": "NSE:IRCTC",
+   "exposure": 0.3,
+   "note": "rail tickets / tourism"
+  },
+  {
+   "node": "travel_platforms",
+   "symbol": "NSE:THOMASCOOK",
+   "exposure": 0.8,
+   "note": "travel + forex"
+  },
+  {
+   "node": "travel_platforms",
+   "symbol": "NSE:EASEMYTRIP",
+   "exposure": 0.9,
+   "note": "OTA",
+   "since": "2021-03-19"
+  },
+  {
+   "node": "travel_platforms",
+   "symbol": "NSE:IXIGO",
+   "exposure": 0.9,
+   "note": "OTA",
+   "since": "2024-06-18"
+  },
+  {
+   "node": "travel_platforms",
+   "symbol": "NSE:YATRA",
+   "exposure": 0.9,
+   "note": "OTA",
+   "since": "2023-09-29"
+  },
+  {
+   "node": "luggage",
+   "symbol": "NSE:SAFARI",
+   "exposure": 0.9,
+   "note": "luggage"
+  },
+  {
+   "node": "luggage",
+   "symbol": "NSE:VIPIND",
+   "exposure": 0.9,
+   "note": "luggage"
+  },
+  {
+   "node": "festive_autos",
+   "symbol": "NSE:MARUTI",
+   "exposure": 0.6,
+   "note": "cars"
+  },
+  {
+   "node": "festive_autos",
+   "symbol": "NSE:HEROMOTOCO",
+   "exposure": 0.7,
+   "note": "2W"
+  },
+  {
+   "node": "festive_autos",
+   "symbol": "NSE:TVSMOTOR",
+   "exposure": 0.5,
+   "note": "2W"
+  },
+  {
+   "node": "festive_autos",
+   "symbol": "NSE:BAJAJ-AUTO",
+   "exposure": 0.4,
+   "note": "2W"
+  },
+  {
+   "node": "jewellery",
+   "symbol": "NSE:TITAN",
+   "exposure": 0.7,
+   "note": "Tanishq"
+  },
+  {
+   "node": "jewellery",
+   "symbol": "NSE:KALYANKJIL",
+   "exposure": 0.9,
+   "note": "jewellery",
+   "since": "2021-03-26"
+  },
+  {
+   "node": "jewellery",
+   "symbol": "NSE:SENCO",
+   "exposure": 0.9,
+   "note": "jewellery",
+   "since": "2023-07-14"
+  },
+  {
+   "node": "durables_retail",
+   "symbol": "NSE:HAVELLS",
+   "exposure": 0.4,
+   "note": "durables"
+  },
+  {
+   "node": "durables_retail",
+   "symbol": "NSE:CROMPTON",
+   "exposure": 0.4,
+   "note": "durables"
+  },
+  {
+   "node": "durables_retail",
+   "symbol": "NSE:WHIRLPOOL",
+   "exposure": 0.5,
+   "note": "durables"
+  },
+  {
+   "node": "durables_retail",
+   "symbol": "NSE:TRENT",
+   "exposure": 0.4,
+   "note": "apparel retail"
+  },
+  {
+   "node": "durables_retail",
+   "symbol": "NSE:DMART",
+   "exposure": 0.3,
+   "note": "retail"
+  },
+  {
+   "node": "ecom_logistics",
+   "symbol": "NSE:DELHIVERY",
+   "exposure": 0.7,
+   "note": "e-commerce logistics",
+   "since": "2022-05-24"
+  },
+  {
+   "node": "ecom_logistics",
+   "symbol": "NSE:BLUEDART",
+   "exposure": 0.6,
+   "note": "express logistics"
+  },
+  {
+   "node": "ecom_logistics",
+   "symbol": "NSE:SBICARD",
+   "exposure": 0.4,
+   "note": "card spends"
+  },
+  {
+   "node": "agri_inputs",
+   "symbol": "NSE:CHAMBLFERT",
+   "exposure": 0.9,
+   "note": "fertiliser"
+  },
+  {
+   "node": "agri_inputs",
+   "symbol": "NSE:COROMANDEL",
+   "exposure": 0.9,
+   "note": "fertiliser + crop protection"
+  },
+  {
+   "node": "agri_inputs",
+   "symbol": "NSE:RCF",
+   "exposure": 0.9,
+   "note": "fertiliser"
+  },
+  {
+   "node": "agri_inputs",
+   "symbol": "NSE:UPL",
+   "exposure": 0.6,
+   "note": "agrochemicals"
+  },
+  {
+   "node": "agri_inputs",
+   "symbol": "NSE:PIIND",
+   "exposure": 0.5,
+   "note": "agrochemicals"
+  },
+  {
+   "node": "agri_inputs",
+   "symbol": "NSE:DHANUKA",
+   "exposure": 0.9,
+   "note": "agrochemicals"
+  },
+  {
+   "node": "agri_inputs",
+   "symbol": "NSE:BAYERCROP",
+   "exposure": 0.9,
+   "note": "agrochemicals"
+  },
+  {
+   "node": "agri_inputs",
+   "symbol": "NSE:RALLIS",
+   "exposure": 0.9,
+   "note": "agrochemicals"
+  },
+  {
+   "node": "agri_inputs",
+   "symbol": "NSE:KSCL",
+   "exposure": 0.9,
+   "note": "seeds"
+  },
+  {
+   "node": "farm_machinery",
+   "symbol": "NSE:ESCORTS",
+   "exposure": 0.6,
+   "note": "tractors"
+  },
+  {
+   "node": "farm_machinery",
+   "symbol": "NSE:M&M",
+   "exposure": 0.3,
+   "note": "tractors (farm equipment segment)"
+  },
+  {
+   "node": "irrigation",
+   "symbol": "NSE:FINPIPE",
+   "exposure": 0.6,
+   "note": "PVC pipes (agri)"
+  },
+  {
+   "node": "irrigation",
+   "symbol": "NSE:KSB",
+   "exposure": 0.4,
+   "note": "pumps"
+  },
+  {
+   "node": "irrigation",
+   "symbol": "NSE:SHAKTIPUMP",
+   "exposure": 0.8,
+   "note": "solar pumps"
+  },
+  {
+   "node": "rural_consumption",
+   "symbol": "NSE:HEROMOTOCO",
+   "exposure": 0.4,
+   "note": "rural 2W"
+  },
+  {
+   "node": "rural_consumption",
+   "symbol": "NSE:DABUR",
+   "exposure": 0.4,
+   "note": "rural FMCG"
+  },
+  {
+   "node": "rural_consumption",
+   "symbol": "NSE:M&MFIN",
+   "exposure": 0.7,
+   "note": "rural vehicle finance"
+  },
+  {
+   "node": "cooling_products",
+   "symbol": "NSE:VOLTAS",
+   "exposure": 0.8,
+   "note": "room ACs"
+  },
+  {
+   "node": "cooling_products",
+   "symbol": "NSE:BLUESTARCO",
+   "exposure": 0.6,
+   "note": "ACs"
+  },
+  {
+   "node": "cooling_products",
+   "symbol": "NSE:SYMPHONY",
+   "exposure": 0.9,
+   "note": "air coolers"
+  },
+  {
+   "node": "cooling_products",
+   "symbol": "NSE:HAVELLS",
+   "exposure": 0.3,
+   "note": "fans / Lloyd ACs"
+  },
+  {
+   "node": "cooling_products",
+   "symbol": "NSE:CROMPTON",
+   "exposure": 0.4,
+   "note": "fans"
+  },
+  {
+   "node": "ac_manufacturing",
+   "symbol": "NSE:AMBER",
+   "exposure": 0.7,
+   "note": "AC contract manufacturing"
+  },
+  {
+   "node": "summer_consumption",
+   "symbol": "NSE:VBL",
+   "exposure": 0.6,
+   "note": "soft drinks"
+  },
+  {
+   "node": "summer_consumption",
+   "symbol": "NSE:HATSUN",
+   "exposure": 0.4,
+   "note": "ice cream"
+  },
+  {
+   "node": "power_trading",
+   "symbol": "NSE:IEX",
+   "exposure": 0.8,
+   "note": "power exchange"
+  },
+  {
+   "node": "upstream",
+   "symbol": "NSE:ONGC",
+   "exposure": 0.9,
+   "note": "upstream"
+  },
+  {
+   "node": "upstream",
+   "symbol": "NSE:OIL",
+   "exposure": 0.9,
+   "note": "upstream"
+  },
+  {
+   "node": "omc",
+   "symbol": "NSE:BPCL",
+   "exposure": 0.8,
+   "note": "OMC"
+  },
+  {
+   "node": "omc",
+   "symbol": "NSE:HINDPETRO",
+   "exposure": 0.8,
+   "note": "OMC"
+  },
+  {
+   "node": "omc",
+   "symbol": "NSE:IOC",
+   "exposure": 0.8,
+   "note": "OMC"
+  },
+  {
+   "node": "crude_derivatives",
+   "symbol": "NSE:ASIANPAINT",
+   "exposure": 0.6,
+   "note": "paints"
+  },
+  {
+   "node": "crude_derivatives",
+   "symbol": "NSE:BERGEPAINT",
+   "exposure": 0.6,
+   "note": "paints"
+  },
+  {
+   "node": "crude_derivatives",
+   "symbol": "NSE:KANSAINER",
+   "exposure": 0.6,
+   "note": "paints"
+  },
+  {
+   "node": "crude_derivatives",
+   "symbol": "NSE:INDIGOPNTS",
+   "exposure": 0.6,
+   "note": "paints"
+  },
+  {
+   "node": "crude_derivatives",
+   "symbol": "NSE:MRF",
+   "exposure": 0.5,
+   "note": "tyres"
+  },
+  {
+   "node": "crude_derivatives",
+   "symbol": "NSE:APOLLOTYRE",
+   "exposure": 0.5,
+   "note": "tyres"
+  },
+  {
+   "node": "crude_derivatives",
+   "symbol": "NSE:CEATLTD",
+   "exposure": 0.5,
+   "note": "tyres"
+  },
+  {
+   "node": "crude_derivatives",
+   "symbol": "NSE:JKTYRE",
+   "exposure": 0.5,
+   "note": "tyres"
+  },
+  {
+   "node": "aviation_fuel",
+   "symbol": "NSE:INDIGO",
+   "exposure": 0.7,
+   "note": "airline"
+  },
+  {
+   "node": "nbfc",
+   "symbol": "NSE:BAJFINANCE",
+   "exposure": 0.6,
+   "note": "consumer NBFC"
+  },
+  {
+   "node": "nbfc",
+   "symbol": "NSE:CHOLAFIN",
+   "exposure": 0.6,
+   "note": "vehicle / home NBFC"
+  },
+  {
+   "node": "nbfc",
+   "symbol": "NSE:SHRIRAMFIN",
+   "exposure": 0.6,
+   "note": "vehicle NBFC"
+  },
+  {
+   "node": "housing_finance",
+   "symbol": "NSE:LICHSGFIN",
+   "exposure": 0.8,
+   "note": "HFC"
+  },
+  {
+   "node": "housing_finance",
+   "symbol": "NSE:CANFINHOME",
+   "exposure": 0.8,
+   "note": "HFC"
+  },
+  {
+   "node": "housing_finance",
+   "symbol": "NSE:AAVAS",
+   "exposure": 0.8,
+   "note": "HFC"
+  },
+  {
+   "node": "real_estate",
+   "symbol": "NSE:DLF",
+   "exposure": 0.9,
+   "note": "developer"
+  },
+  {
+   "node": "real_estate",
+   "symbol": "NSE:GODREJPROP",
+   "exposure": 0.9,
+   "note": "developer"
+  },
+  {
+   "node": "real_estate",
+   "symbol": "NSE:OBEROIRLTY",
+   "exposure": 0.9,
+   "note": "developer"
+  },
+  {
+   "node": "real_estate",
+   "symbol": "NSE:PRESTIGE",
+   "exposure": 0.9,
+   "note": "developer"
+  },
+  {
+   "node": "real_estate",
+   "symbol": "NSE:LODHA",
+   "exposure": 0.9,
+   "note": "developer",
+   "since": "2021-04-19"
+  },
+  {
+   "node": "building_materials",
+   "symbol": "NSE:ASTRAL",
+   "exposure": 0.6,
+   "note": "pipes"
+  },
+  {
+   "node": "building_materials",
+   "symbol": "NSE:SUPREMEIND",
+   "exposure": 0.5,
+   "note": "pipes"
+  },
+  {
+   "node": "building_materials",
+   "symbol": "NSE:KAJARIACER",
+   "exposure": 0.8,
+   "note": "tiles"
+  },
+  {
+   "node": "building_materials",
+   "symbol": "NSE:CENTURYPLY",
+   "exposure": 0.8,
+   "note": "plywood"
+  },
+  {
+   "node": "building_materials",
+   "symbol": "NSE:ULTRACEMCO",
+   "exposure": 0.4,
+   "note": "cement"
+  },
+  {
+   "node": "defence_primes",
+   "symbol": "NSE:HAL",
+   "exposure": 0.9,
+   "note": "aircraft"
+  },
+  {
+   "node": "defence_primes",
+   "symbol": "NSE:BEL",
+   "exposure": 0.8,
+   "note": "defence electronics"
+  },
+  {
+   "node": "defence_primes",
+   "symbol": "NSE:BDL",
+   "exposure": 0.9,
+   "note": "missiles"
+  },
+  {
+   "node": "defence_primes",
+   "symbol": "NSE:MAZDOCK",
+   "exposure": 0.9,
+   "note": "shipyard"
+  },
+  {
+   "node": "defence_primes",
+   "symbol": "NSE:COCHINSHIP",
+   "exposure": 0.8,
+   "note": "shipyard"
+  },
+  {
+   "node": "defence_primes",
+   "symbol": "NSE:GRSE",
+   "exposure": 0.9,
+   "note": "shipyard"
+  },
+  {
+   "node": "defence_primes",
+   "symbol": "NSE:BEML",
+   "exposure": 0.4,
+   "note": "defence vehicles"
+  },
+  {
+   "node": "defence_subsystems",
+   "symbol": "NSE:DATAPATTNS",
+   "exposure": 0.9,
+   "note": "defence electronics",
+   "since": "2021-12-24"
+  },
+  {
+   "node": "defence_subsystems",
+   "symbol": "NSE:ASTRAMICRO",
+   "exposure": 0.8,
+   "note": "RF / microwave"
+  },
+  {
+   "node": "defence_subsystems",
+   "symbol": "NSE:PARAS",
+   "exposure": 0.9,
+   "note": "optics / electronics",
+   "since": "2021-10-01"
+  },
+  {
+   "node": "defence_subsystems",
+   "symbol": "NSE:ZENTEC",
+   "exposure": 0.9,
+   "note": "training simulators"
+  },
+  {
+   "node": "special_alloys",
+   "symbol": "NSE:MIDHANI",
+   "exposure": 0.9,
+   "note": "super-alloys / titanium"
+  },
+  {
+   "node": "special_alloys",
+   "symbol": "NSE:SOLARINDS",
+   "exposure": 0.4,
+   "note": "defence energetics"
+  },
+  {
+   "node": "rail_epc",
+   "symbol": "NSE:RVNL",
+   "exposure": 0.9,
+   "note": "rail EPC"
+  },
+  {
+   "node": "rail_epc",
+   "symbol": "NSE:IRCON",
+   "exposure": 0.8,
+   "note": "rail EPC"
+  },
+  {
+   "node": "rail_epc",
+   "symbol": "NSE:IRFC",
+   "exposure": 0.9,
+   "note": "rail financing",
+   "since": "2021-01-29"
+  },
+  {
+   "node": "rail_epc",
+   "symbol": "NSE:RAILTEL",
+   "exposure": 0.6,
+   "note": "rail telecom"
+  },
+  {
+   "node": "rolling_stock",
+   "symbol": "NSE:TITAGARH",
+   "exposure": 0.8,
+   "note": "wagons / metro"
+  },
+  {
+   "node": "rolling_stock",
+   "symbol": "NSE:JWL",
+   "exposure": 0.9,
+   "note": "wagons"
+  },
+  {
+   "node": "rolling_stock",
+   "symbol": "NSE:TEXRAIL",
+   "exposure": 0.8,
+   "note": "wagons"
+  },
+  {
+   "node": "rolling_stock",
+   "symbol": "NSE:BEML",
+   "exposure": 0.4,
+   "note": "metro coaches"
+  },
+  {
+   "node": "rail_suppliers",
+   "symbol": "NSE:HBLENGINE",
+   "exposure": 0.5,
+   "note": "Kavach train-protection electronics",
+   "since": "2022-01-01"
+  },
+  {
+   "node": "rail_suppliers",
+   "symbol": "NSE:RKFORGE",
+   "exposure": 0.3,
+   "note": "forged wheels JV",
+   "since": "2023-01-01"
+  },
+  {
+   "node": "ems",
+   "symbol": "NSE:DIXON",
+   "exposure": 0.9,
+   "note": "EMS"
+  },
+  {
+   "node": "ems",
+   "symbol": "NSE:KAYNES",
+   "exposure": 0.9,
+   "note": "EMS",
+   "since": "2022-11-22"
+  },
+  {
+   "node": "ems",
+   "symbol": "NSE:SYRMA",
+   "exposure": 0.9,
+   "note": "EMS",
+   "since": "2022-08-26"
+  },
+  {
+   "node": "ems",
+   "symbol": "NSE:AMBER",
+   "exposure": 0.5,
+   "note": "EMS / AC components"
+  },
+  {
+   "node": "ems",
+   "symbol": "NSE:AVALON",
+   "exposure": 0.9,
+   "note": "EMS",
+   "since": "2023-04-18"
+  },
+  {
+   "node": "semis",
+   "symbol": "NSE:CGPOWER",
+   "exposure": 0.2,
+   "note": "OSAT JV with Renesas",
+   "since": "2024-02-29"
+  },
+  {
+   "node": "gold_lenders",
+   "symbol": "NSE:MUTHOOTFIN",
+   "exposure": 0.9,
+   "note": "gold loans"
+  },
+  {
+   "node": "gold_lenders",
+   "symbol": "NSE:MANAPPURAM",
+   "exposure": 0.8,
+   "note": "gold loans"
+  },
+  {
+   "node": "telcos",
+   "symbol": "NSE:BHARTIARTL",
+   "exposure": 0.9,
+   "note": "telco"
+  },
+  {
+   "node": "telcos",
+   "symbol": "NSE:INDUSTOWER",
+   "exposure": 0.8,
+   "note": "towers"
+  },
+  {
+   "node": "telcos",
+   "symbol": "NSE:IDEA",
+   "exposure": 0.9,
+   "note": "telco"
+  },
+  {
+   "node": "telecom_equipment",
+   "symbol": "NSE:STLTECH",
+   "exposure": 0.8,
+   "note": "optical fibre"
+  },
+  {
+   "node": "telecom_equipment",
+   "symbol": "NSE:HFCL",
+   "exposure": 0.7,
+   "note": "fibre / equipment"
+  },
+  {
+   "node": "telecom_equipment",
+   "symbol": "NSE:TEJASNET",
+   "exposure": 0.9,
+   "note": "telecom equipment"
+  },
+  {
+   "node": "infra_epc",
+   "symbol": "NSE:LT",
+   "exposure": 0.6,
+   "note": "EPC conglomerate"
+  },
+  {
+   "node": "construction_materials",
+   "symbol": "NSE:ULTRACEMCO",
+   "exposure": 0.8,
+   "note": "cement"
+  },
+  {
+   "node": "construction_materials",
+   "symbol": "NSE:AMBUJACEM",
+   "exposure": 0.8,
+   "note": "cement"
+  },
+  {
+   "node": "construction_materials",
+   "symbol": "NSE:SHREECEM",
+   "exposure": 0.9,
+   "note": "cement"
+  },
+  {
+   "node": "construction_materials",
+   "symbol": "NSE:JKCEMENT",
+   "exposure": 0.9,
+   "note": "cement"
+  },
+  {
+   "node": "construction_materials",
+   "symbol": "NSE:DALBHARAT",
+   "exposure": 0.9,
+   "note": "cement"
+  },
+  {
+   "node": "construction_materials",
+   "symbol": "NSE:TATASTEEL",
+   "exposure": 0.5,
+   "note": "steel"
+  },
+  {
+   "node": "construction_materials",
+   "symbol": "NSE:JSWSTEEL",
+   "exposure": 0.5,
+   "note": "steel"
+  },
+  {
+   "node": "construction_materials",
+   "symbol": "NSE:JINDALSTEL",
+   "exposure": 0.5,
+   "note": "steel"
+  },
+  {
+   "node": "construction_inputs",
+   "symbol": "NSE:SOLARINDS",
+   "exposure": 0.4,
+   "note": "mining / infra explosives"
+  },
+  {
+   "node": "construction_inputs",
+   "symbol": "NSE:ACE",
+   "exposure": 0.8,
+   "note": "cranes"
+  },
+  {
+   "node": "construction_inputs",
+   "symbol": "NSE:JINDALSAW",
+   "exposure": 0.5,
+   "note": "water pipes"
+  },
+  {
+   "node": "construction_inputs",
+   "symbol": "NSE:WELCORP",
+   "exposure": 0.4,
+   "note": "line pipes"
+  }
+ ],
+ "catalysts": [
+  {
+   "id": "ipl_season",
+   "name": "IPL season",
+   "theme": "cricket_season",
+   "known_in_advance": true,
+   "lead_days": 30,
+   "note": "league start -> final (2020 and 2021-2nd half in the UAE)",
+   "instances": [
+    {
+     "start": "2010-03-12",
+     "end": "2010-04-25"
+    },
+    {
+     "start": "2011-04-08",
+     "end": "2011-05-28"
+    },
+    {
+     "start": "2012-04-04",
+     "end": "2012-05-27"
+    },
+    {
+     "start": "2013-04-03",
+     "end": "2013-05-26"
+    },
+    {
+     "start": "2014-04-16",
+     "end": "2014-06-01"
+    },
+    {
+     "start": "2015-04-08",
+     "end": "2015-05-24"
+    },
+    {
+     "start": "2016-04-09",
+     "end": "2016-05-29"
+    },
+    {
+     "start": "2017-04-05",
+     "end": "2017-05-21"
+    },
+    {
+     "start": "2018-04-07",
+     "end": "2018-05-27"
+    },
+    {
+     "start": "2019-03-23",
+     "end": "2019-05-12"
+    },
+    {
+     "start": "2020-09-19",
+     "end": "2020-11-10"
+    },
+    {
+     "start": "2021-04-09",
+     "end": "2021-05-04"
+    },
+    {
+     "start": "2022-03-26",
+     "end": "2022-05-29"
+    },
+    {
+     "start": "2023-03-31",
+     "end": "2023-05-29"
+    },
+    {
+     "start": "2024-03-22",
+     "end": "2024-05-26"
+    },
+    {
+     "start": "2025-03-22",
+     "end": "2025-06-03"
+    }
+   ]
+  },
+  {
+   "id": "icc_cwc_india",
+   "name": "ICC World Cup hosted in India",
+   "theme": "cricket_season",
+   "known_in_advance": true,
+   "lead_days": 60,
+   "instances": [
+    {
+     "start": "2011-02-19",
+     "end": "2011-04-02"
+    },
+    {
+     "start": "2016-03-08",
+     "end": "2016-04-03"
+    },
+    {
+     "start": "2023-10-05",
+     "end": "2023-11-19"
+    }
+   ]
+  },
+  {
+   "id": "fifa_world_cup",
+   "name": "FIFA World Cup",
+   "theme": "travel_tourism",
+   "known_in_advance": true,
+   "lead_days": 60,
+   "instances": [
+    {
+     "start": "2010-06-11",
+     "end": "2010-07-11"
+    },
+    {
+     "start": "2014-06-12",
+     "end": "2014-07-13"
+    },
+    {
+     "start": "2018-06-14",
+     "end": "2018-07-15"
+    },
+    {
+     "start": "2022-11-20",
+     "end": "2022-12-18"
+    },
+    {
+     "start": "2026-06-11",
+     "end": "2026-07-19"
+    }
+   ]
+  },
+  {
+   "id": "diwali",
+   "name": "Diwali (Muhurat trading day)",
+   "theme": "festive_season",
+   "known_in_advance": true,
+   "lead_days": 365,
+   "note": "window = the 25 calendar days before Diwali up to Diwali",
+   "instances": [
+    {
+     "start": "2010-11-05",
+     "end": "2010-11-05"
+    },
+    {
+     "start": "2011-10-26",
+     "end": "2011-10-26"
+    },
+    {
+     "start": "2012-11-13",
+     "end": "2012-11-13"
+    },
+    {
+     "start": "2013-11-03",
+     "end": "2013-11-03"
+    },
+    {
+     "start": "2014-10-23",
+     "end": "2014-10-23"
+    },
+    {
+     "start": "2015-11-11",
+     "end": "2015-11-11"
+    },
+    {
+     "start": "2016-10-30",
+     "end": "2016-10-30"
+    },
+    {
+     "start": "2017-10-19",
+     "end": "2017-10-19"
+    },
+    {
+     "start": "2018-11-07",
+     "end": "2018-11-07"
+    },
+    {
+     "start": "2019-10-27",
+     "end": "2019-10-27"
+    },
+    {
+     "start": "2020-11-14",
+     "end": "2020-11-14"
+    },
+    {
+     "start": "2021-11-04",
+     "end": "2021-11-04"
+    },
+    {
+     "start": "2022-10-24",
+     "end": "2022-10-24"
+    },
+    {
+     "start": "2023-11-12",
+     "end": "2023-11-12"
+    },
+    {
+     "start": "2024-11-01",
+     "end": "2024-11-01"
+    },
+    {
+     "start": "2025-10-21",
+     "end": "2025-10-21"
+    }
+   ]
+  },
+  {
+   "id": "monsoon_onset",
+   "name": "Monsoon onset over Kerala (IMD)",
+   "theme": "monsoon_rural",
+   "known_in_advance": false,
+   "lead_days": 0,
+   "note": "date is declared on the day: entries only after the announcement",
+   "instances": [
+    {
+     "start": "2010-05-31",
+     "end": "2010-05-31"
+    },
+    {
+     "start": "2011-05-29",
+     "end": "2011-05-29"
+    },
+    {
+     "start": "2012-06-05",
+     "end": "2012-06-05"
+    },
+    {
+     "start": "2013-06-01",
+     "end": "2013-06-01"
+    },
+    {
+     "start": "2014-06-06",
+     "end": "2014-06-06"
+    },
+    {
+     "start": "2015-06-05",
+     "end": "2015-06-05"
+    },
+    {
+     "start": "2016-06-08",
+     "end": "2016-06-08"
+    },
+    {
+     "start": "2017-05-30",
+     "end": "2017-05-30"
+    },
+    {
+     "start": "2018-05-29",
+     "end": "2018-05-29"
+    },
+    {
+     "start": "2019-06-08",
+     "end": "2019-06-08"
+    },
+    {
+     "start": "2020-06-01",
+     "end": "2020-06-01"
+    },
+    {
+     "start": "2021-06-03",
+     "end": "2021-06-03"
+    },
+    {
+     "start": "2022-05-29",
+     "end": "2022-05-29"
+    },
+    {
+     "start": "2023-06-08",
+     "end": "2023-06-08"
+    },
+    {
+     "start": "2024-05-30",
+     "end": "2024-05-30"
+    },
+    {
+     "start": "2025-05-24",
+     "end": "2025-05-24"
+    }
+   ]
+  },
+  {
+   "id": "union_budget",
+   "name": "Union Budget",
+   "theme": "infra_capex",
+   "known_in_advance": true,
+   "lead_days": 30,
+   "note": "full and interim budgets; merged with snapshot events of kind 'budget'",
+   "instances": [
+    {
+     "start": "2011-02-28",
+     "end": "2011-02-28"
+    },
+    {
+     "start": "2012-03-16",
+     "end": "2012-03-16"
+    },
+    {
+     "start": "2013-02-28",
+     "end": "2013-02-28"
+    },
+    {
+     "start": "2014-02-17",
+     "end": "2014-02-17"
+    },
+    {
+     "start": "2014-07-10",
+     "end": "2014-07-10"
+    },
+    {
+     "start": "2015-02-28",
+     "end": "2015-02-28"
+    },
+    {
+     "start": "2016-02-29",
+     "end": "2016-02-29"
+    },
+    {
+     "start": "2017-02-01",
+     "end": "2017-02-01"
+    },
+    {
+     "start": "2018-02-01",
+     "end": "2018-02-01"
+    },
+    {
+     "start": "2019-02-01",
+     "end": "2019-02-01"
+    },
+    {
+     "start": "2019-07-05",
+     "end": "2019-07-05"
+    },
+    {
+     "start": "2020-02-01",
+     "end": "2020-02-01"
+    },
+    {
+     "start": "2021-02-01",
+     "end": "2021-02-01"
+    },
+    {
+     "start": "2022-02-01",
+     "end": "2022-02-01"
+    },
+    {
+     "start": "2023-02-01",
+     "end": "2023-02-01"
+    },
+    {
+     "start": "2024-02-01",
+     "end": "2024-02-01"
+    },
+    {
+     "start": "2024-07-23",
+     "end": "2024-07-23"
+    },
+    {
+     "start": "2025-02-01",
+     "end": "2025-02-01"
+    }
+   ]
+  },
+  {
+   "id": "summer_season",
+   "name": "Indian summer (Mar-May)",
+   "theme": "summer_cooling",
+   "known_in_advance": true,
+   "lead_days": 365,
+   "annual": {
+    "start": "03-01",
+    "end": "05-31",
+    "from_year": 2010
+   }
+  },
+  {
+   "id": "rbi_policy",
+   "name": "RBI MPC decision",
+   "theme": "rate_cut_cycle",
+   "known_in_advance": true,
+   "lead_days": 30,
+   "from_events": "rbi_policy",
+   "instances": [],
+   "note": "instances come from the snapshot's event calendar (kind rbi_policy); import the MPC dates"
+  }
+ ]
+}

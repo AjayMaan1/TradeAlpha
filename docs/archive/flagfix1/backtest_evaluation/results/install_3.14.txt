@@ -1,0 +1,19 @@
+OK   | vectorbt | vectorbt                  1.2.0
+OK   | backtesting | backtesting       0.6.6
+OK   | backtrader | backtrader        1.9.78.123
+OK   | nautilus_trader | nautilus-trader   1.231.0
+OK   | bt | bt                1.4.1
+FAIL | zipline-reloaded |       environment.   help: `bcolz-zipline` (v1.13.0) was included because `zipline-reloaded`         (v3.0.4) depends on `bcolz-zipline` 
+OK   | lib-pybroker | lib-pybroker       2.0.2
+OK   | qstrader | qstrader          0.3.0
+OK   | hftbacktest | hftbacktest       2.4.2
+OK   | quantstats | quantstats         0.0.86
+OK   | empyrical-reloaded | empyrical-reloaded 0.7.1
+OK   | pyfolio-reloaded | pyfolio-reloaded        0.10.1
+OK   | optuna | optuna            5.0.0
+OK   | TA-Lib | ta-lib            0.8.2
+FAIL | pandas-ta |       pandas-ta depend on numpy>=1.24,<2.3.       And because you require pandas-ta and numpy==2.5.4, we can conclude that       your requirements are unsatisfiable. 
+OK   | polars | polars            2.1.0
+OK   | numba | numba             0.68.1
+OK   | riskfolio-lib | riskfolio-lib             7.4.0
+DONE

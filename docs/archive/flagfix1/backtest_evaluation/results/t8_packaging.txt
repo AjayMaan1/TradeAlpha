@@ -1,0 +1,8 @@
+hbt_core Rust extension (PyO3 0.30, rust-numpy 0.30, rayon 1.12, rustc 1.99.1, LTO):
+  wheel size                     293 KB (cp314 manylinux_2_34 x86_64)
+  abi3-py312 wheel               built once, imports and runs on CPython 3.12.3, 3.13.15, 3.14.7
+footprint on top of the Historify lock (py3.14):
+  numba + llvmlite               +186 MB
+  polars 2.1.0                   +174 MB
+  pyarrow                        not needed (Arrow PyCapsule: duckdb 2.0 -> polars works without it)
+free-threaded CPython 3.14t      NOT TESTED: interpreter download (GitHub) and python.org unreachable from the sandbox

@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en" data-theme="historify-light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Charts · Historify</title>
+  <link rel="stylesheet" href="assets/app.css">
+  <script defer src="assets/lightweight-charts.standalone.production.js"></script>
+  <script defer src="assets/data/SBIN_NSE_5m.js"></script><script defer src="assets/data/SBIN_NSE_D.js"></script>
+  <script defer src="assets/proto.js"></script>
+  <script defer src="assets/alpine-csp.min.js"></script>
+</head>
+<body class="min-h-screen bg-base-200 font-sans text-base-content antialiased" data-editor="closed">
+<div class="flex min-h-screen">
+  
+  <aside class="w-60 shrink-0 border-r border-base-300 bg-base-100">
+   <div class="sticky top-0 flex h-screen flex-col">
+    <div class="flex h-14 items-center gap-2 border-b border-base-300 px-4">
+      <div class="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-content"><svg class="h-5 w-5" aria-hidden="true" class="lucide lucide-chart-candlestick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 5v4" /> <rect width="4" height="6" x="7" y="9" rx="1" /> <path d="M9 15v2" /> <path d="M17 3v2" /> <rect width="4" height="8" x="15" y="5" rx="1" /> <path d="M17 13v3" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> </svg></div>
+      <div class="leading-tight">
+        <div class="font-semibold">Historify</div>
+        <div class="text-[11px] text-base-content/50">market data manager</div>
+      </div>
+    </div>
+    <nav class="flex-1 overflow-y-auto px-2 pb-4">
+      
+      
+        <div class="nav-group">Monitor</div>
+        
+          <a href="dashboard.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-layout-dashboard" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="7" height="9" x="3" y="3" rx="1" /> <rect width="7" height="5" x="14" y="3" rx="1" /> <rect width="7" height="9" x="14" y="12" rx="1" /> <rect width="7" height="5" x="3" y="16" rx="1" /> </svg><span class="flex-1">Dashboard</span>
+            
+          </a>
+        
+          <a href="watchlists.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-list" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 5h.01" /> <path d="M3 12h.01" /> <path d="M3 19h.01" /> <path d="M8 5h13" /> <path d="M8 12h13" /> <path d="M8 19h13" /> </svg><span class="flex-1">Watchlists</span>
+            
+          </a>
+        
+          <a href="charts.html" class="nav-item active">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-chart-candlestick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 5v4" /> <rect width="4" height="6" x="7" y="9" rx="1" /> <path d="M9 15v2" /> <path d="M17 3v2" /> <rect width="4" height="8" x="15" y="5" rx="1" /> <path d="M17 13v3" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> </svg><span class="flex-1">Charts</span>
+            
+          </a>
+        
+      
+        <div class="nav-group">Data</div>
+        
+          <a href="data.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-database" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /> </svg><span class="flex-1">Data Manager</span>
+            
+          </a>
+        
+          <a href="jobs.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-list-checks" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M13 5h8" /> <path d="M13 12h8" /> <path d="M13 19h8" /> <path d="m3 17 2 2 4-4" /> <path d="m3 7 2 2 4-4" /> </svg><span class="flex-1">Jobs</span>
+            <span class="chip chip-info">1</span>
+          </a>
+        
+          <a href="import.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-file-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M12 12v6" /> <path d="m15 15-3-3-3 3" /> </svg><span class="flex-1">Import</span>
+            
+          </a>
+        
+          <a href="export.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-file-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M12 18v-6" /> <path d="m9 15 3 3 3-3" /> </svg><span class="flex-1">Export</span>
+            
+          </a>
+        
+      
+        <div class="nav-group">Automation</div>
+        
+          <a href="scheduler.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-calendar-clock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M16 14v2.2l1.6 1" /> <path d="M16 2v3" /> <path d="M21 7.338V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h2.338" /> <path d="M3 9h5.859" /> <path d="M8 2v3" /> <circle cx="16" cy="16" r="6" /> </svg><span class="flex-1">Scheduler</span>
+            
+          </a>
+        
+      
+        <div class="nav-group">System</div>
+        
+          <a href="settings.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-settings" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /> </svg><span class="flex-1">Settings</span>
+            
+          </a>
+        
+      
+    </nav>
+    <div class="border-t border-base-300 p-3 text-[11px] text-base-content/50">
+      <div class="flex justify-between"><span>v2.0.0-dev</span><span>Python 3.14</span></div>
+      <div class="mt-1">Bars: DuckDB · Meta: SQLite</div>
+    </div>
+   </div>
+  </aside>
+
+  
+  <div class="flex min-w-0 flex-1 flex-col">
+    <header class="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-base-300 bg-base-100/95 px-5 backdrop-blur">
+      <div class="min-w-0">
+        <h1 class="truncate text-[15px] font-semibold">Charts</h1>
+      </div>
+      <button class="btn btn-sm ml-4 w-80 justify-start gap-2 border-base-300 bg-base-200 font-normal text-base-content/60 shadow-none">
+        <svg class="icon" aria-hidden="true" class="lucide lucide-search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /> </svg> Search symbols, pages, actions…
+        <kbd class="kbd kbd-xs ml-auto">Ctrl K</kbd>
+      </button>
+      <div class="ml-auto flex items-center gap-2">
+        
+          <span class="chip chip-ok py-1" title="OpenAlgo 127.0.0.1:5000 → Angel One">
+            <span class="h-1.5 w-1.5 rounded-full bg-success"></span> OpenAlgo · Angel One
+          </span>
+        
+        <div class="flex items-center gap-2 rounded-lg border border-base-300 px-2.5 py-1" title="History API budget used this hour (80% of Angel One's 5,000/h)">
+          <svg class="h-3.5 w-3.5 text-base-content/60" aria-hidden="true" class="lucide lucide-gauge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m12 14 4-4" /> <path d="M3.34 19a10 10 0 1 1 17.32 0" /> </svg>
+          <div class="w-20">
+            <div class="flex justify-between text-[10px] text-base-content/60"><span>API/h</span><span class="num">312/4k</span></div>
+            <progress class="progress progress-primary h-1 w-full" value="312" max="4000"></progress>
+          </div>
+        </div>
+        <a href="jobs.html" class="flex items-center gap-2 rounded-lg border border-base-300 px-2.5 py-1 text-xs hover:bg-base-200">
+          <span class="loading loading-spinner loading-xs text-primary"></span> 1 job · <span class="num">62%</span>
+        </a>
+        <button class="btn btn-ghost btn-sm btn-square" aria-label="Toggle theme"><svg class="icon" aria-hidden="true" class="lucide lucide-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /> </svg></button>
+      </div>
+    </header>
+
+    
+
+    <main class="flex-1 p-5">
+      
+<div x-data="chartPage" class="flex gap-4">
+  <div class="min-w-0 flex-1">
+    
+    <div class="card-h flex flex-wrap items-center gap-2 p-2">
+      <button class="btn btn-sm gap-2 border-base-300 bg-base-100">
+        <span class="font-semibold">SBIN</span><span class="text-base-content/50">NSE</span><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m6 9 6 6 6-6" /> </svg>
+      </button>
+      <div class="join">
+        
+          <button class="btn btn-sm join-item" data-iv="1m" @click="pickInterval">1m</button>
+        
+          <button class="btn btn-sm join-item" data-iv="3m" @click="pickInterval">3m</button>
+        
+          <button class="btn btn-sm join-item" data-iv="5m" @click="pickInterval">5m</button>
+        
+          <button class="btn btn-sm join-item" data-iv="15m" @click="pickInterval">15m</button>
+        
+          <button class="btn btn-sm join-item" data-iv="30m" @click="pickInterval">30m</button>
+        
+          <button class="btn btn-sm join-item" data-iv="1h" @click="pickInterval">1h</button>
+        
+      </div>
+      <div class="join">
+        
+          <button class="btn btn-sm join-item" title="Daily" data-iv="D" @click="pickInterval">D</button>
+        
+          <button class="btn btn-sm join-item" title="Weekly - derived from D" data-iv="W" @click="pickInterval">W</button>
+        
+          <button class="btn btn-sm join-item" title="Monthly - derived from D" data-iv="M" @click="pickInterval">M</button>
+        
+      </div>
+      <div class="divider divider-horizontal mx-0"></div>
+      <div class="join">
+        <button class="btn btn-ghost btn-sm join-item">1D</button><button class="btn btn-ghost btn-sm join-item">5D</button><button class="btn btn-ghost btn-sm join-item">1M</button><button class="btn btn-ghost btn-sm join-item">3M</button><button class="btn btn-ghost btn-sm join-item">1Y</button><button class="btn btn-ghost btn-sm join-item">All</button>
+      </div>
+      <button class="btn btn-sm gap-1 border-base-300 bg-base-100"><svg class="icon" aria-hidden="true" class="lucide lucide-activity" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" /> </svg> Indicators <span class="badge badge-sm">3</span></button>
+      <label class="ml-auto flex cursor-pointer items-center gap-2 text-sm">
+        <input type="checkbox" class="toggle toggle-primary toggle-sm" checked> Follow live
+      </label>
+      <button class="btn btn-ghost btn-sm btn-square" title="Save image"><svg class="icon" aria-hidden="true" class="lucide lucide-camera" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z" /> <circle cx="12" cy="13" r="3" /> </svg></button>
+      <button class="btn btn-ghost btn-sm btn-square" title="Full screen"><svg class="icon" aria-hidden="true" class="lucide lucide-maximize-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M15 3h6v6" /> <path d="m21 3-7 7" /> <path d="m3 21 7-7" /> <path d="M9 21H3v-6" /> </svg></button>
+    </div>
+
+    
+    <div class="card-h relative mt-3 overflow-hidden">
+      <div class="pointer-events-none absolute left-3 top-2 z-10 text-xs leading-5">
+        <div><b class="text-sm">SBIN</b> <span class="text-base-content/55">· NSE · <span x-text="interval"></span> · IST</span></div>
+        <div class="num">
+          <span class="text-base-content/50">O</span> <span x-text="legend.o"></span>
+          <span class="ml-1 text-base-content/50">H</span> <span x-text="legend.h"></span>
+          <span class="ml-1 text-base-content/50">L</span> <span x-text="legend.l"></span>
+          <span class="ml-1 text-base-content/50">C</span> <span x-text="legend.c"></span>
+          <span class="ml-1" :class="legendTone" x-text="legend.chg"></span>
+          <span class="ml-2 text-base-content/50">Vol</span> <span x-text="legend.v"></span>
+        </div>
+        <div class="num"><span class="text-[#6366f1]">EMA 20</span> <span x-text="legend.e20"></span> <span class="ml-2 text-[#f59e0b]">EMA 50</span> <span x-text="legend.e50"></span></div>
+      </div>
+      <div id="chart" class="h-[560px] w-full"></div>
+    </div>
+
+    
+    <div class="card-h mt-3 p-3">
+      <div class="mb-2 flex items-center justify-between text-xs text-base-content/60">
+        <span>Stored data for this series (one tick per session)</span>
+        <span><span class="mr-3"><span class="inline-block h-2 w-2 rounded-sm bg-primary/70"></span> stored</span><span class="mr-3"><span class="inline-block h-2 w-2 rounded-sm bg-error"></span> missing</span><span><span class="inline-block h-2 w-2 rounded-sm bg-base-content/25"></span> loaded in chart</span></span>
+      </div>
+      <div class="flex h-5 items-end gap-px">
+        
+          <div title="27 Jan" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="28 Jan" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="29 Jan" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="30 Jan" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="31 Jan" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="03 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="04 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="05 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="06 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="07 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="10 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="11 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="12 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="13 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="14 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="17 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="18 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="19 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="20 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="21 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="24 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="25 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="27 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="28 Feb" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="03 Mar" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="04 Mar" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="05 Mar" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="06 Mar" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="07 Mar" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="10 Mar" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="11 Mar" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="12 Mar" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="13 Mar" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="17 Mar" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="18 Mar" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="19 Mar" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="20 Mar" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="21 Mar" class="flex-1 rounded-sm h-3 bg-primary/70"></div>
+        
+          <div title="24 Mar" class="flex-1 rounded-sm h-3 bg-primary/70 ring-1 ring-base-content/40"></div>
+        
+          <div title="25 Mar" class="flex-1 rounded-sm h-3 bg-primary/70 ring-1 ring-base-content/40"></div>
+        
+          <div title="26 Mar - missing" class="flex-1 rounded-sm h-5 bg-error"></div>
+        
+          <div title="27 Mar" class="flex-1 rounded-sm h-3 bg-primary/70 ring-1 ring-base-content/40"></div>
+        
+          <div title="28 Mar" class="flex-1 rounded-sm h-3 bg-primary/70 ring-1 ring-base-content/40"></div>
+        
+      </div>
+      <div class="mt-1 flex justify-between text-[11px] text-base-content/50"><span>27 Jan 2025</span><span>43 sessions · 1 missing (26 Mar) · last 5 loaded in chart</span><span>28 Mar 2025</span></div>
+    </div>
+  </div>
+
+  
+  <aside class="w-72 shrink-0 space-y-3">
+    <div class="card-h p-4 text-sm">
+      <h2 class="mb-3 font-semibold">Series</h2>
+      <dl class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2">
+        <dt class="text-base-content/55">Stored</dt><dd class="num text-right text-xs">27 Jan → 28 Mar 2025</dd>
+        <dt class="text-base-content/55">Bars</dt><dd class="num text-right text-xs" x-text="stats.total"></dd>
+        <dt class="text-base-content/55">Loaded</dt><dd class="num text-right text-xs" x-text="stats.loaded"></dd>
+        <dt class="text-base-content/55">Last sync</dt><dd class="text-right text-xs">15:46 IST · today</dd>
+        <dt class="text-base-content/55">Freshness</dt><dd class="text-right"><span class="chip chip-ok">final to 15:25</span></dd>
+        <dt class="text-base-content/55">Gaps</dt><dd class="text-right"><span class="chip chip-warn">1 session</span></dd>
+      </dl>
+      <div class="mt-3 flex gap-2">
+        <button class="btn btn-sm flex-1"><svg class="icon" aria-hidden="true" class="lucide lucide-wrench" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" /> </svg> Repair gap</button>
+        <button class="btn btn-sm flex-1"><svg class="icon" aria-hidden="true" class="lucide lucide-history" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /> <path d="M3 3v5h5" /> <path d="M12 7v5l4 2" /> </svg> Backfill</button>
+      </div>
+    </div>
+    <div class="card-h p-4 text-sm">
+      <h2 class="mb-2 font-semibold">Follow live</h2>
+      <p class="text-xs leading-5 text-base-content/65">While the NSE session is open, Historify runs a small incremental job for this series after each 5-minute bar closes (~1 request / 5 min). The chart picks up new and revised bars via <code class="num">since=</code> polling. Stops automatically at 15:30 IST.</p>
+      <div class="mt-2 flex items-center gap-2 text-xs text-base-content/60"><span class="h-2 w-2 rounded-full bg-base-content/30"></span> NSE closed at 15:30 · resumes Tue 01 Apr 09:20 IST</div>
+    </div>
+    <div class="card-h p-4 text-sm">
+      <h2 class="mb-2 font-semibold">Indicators</h2>
+      <ul class="space-y-1.5 text-xs">
+        <li class="flex items-center gap-2"><span class="h-0.5 w-4 bg-[#6366f1]"></span> EMA 20 <span class="ml-auto text-base-content/45">price pane</span></li>
+        <li class="flex items-center gap-2"><span class="h-0.5 w-4 bg-[#f59e0b]"></span> EMA 50 <span class="ml-auto text-base-content/45">price pane</span></li>
+        <li class="flex items-center gap-2"><span class="h-0.5 w-4 bg-[#8b5cf6]"></span> RSI 14 <span class="ml-auto text-base-content/45">pane 2</span></li>
+      </ul>
+      <p class="mt-2 text-[11px] text-base-content/50">Computed in the browser over the loaded bars; recomputed when older pages load.</p>
+    </div>
+  </aside>
+</div>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>

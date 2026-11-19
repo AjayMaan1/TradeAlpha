@@ -1,0 +1,22 @@
+[
+ {
+  "bar": "first (backfill 30 d of 1m)",
+  "jobs": 1,
+  "tasks": 100,
+  "requests": 100,
+  "fetch_s": 42.0,
+  "status": [
+   "succeeded"
+  ]
+ },
+ {
+  "bar": "next bar (steady state)",
+  "jobs": 1,
+  "tasks": 100,
+  "requests": 100,
+  "fetch_s": 41.5,
+  "status": [
+   "succeeded"
+  ]
+ }
+]

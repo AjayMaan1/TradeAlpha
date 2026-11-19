@@ -1,0 +1,93 @@
+{
+ "backfill": {
+  "zerodha@50": {
+   "requests": 450,
+   "time": "3 min"
+  },
+  "angelone@50": {
+   "requests": 750,
+   "time": "5 min"
+  },
+  "upstox@50": {
+   "requests": 650,
+   "time": "1 min"
+  },
+  "dhan@50": {
+   "requests": 300,
+   "time": "1 min"
+  },
+  "fyers@50": {
+   "requests": 700,
+   "time": "4 min"
+  },
+  "icici_breeze@50": {
+   "requests": 9350,
+   "time": "2.0 d"
+  },
+  "zerodha@100": {
+   "requests": 900,
+   "time": "6 min"
+  },
+  "angelone@100": {
+   "requests": 1500,
+   "time": "10 min"
+  },
+  "upstox@100": {
+   "requests": 1300,
+   "time": "3 min"
+  },
+  "dhan@100": {
+   "requests": 600,
+   "time": "2 min"
+  },
+  "fyers@100": {
+   "requests": 1400,
+   "time": "8 min"
+  },
+  "icici_breeze@100": {
+   "requests": 18700,
+   "time": "4.0 d"
+  },
+  "zerodha@200": {
+   "requests": 1800,
+   "time": "12 min"
+  },
+  "angelone@200": {
+   "requests": 3000,
+   "time": "21 min"
+  },
+  "upstox@200": {
+   "requests": 2600,
+   "time": "6 min"
+  },
+  "dhan@200": {
+   "requests": 1200,
+   "time": "5 min"
+  },
+  "fyers@200": {
+   "requests": 2800,
+   "time": "17 min"
+  },
+  "icici_breeze@200": {
+   "requests": 37400,
+   "time": "9.0 d"
+  }
+ },
+ "storage": {
+  "50": {
+   "bars_M": 5.8,
+   "duckdb_MB": 76,
+   "snapshot_MB": 85
+  },
+  "100": {
+   "bars_M": 11.7,
+   "duckdb_MB": 152,
+   "snapshot_MB": 169
+  },
+  "200": {
+   "bars_M": 23.3,
+   "duckdb_MB": 303,
+   "snapshot_MB": 338
+  }
+ }
+}

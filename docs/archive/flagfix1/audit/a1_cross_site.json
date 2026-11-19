@@ -1,0 +1,18 @@
+{
+ "no-body POST from evil origin (storage/backup)": 403,
+ "multipart CA import from evil origin (fake 1:10 split)": [
+  403,
+  null
+ ],
+ "multipart calendar import from evil origin (close a trading day)": [
+  403,
+  {
+   "error": {
+    "code": "forbidden_origin",
+    "message": "Cross-site request refused. Historify only accepts changes from its own pages."
+   }
+  }
+ ],
+ "DNS-rebinding: PUT settings host": 421,
+ "DNS-rebinding: test-connection -> API key sent to attacker": false
+}

@@ -1,0 +1,26 @@
+{
+ "A vectorised numpy signal + Rust engine": {
+  "ms": 1.46,
+  "ns_per_bar": 37.3,
+  "result": [
+   372645.6920300802,
+   2439
+  ]
+ },
+ "B numba @cfunc rule called from Rust via C pointer": {
+  "ms": 0.98,
+  "ns_per_bar": 25.0,
+  "result": [
+   372645.6920300802,
+   2439
+  ]
+ },
+ "C Python callback per bar, Rust engine": {
+  "ms": 62.42,
+  "ns_per_bar": 1594.3,
+  "result": [
+   372645.6920300802,
+   2439
+  ]
+ }
+}

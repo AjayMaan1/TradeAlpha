@@ -1,0 +1,11 @@
+{
+ "A 1m 50x2y  public BarStore.read_range() per series": 9.481,
+ "B 1m 50x2y  one batched query -> numpy (in-process)": 20.168,
+ "B' 1m 50x2y batched query + numpy wide matrices (5 fields)": 18.476,
+ "B  D 50x10y batched query + wide": 0.051,
+ "C 5m 50x2y  store.resample_intraday (1m->5m) per series": 2.423,
+ "E 1m 1x2y   HTTP /api/v2/bars paging (limit 5000)": 1.759,
+ "E_http_pages": 40,
+ "E_http_bars": 195750,
+ "D 1m 50x2y  snapshot Parquet -> numpy (out of process, no lock)": 2.111
+}

@@ -1,0 +1,294 @@
+{
+  "python": "3.12.3",
+  "now": "2025-03-28T16:00:00+05:30",
+  "kill9_restart": {
+    "tasks": 400,
+    "done_before_kill": 113,
+    "running_at_kill": 3,
+    "restart_result": "{\"total\": 400, \"done\": 400, \"remaining\": 0, \"queued\": 0, \"running\": 0, \"retry_wait\": 0, \"succeeded\": 400, \"empty\": 0, \"failed\": 0, \"cancelled\": 0}",
+    "reference_result": "{\"total\": 400, \"done\": 400, \"remaining\": 0, \"queued\": 0, \"running\": 0, \"retry_wait\": 0, \"succeeded\": 400, \"empty\": 0, \"failed\": 0, \"cancelled\": 0}",
+    "series_restarted": 400,
+    "series_reference": 400,
+    "identical_checksums": true,
+    "resume_s": 32.6,
+    "_wall_s": 99.44
+  },
+  "latency_under_load": {
+    "job_tasks": 500,
+    "job_status": "succeeded",
+    "requests_sampled": 2178,
+    "p95_ms_all": 168.2,
+    "p95_ms_by_endpoint": {
+      "/status": 50.1,
+      "/jobs/{id}": 31.0,
+      "/jobs/{id}/tasks": 74.5,
+      "/jobs": 20.1,
+      "/watchlists/1/items": 69.7,
+      "/coverage": 277.5,
+      "/summary": 170.1,
+      "/schedules": 8.4,
+      "/bars": 63.5
+    },
+    "http_5xx": 0,
+    "database_locked": 0,
+    "_wall_s": 89.46
+  },
+  "coverage_after_truncation": {
+    "series": 20,
+    "truncated_responses": 4,
+    "after_backfill": {
+      "gaps": 0,
+      "stale": 0,
+      "coverage_pct": 100.0
+    },
+    "after_repair_incremental": {
+      "gaps": 0,
+      "stale": 0,
+      "coverage_pct": 100.0
+    },
+    "all_ok": true,
+    "repair_requests": 0,
+    "_wall_s": 10.11
+  },
+  "chart_1y_1m": {
+    "series_bars": 97125,
+    "first_page_bars": 1500,
+    "first_page_kb": 71.3,
+    "first_page_kb_gzip": 20.8,
+    "api_ms_median": 14.0,
+    "api_ms_max": 17.0,
+    "older_page_ms": 17.5,
+    "older_page_bars": 1500,
+    "has_more": true,
+    "_wall_s": 5.59
+  },
+  "daily_20": {
+    "succeeded": 20,
+    "total": 20,
+    "broker_429": 0,
+    "requests": 20,
+    "seconds": 8.08,
+    "_wall_s": 8.21
+  },
+  "chunked": {
+    "1m_90d": {
+      "status": "succeeded",
+      "rows": 23625,
+      "requests": 3,
+      "seconds": 1.33
+    },
+    "5m_150d": {
+      "status": "succeeded",
+      "rows": 7950,
+      "requests": 2,
+      "seconds": 0.71
+    },
+    "D_10y": {
+      "status": "succeeded",
+      "rows": 2608,
+      "requests": 2,
+      "seconds": 0.83
+    },
+    "broker_429": 0,
+    "range_errors": 0,
+    "_wall_s": 2.99
+  },
+  "flaky": {
+    "succeeded": 10,
+    "total": 10,
+    "retries": 4,
+    "broker_5xx": 4,
+    "seconds": 5.58,
+    "_wall_s": 5.76
+  },
+  "auth_expired": {
+    "status_when_expired": "paused_auth",
+    "broker_calls_before_pause": 1,
+    "broker_calls_while_paused_1s": 0,
+    "status_after_resume": "succeeded",
+    "succeeded_after_resume": 5,
+    "_wall_s": 3.33
+  },
+  "truncated": {
+    "tasks_flagged_short_data": 2,
+    "status_after_truncation": {
+      "D": "stale",
+      "5m": "gaps"
+    },
+    "status_after_repair_and_update": {
+      "D": "ok",
+      "5m": "ok"
+    },
+    "repair_requests": 2,
+    "_wall_s": 2.65
+  },
+  "dl_1m_30d": {
+    "rows": 7875,
+    "median_s": 0.31,
+    "all_s": [
+      0.37,
+      0.31,
+      0.3
+    ],
+    "rows_per_s": 25403,
+    "_wall_s": 1.46
+  },
+  "chart_api": {
+    "series_bars": 23625,
+    "first_paint_bars": 1500,
+    "first_paint_ms_median": 21.6,
+    "first_paint_kb": 71.3,
+    "etag_304_status": 304,
+    "etag_304_ms": 5.9,
+    "etag_304_bytes": 0,
+    "full_history_pages": 5,
+    "full_history_s": 0.133,
+    "full_history_kb": 1120.7,
+    "weekly_from_daily_ms": 13.4,
+    "_wall_s": 1.68
+  },
+  "quotes_50": {
+    "first_call_s": 1.51,
+    "pending_after_first_call": 38,
+    "all_50_loaded_s": 8.37,
+    "cached_call_ms_median": 2.56,
+    "call_after_ttl_ms": 3.81,
+    "max_quote_age_s": 10.0,
+    "errors": 0,
+    "broker_quote_calls": 79,
+    "_wall_s": 15.79
+  },
+  "export_800": {
+    "series": 800,
+    "rows": 208000,
+    "per_series_reads_s": 3.92,
+    "single_query_s": 0.74,
+    "speedup": 5.3,
+    "api_job_csv_zip_D_plus_W_s": 6.24,
+    "api_job_rows": 249600,
+    "set_cookie_header": false,
+    "_wall_s": 13.01
+  },
+  "repair_planning": {
+    "series": 400,
+    "per_series_queries_s": 2.73,
+    "single_query_s": 0.079,
+    "speedup": 34.5,
+    "_wall_s": 3.1
+  },
+  "scheduler": {
+    "next_runs": [
+      "2025-03-28T15:45:00+05:30",
+      "2025-04-01T15:45:00+05:30",
+      "2025-04-02T15:45:00+05:30",
+      "2025-04-03T15:45:00+05:30",
+      "2025-04-04T15:45:00+05:30"
+    ],
+    "skipped_shown": [
+      "2025-03-31",
+      "2025-04-10",
+      "2025-04-14",
+      "2025-04-18"
+    ],
+    "holiday_fire": "skipped_holiday",
+    "post_close_1545_status": "succeeded",
+    "post_close_latest_daily_bar": "2025-03-28",
+    "post_close_requests": 2,
+    "_wall_s": 1.58
+  },
+  "ui": {
+    "pages": {
+      "/": {
+        "status": 200,
+        "requests": 7,
+        "kb_uncompressed": 242,
+        "external_resources": 0,
+        "csp": true
+      },
+      "/watchlists": {
+        "status": 200,
+        "requests": 7,
+        "kb_uncompressed": 247,
+        "external_resources": 0,
+        "csp": true
+      },
+      "/charts": {
+        "status": 200,
+        "requests": 8,
+        "kb_uncompressed": 453,
+        "external_resources": 0,
+        "csp": true
+      },
+      "/data": {
+        "status": 200,
+        "requests": 7,
+        "kb_uncompressed": 249,
+        "external_resources": 0,
+        "csp": true
+      },
+      "/jobs": {
+        "status": 200,
+        "requests": 7,
+        "kb_uncompressed": 249,
+        "external_resources": 0,
+        "csp": true
+      },
+      "/import": {
+        "status": 200,
+        "requests": 7,
+        "kb_uncompressed": 243,
+        "external_resources": 0,
+        "csp": true
+      },
+      "/export": {
+        "status": 200,
+        "requests": 7,
+        "kb_uncompressed": 239,
+        "external_resources": 0,
+        "csp": true
+      },
+      "/scheduler": {
+        "status": 200,
+        "requests": 7,
+        "kb_uncompressed": 256,
+        "external_resources": 0,
+        "csp": true
+      },
+      "/settings": {
+        "status": 200,
+        "requests": 7,
+        "kb_uncompressed": 255,
+        "external_resources": 0,
+        "csp": true
+      }
+    },
+    "v1": {
+      "inline_handlers": 45,
+      "innerHTML_uses": 91,
+      "external_cdn_urls": 7
+    },
+    "v2": {
+      "inline_handlers": 0,
+      "innerHTML_uses": 0,
+      "external_cdn_urls": 0,
+      "style_attributes": 0
+    },
+    "_wall_s": 0.59
+  },
+  "storage": {
+    "bars": 23625,
+    "file_bytes": 1060864,
+    "bytes_per_bar": 44.9,
+    "_wall_s": 1.4
+  },
+  "backfill_1y_1m": {
+    "status": "succeeded",
+    "requests": 130,
+    "rows": 971250,
+    "seconds": 54.1,
+    "effective_req_per_s": 2.4,
+    "broker_429": 0,
+    "budget_req_per_s": 2.4,
+    "_wall_s": 54.44
+  }
+}

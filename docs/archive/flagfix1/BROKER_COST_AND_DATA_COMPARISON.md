@@ -1,0 +1,251 @@
+# Broker comparison for Historify Lab: cost vs data (for owner review)
+
+| | |
+|---|---|
+| Purpose | Input for choosing the broker(s) behind OpenAlgo: the **data provider** for backtests and the **execution broker** for guarded, then live, trading |
+| Status | **For review. Not a recommendation to trade.** Prices and limits must be verified on each broker's site before deciding. |
+| Tools | [`broker_evaluation/`](broker_evaluation/README.md): editable tariffs → calculator; a data probe you run against OpenAlgo; a cross-broker candle diff |
+| Related | [Design v1.1](HISTORIFY_BACKTEST_ENGINE_DESIGN.md) §0 (decisions) and §16 (guardrail ladder) |
+
+---
+
+## 1. How much of this is verified
+
+The evaluation sandbox could reach PyPI but **not the broker websites**. Each fact is therefore labelled:
+
+| Code | Meaning | Used for |
+|---|---|---|
+| **V** | **Verified in the broker's official Python SDK source**, downloaded from PyPI: kiteconnect 5.2.2, smartapi-python 1.5.5, upstox-python-sdk 2.30.0, fyers-apiv3 3.2.0, dhanhq 2.3.0, breeze-connect 1.0.69, growwapi 1.5.0, py5paisa 0.7.21.2, NorenRestApiPy 0.0.22, pya3 1.0.30, openalgo 2.0.5 | that an API / interval / feature **exists** (not its price, depth or limits) |
+| **H / M / L** | Assistant knowledge with high / medium / low confidence. The knowledge cut-off is **older than today**, and Indian brokers change tariffs often. | prices, limits, history depth |
+| **?** | Unknown | the calculator reports it as missing |
+
+Every H/M/L number sits in one editable file, [`broker_tariffs.toml`](broker_evaluation/broker_tariffs.toml). After
+you verify or correct a value, run `python broker_compare.py` to regenerate all tables in
+`broker_evaluation/results/`. For the **data** side you do not need to trust anyone:
+`broker_data_probe.py` *measures* depth, per-request limits and candle conventions through your own OpenAlgo. It was
+validated against known ground truth (§6).
+
+---
+
+## 2. Summary of findings
+
+1. **Statutory charges are the same at every broker and often exceed brokerage.** For an active intraday equity
+   profile (S1: 210 round trips a month, ₹2 lakh each), statutory + exchange charges are **₹14,803/month**. The
+   broker-dependent part is **₹0–10,502**. Most brokers land within ₹600 of each other (₹20-cap brokerage plus small
+   subscription fees). The only material difference is **zero-brokerage brokers vs the rest: ≈ ₹9,900/month
+   (≈ ₹1.2 lakh/year) at this activity level**.
+2. **Data differs far more than cost, and depth is what limits backtests.** For the research target (200 symbols,
+   10 years of D + 1m):
+   - backfill time ranges from **18 min to 4 h**, except ICICI Breeze at ~91 days (about 1,000 candles per call);
+   - *obtainable* 1m history ranges from **~4.8 years (Upstox) to ~10 years (Zerodha, L-confidence)**.
+   A 5-year broker cannot support a 10-year intraday backtest at any price.
+3. **Only some brokers serve expired F&O history, which options backtesting needs.** Verified in SDK code:
+   - **Upstox**: `ExpiredInstrumentApi` (expired futures and options contracts plus candles);
+   - **Dhan**: `expired_options_data` (rolling, ATM-relative strikes);
+   - **Groww**: `historical/expiries`, `historical/contracts`.
+   ICICI Breeze takes expiry/strike parameters, but whether it serves *expired* contracts needs confirming. Without
+   such an API, Historify only has the options data it downloaded while contracts were live.
+4. **APIs that make Historify Lab more exact exist at only a few brokers** (V):
+   - charges / contract-note calculators: Zerodha `get_virtual_contract_note`, Angel One `estimateCharges`, Upstox
+     `get_brokerage`, Fyers `charges_history`;
+   - corporate actions: Upstox only;
+   - holidays and timings: Upstox; OpenAlgo itself provides them for every broker.
+5. **OpenAlgo provides the common safety layer whatever broker you pick** (V, `openalgo 2.0.5`):
+   - **Analyzer (sandbox) mode**, the G2 stage of the guardrail ladder;
+   - a **margin API** (SPAN + exposure from the broker), for pre-trade checks;
+   - `market/holidays` + `market/timings`, the calendar source (D-05).
+6. **Splitting data and execution across two brokers is viable** (design D-12): best data from one, cheapest
+   execution from another. The cost is a parity check (`broker_data_compare.py`) and two OpenAlgo connections.
+
+---
+
+## 3. Cost comparison
+
+### 3.1 Scenarios (editable: [`scenarios.toml`](broker_evaluation/scenarios.toml); 21 trading days a month)
+
+| ID | Profile |
+|---|---|
+| S1 | Equity intraday (MIS): 10 round trips/day, ₹2 lakh per trade |
+| S2 | Index options buying: 10 round trips/day, 2 lots NIFTY (150 units) at ₹150 premium |
+| S3 | Index futures: 4 round trips/day, 1 lot NIFTY (75 units) at 24,000 |
+| S4 | Swing / positional delivery (CNC): 30 round trips/month, ₹1 lakh each (DP charge on each sell day) |
+
+### 3.2 Monthly broker-dependent cost (brokerage + GST, DP charges, API/data subscriptions)
+
+Generated by `broker_compare.py` → `results/cost_summary.md`. Statutory schedule from 1 Oct 2024.
+
+| Broker | S1 intraday | S2 options | S3 futures | S4 delivery | Tariff conf. |
+|---|---|---|---|---|---|
+| *Statutory + exchange (all brokers)* | *₹14,803* | *₹8,784* | *₹39,794* | *₹6,667* | H |
+| Flattrade (Noren API) | ₹0 | ₹0 | ₹0 | ₹0 | M |
+| Shoonya by Finvasia (Noren API) | ₹0 | ₹0 | ₹0 | ₹0 | L |
+| Kotak Securities (Neo API) | ₹0 | ₹4,956 | ₹1,982 | ₹708 | L |
+| Alice Blue (ANT API) | ₹9,912 | ₹9,912 | ₹3,965 | ₹531 | L |
+| Fyers (API v3) | ₹9,912 | ₹9,912 | ₹3,965 | ₹1,841 | L |
+| 5paisa (Xtream / OpenAPI) | ₹9,912 | ₹9,912 | ₹3,965 | ₹1,858 | M |
+| Upstox (Upstox API v2/v3) | ₹9,912 | ₹9,912 | ₹3,965 | ₹2,071 | L |
+| Angel One (SmartAPI) | ₹9,912 | ₹9,912 | ₹3,965 | ₹2,124 | M |
+| Dhan (DhanHQ) | ₹10,501 | ₹10,501 | ₹4,554 | ₹1,031 | H |
+| Zerodha (Kite Connect) | ₹10,502 | ₹10,502 | ₹4,555 | ₹1,068 | H |
+| Groww (Trade API) | ₹10,501 | ₹10,501 | ₹4,554 | ₹2,483 | M |
+| ICICI Direct (Breeze) | ₹9,912 | ₹9,912 | ₹3,965 | ₹20,178 | L |
+
+Per-scenario detail (per-order brokerage, the split between brokerage, DP and subscriptions, cost per round trip) is
+in `results/cost_by_scenario.md`.
+
+### 3.3 What drives the differences
+
+- **The ₹20-per-order cap dominates.** For any order above about ₹67k (at 0.03 %), a "0.03 % or ₹20" broker charges
+  a flat ₹20. That is why most rows are identical in S1–S3.
+- **Subscriptions are small for active traders** (₹499–500 + GST/month at Zerodha, Dhan data and Groww), but they are
+  the *only* cost when you use a broker purely as a **data provider** for research.
+- **Delivery (S4)** is where brokers differ most: ₹0 vs ₹20 per order vs a percentage (ICICI's plan-dependent
+  percentage, L-confidence), plus DP charges of ₹12–20 per scrip per sell day.
+- **Auto square-off fees** (₹20–50 + GST per order where charged) are avoided by design: the engine squares off at
+  15:10, before the broker's window (D-09).
+- **Not included** (verify per broker): account opening fees, AMC, call-and-trade fees, interest on MTF/leverage,
+  payment-gateway fees, and any API-app registration fees introduced for the SEBI algo framework.
+
+### 3.4 Statutory charges used (identical for all brokers; [`statutory_charges.toml`](broker_evaluation/statutory_charges.toml), H unless noted)
+
+| From 1 Oct 2024 | STT | Stamp (buy) | Exchange txn (NSE) | SEBI | GST |
+|---|---|---|---|---|---|
+| Equity delivery | 0.1 % buy + sell | 0.015 % | 0.00297 % | ₹10/crore | 18 % on brokerage + exchange + SEBI |
+| Equity intraday | 0.025 % sell | 0.003 % | 0.00297 % | ₹10/crore | 〃 |
+| Futures | 0.02 % sell | 0.002 % | 0.00173 % | ₹10/crore | 〃 |
+| Options (on premium) | 0.1 % sell; **0.125 % of intrinsic value on exercise** | 0.003 % | 0.03503 % | ₹10/crore | 〃 |
+
+The earlier rates (before Oct 2024) are in the file, because backtests charge each fill the rate in force on its date.
+**Check for changes after the knowledge cut-off** (for example in Union Budget announcements).
+
+---
+
+## 4. Data comparison
+
+### 4.1 Backfill of the research universe (200 symbols; D × 10 y + 1m × 10 y, capped by depth; 80 % of limits)
+
+Generated → `results/data_backfill.md`. These are lower bounds from the published rate windows. Real runs add latency
+and retries.
+
+| Broker | 1m depth (y) | 1m years obtainable | Requests D | Requests 1m | Backfill time | Daily sync (1m + D) | Data conf. |
+|---|---|---|---|---|---|---|---|
+| Dhan (DhanHQ) | 5 | 5 | 200 | 4,200 | **18 min** | 2 min | L/M |
+| Fyers (API v3) | 8 | 8 | 2,000 | 6,000 | **49 min** | 2 min | L/M |
+| Zerodha (Kite Connect) | 10 | 10 | 400 | 12,200 | **1.5 h** | 3 min | H/L/M |
+| Upstox (Upstox API v2/v3) | 4.8 | 4.8 | 200 | 11,400 | **3.0 h** | 0 min | M |
+| Angel One (SmartAPI) | 8 | 8 | 400 | 19,600 | **4.0 h** | 3 min | L/M |
+| ICICI Direct (Breeze) | 10 | 10 | 800 | 365,000 | **91.0 d** | 4 min | L/M |
+| 5paisa, Alice Blue, Flattrade, Groww, Kotak Neo, Shoonya | ? | ? | ? | ? | ? | ? | not published / unknown |
+
+**Reading the table.**
+- Backfill is a one-time cost. Depth is permanent.
+- The 1m depth values are the **least certain inputs** (mostly L). Measure them with the probe; it bisects to the
+  earliest month with data.
+- Historify's Angel One profile (`profiles.py`) already encodes the Angel limits shown here, still marked "verify
+  live".
+
+### 4.2 Capabilities that matter to Historify Lab
+
+Full matrix with every broker → `results/capability_matrix.md`. Key rows:
+
+| Capability | Zerodha | Angel One | Upstox | Dhan | Fyers | ICICI Breeze | Groww |
+|---|---|---|---|---|---|---|---|
+| Native intervals | 1m–1h, D [H] | 1m–1h, D [H] | **any 1–300m**, 1–5h, D/W/M [V] | 1, 5, 15, 25, 60m, D [V] | 1–240m, D [V] | **1s**, 1m, 5m, 30m, D [V] | 1m–4h, D/W/M [V] |
+| Open interest | yes [V] | ? | yes [M] | yes [V] | yes [M] | yes [?] | ? |
+| Continuous futures | daily [V] | no [?] | no [?] | daily [V] | yes [V] | no [?] | no [?] |
+| **Expired F&O history** | no [M] | no [?] | **API [V]** | **rolling options [V]** | no [?] | parameters exist; verify [M] | **API [V]** |
+| Corporate actions API | no | no | **yes [V]** | no | no | no | no |
+| Charges / contract-note API | **yes [V]** | **yes [V]** | **yes [V]** | ? | **post-trade [V]** | ? | ? |
+| Margin API | yes [V] | ? | ? | yes [V] | ? | yes [V] | ? |
+| Broker-side sandbox | no | no | yes [M] | yes [M] | no | no | no |
+| Session / auth | daily login [M] | TOTP, automatable [H] | OAuth, daily [M] | multi-day token? [L] | daily, TOTP [M] | daily browser login [M] | API key + TOTP [?] |
+
+**Via OpenAlgo for every broker (V):** Analyzer mode (sandbox), margin API, market holidays and timings,
+`history(source="db")` (OpenAlgo's own DuckDB with custom intervals). The SDK-level capabilities above reach
+Historify only if **OpenAlgo's adapter for that broker** maps them. Check your OpenAlgo version's adapter. The broker
+SDK having an endpoint does not mean OpenAlgo exposes it.
+
+### 4.3 Data-quality questions no price list answers (measure them)
+
+| Question | Why it matters | How the probe answers it |
+|---|---|---|
+| Is the daily close the **official close** (VWAP of the last 30 min) or the last trade? | Daily strategies, gap logic | `daily_close_vs_last_1m_close_bp` ≠ 0 on most days ⇒ official close |
+| Does the 09:15 1m bar contain the **pre-open auction print**? | The open price of every intraday strategy | `daily_open_vs_first_1m_open_bp` |
+| Does 1m volume include auction/closing-session volume? | Volume filters, VWAP | `sum_1m_volume_over_daily_volume` (expect < 1) |
+| Complete sessions (375 1m bars)? Off-grid bars? | Roll-up correctness | `bars_1m`, `first/last_1m_bar_ist`; then Historify's `rollup-audit` |
+| Do two brokers deliver the **same candles**? | The data/execution split (D-12) | `broker_data_compare.py` (matched bars, OHLC mismatches beyond one tick, volume ratio) |
+
+---
+
+## 5. Shortlist and decision guide (for your review)
+
+**By role.** The data provider and the execution broker can be the same broker or different ones.
+
+| Role | What decides it | Candidates to probe first | Notes |
+|---|---|---|---|
+| **Research data** (10-year equity/index backtests) | 1m depth, per-request window, rate, reliability | **Zerodha** (deepest if the L-confidence 10 y holds; ₹500/month), **Fyers** (free, 8 y [L], fast), **Angel One** (free, 8 y [L], already profiled in Historify) | Run the probe on all three; depth decides |
+| **F&O / options research** | Expired-contract history, OI, continuous futures | **Upstox** (expired F&O API + corporate actions + holidays; free API [M]), **Dhan** (expired options rolling; data ₹499/month [M]) | Else consider an NSE-authorised data vendor for deep options history (not assessed here) |
+| **Execution (cost-led)** | Brokerage, API robustness, SL/bracket support, margin API, auth automation, SEBI static-IP support | **Flattrade / Kotak Neo** (≈ ₹0 brokerage [M/L]) for high-activity profiles | Weak or unknown data APIs, so pair with a separate data provider (D-12) |
+| **Execution (simplicity-led)** | One broker for everything, no cross-broker parity risk | **Zerodha, Dhan, Angel One, Fyers, Upstox** | Cost difference between them is ≤ ₹600/month in S1–S3 (≤ ₹1,500 in S4) |
+
+**Decision guide.**
+1. Will you backtest **options** strategies on past expiries? If yes, Upstox or Dhan must be in the data role, or
+   you need a vendor.
+2. Do you need **≥ 8–10 years of 1m**? If yes, probe Zerodha, Fyers and Angel One and keep the one whose *measured*
+   depth covers it.
+3. Is your trading profile high-frequency (≥ ~100 executed orders/month)? If yes, zero-brokerage execution saves
+   about ₹50 per round trip (₹20 × 2 + GST). Weigh that against running two brokers.
+4. Prefer a single broker unless step 1 or step 3 forces a split.
+5. Whatever the choice: G3 (guarded pilot) stays blocked until the **verified** tariff is entered in Lab's broker
+   profile (D-13).
+
+---
+
+## 6. Verification kit
+
+### 6.1 Per-broker checklist (fill in `broker_tariffs.toml`, then set `conf` to `V` for what you verified)
+
+- [ ] Brokerage per segment (delivery / intraday / futures / options), minimum and cap per order
+- [ ] API fee and data fee per month, and what they include (historical? WebSocket? expired contracts?)
+- [ ] DP charge per scrip per sell day; auto-square-off fee; any other per-order fees
+- [ ] History: depth per interval, max days per request, rate limits (per s / min / hour / day)
+- [ ] OI in history; continuous futures; expired F&O history (and whether OpenAlgo's adapter exposes it)
+- [ ] Order APIs: order-rate limits, SL / bracket / GTT support, margin API, sandbox
+- [ ] Auth: session validity, whether TOTP automation is permitted, static-IP registration (SEBI framework)
+- [ ] OpenAlgo: adapter supported in your OpenAlgo version; intervals reported by `/intervals`
+
+### 6.2 Measure the data (read-only; about 60–80 requests per broker at 1 request/s)
+
+```bash
+cd broker_evaluation
+export OPENALGO_HOST=http://127.0.0.1:5000 OPENALGO_API_KEY=...      # OpenAlgo connected to broker X
+python broker_data_probe.py --label zerodha --out results/probe_zerodha.json \
+       --future NIFTY25NOV25FUT:NFO --expired NIFTY28OCT25FUT:NFO         # use current/expired symbols of your choice
+python broker_data_compare.py results/probe_zerodha.json results/probe_fyers.json
+```
+
+**Probe validation.** Against two mock brokers with known limits (Historify's mock OpenAlgo), the probe rediscovered:
+- 1m max window 30 / 60 days ✓, 5m 100 ✓, D 1,984 vs 2,000 (within its 5 % bisection precision) ✓;
+- history depth 2016-03 / 2021-07 ✓, exactly;
+- it recovered from 44–45 rate-limit responses.
+
+An earlier version misread HTTP 429 as "range not supported". That bug was caught by this validation and fixed: rate
+limits are now retried with backoff and counted, never taken as a data answer. The compare tool passed a negative
+test: it detected exactly 3 missing bars and 5 close mismatches planted in a copy.
+
+### 6.3 Then, inside Historify
+
+Once a broker is chosen:
+- put its verified limits into a provider profile (`app/core/provider/profiles.py`, as for Angel One);
+- run `flask historify selftest` and `rollup-audit`;
+- seed Lab's broker profile from the verified TOML (design D-13).
+
+---
+
+## 7. Limitations
+- Prices, limits and depth are **not verified** (the sandbox had no access to broker sites). Only API existence is
+  verified (V), from SDK source.
+- Scenario costs exclude account-level fees and taxes on profits.
+- The broker list covers the major OpenAlgo-supported brokers. Others supported by OpenAlgo (e.g. Motilal Oswal,
+  IIFL, Paytm Money, Zebu, Firstock, Definedge) are not assessed; add them to the TOML in the same format.
+- Nothing here is investment or regulatory advice. Confirm SEBI algo-framework obligations with the broker.

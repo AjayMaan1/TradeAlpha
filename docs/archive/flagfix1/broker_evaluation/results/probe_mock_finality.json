@@ -1,0 +1,34 @@
+{
+ "label": "mock_finality",
+ "host": "http://127.0.0.1:18711",
+ "probed_at": "2026-11-15T13:39:22.075103+05:30",
+ "symbol": "SBIN:NSE",
+ "reference_day": "2026-11-06",
+ "finality": {
+  "bars": [
+   {
+    "bar_end": "2026-11-11T11:01:00+05:30",
+    "stable_from_s": 10.0,
+    "observations": {
+     "2.0": false,
+     "5.0": false,
+     "10.0": true,
+     "15.0": true
+    }
+   },
+   {
+    "bar_end": "2026-11-11T11:02:00+05:30",
+    "stable_from_s": 10.0,
+    "observations": {
+     "2.0": false,
+     "5.0": false,
+     "10.0": true,
+     "15.0": true
+    }
+   }
+  ],
+  "recommended_intraday_final_buffer_s": 20.0,
+  "note": "null = not stable within the probed offsets: probe longer offsets"
+ },
+ "requests": 10
+}

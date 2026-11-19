@@ -1,0 +1,96 @@
+/* Historify v2 design tokens: Tailwind 4 + daisyUI 5, compiled at dev time (no CDN at runtime). */
+@import "tailwindcss";
+@source "./templates";
+@source "./proto.js";
+
+@plugin "daisyui" {
+  themes: false;
+}
+@plugin "daisyui/theme" {
+  name: "historify-light";
+  default: true;
+  color-scheme: light;
+  --color-base-100: #ffffff;
+  --color-base-200: #f6f7f9;
+  --color-base-300: #e6e8ec;
+  --color-base-content: #1b1f27;
+  --color-primary: #4f46e5;
+  --color-primary-content: #ffffff;
+  --color-secondary: #0ea5e9;
+  --color-secondary-content: #ffffff;
+  --color-accent: #14b8a6;
+  --color-accent-content: #ffffff;
+  --color-neutral: #2a2f3a;
+  --color-neutral-content: #f1f3f6;
+  --color-info: #2563eb;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+  --radius-box: 0.75rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+@plugin "daisyui/theme" {
+  name: "historify-dark";
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: #151922;
+  --color-base-200: #0f1218;
+  --color-base-300: #262c38;
+  --color-base-content: #e4e7ec;
+  --color-primary: #818cf8;
+  --color-primary-content: #0f1218;
+  --color-secondary: #38bdf8;
+  --color-secondary-content: #0f1218;
+  --color-accent: #2dd4bf;
+  --color-accent-content: #0f1218;
+  --color-neutral: #2a3140;
+  --color-neutral-content: #e4e7ec;
+  --color-info: #60a5fa;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #f87171;
+  --radius-box: 0.75rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@font-face { font-family: "Inter Variable"; font-weight: 100 900; font-display: swap;
+  src: url("fonts/inter-latin-wght-normal.woff2") format("woff2-variations"); }
+@font-face { font-family: "JetBrains Mono Variable"; font-weight: 100 800; font-display: swap;
+  src: url("fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2-variations"); }
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+}
+
+@layer components {
+  .nav-item { @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-base-content/75 hover:bg-base-300/60 hover:text-base-content; }
+  .nav-item.active { @apply bg-primary/10 text-primary font-medium; }
+  .nav-group { @apply px-3 pt-5 pb-1 text-[11px] font-semibold uppercase tracking-wider text-base-content/45; }
+  .card-h { @apply rounded-box border border-base-300 bg-base-100; }
+  .kpi-label { @apply text-xs font-medium text-base-content/60; }
+  .kpi-value { @apply mt-1 text-2xl font-semibold tabular-nums; }
+  .num { @apply font-mono tabular-nums; }
+  .chip { @apply inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[11px] font-medium; }
+  .chip-ok { @apply bg-success/12 text-success; }
+  .chip-warn { @apply bg-warning/15 text-warning; }
+  .chip-err { @apply bg-error/12 text-error; }
+  .chip-idle { @apply bg-base-300/70 text-base-content/60; }
+  .chip-info { @apply bg-info/12 text-info; }
+  .th { @apply px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-base-content/50; }
+  .iv { @apply normal-case font-mono; }  /* interval codes: 1m (minute) vs M (month) must never be case-transformed */
+  .td { @apply px-3 py-2 text-sm border-t border-base-300/70; }
+  .icon { @apply h-4 w-4 shrink-0; }
+}

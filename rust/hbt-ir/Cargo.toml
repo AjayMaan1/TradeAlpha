@@ -1,0 +1,11 @@
+[package]
+name = "hbt-ir"
+description = "Historify Lab Strategy IR v1: schema, type / causality checks, lookback, CSE, plan"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true

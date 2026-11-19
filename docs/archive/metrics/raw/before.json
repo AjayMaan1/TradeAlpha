@@ -1,0 +1,150 @@
+{
+  "version": "before",
+  "create_app_s": 2.511,
+  "scheduler_started_by_create_app": true,
+  "root_log_level_after_create_app": 30,
+  "bootstrap": {
+    "default_settings_rows": 0,
+    "unconfigured_api_status": 302,
+    "unconfigured_api_is_json": false,
+    "_elapsed_s": 0.02
+  },
+  "settings": {
+    "api_key_returned_in_plaintext": true,
+    "optimize_db_success": false,
+    "optimize_msg": "Database optimization failed: name 'text' is not defined",
+    "_elapsed_s": 0.01
+  },
+  "multi_symbol_daily": {
+    "symbols": 20,
+    "succeeded": 9,
+    "failed": 11,
+    "upstream_429": 11,
+    "elapsed_s": 2.93,
+    "_elapsed_s": 2.93
+  },
+  "range_1m_90d": {
+    "succeeded": false,
+    "rows_stored": 0,
+    "error": "Failed to fetch data for RNG1 from OpenAlgo API: API error: HTTP 400: {\"message\":\"Date range exceeds",
+    "elapsed_s": 0.08,
+    "_elapsed_s": 0.08
+  },
+  "range_5m_150d": {
+    "succeeded": false,
+    "rows_stored": 0,
+    "error": "Failed to fetch data for RNG5 from OpenAlgo API: API error: HTTP 400: {\"message\":\"Date range exceeds",
+    "elapsed_s": 0.08,
+    "_elapsed_s": 0.09
+  },
+  "range_d_10y": {
+    "succeeded": false,
+    "rows_stored": 0,
+    "error": "Failed to fetch data for RNGD from OpenAlgo API: API error: HTTP 400: {\"message\":\"Date range exceeds",
+    "elapsed_s": 0.09,
+    "_elapsed_s": 0.09
+  },
+  "weekend_range": {
+    "reported_failure": true,
+    "_elapsed_s": 0.09
+  },
+  "weekly_interval": {
+    "reported_success": true,
+    "rows_in_weekly_table": 61,
+    "expected_weekly_bars": 13,
+    "note": "rows are DAILY bars if > expected",
+    "_elapsed_s": 0.22
+  },
+  "slow_upstream_6_5s": {
+    "succeeded": false,
+    "elapsed_s": 5.07,
+    "error": "Failed to fetch data for SLOWCO from OpenAlgo API: timed out",
+    "_elapsed_s": 5.07
+  },
+  "transient_5xx_30pct": {
+    "symbols": 10,
+    "succeeded": 8,
+    "upstream_5xx": 2,
+    "elapsed_s": 1.54,
+    "_elapsed_s": 1.54
+  },
+  "session_expired": {
+    "failed": 5,
+    "upstream_calls_while_expired": 5,
+    "message": "Failed to fetch data for SE0 from OpenAlgo API: API error: HTTP 403: {\"message\":\"Invalid Token. Please login t",
+    "recovered_after_relogin_and_test_connection": true,
+    "_elapsed_s": 0.82
+  },
+  "write_path_1m_30d": {
+    "rows": 7500,
+    "first_download_s": 8.37,
+    "redownload_s": 6.93,
+    "upstream_fetch_s": 0.216,
+    "rows_per_s_end_to_end": 896,
+    "db_write_share_pct": 97.4,
+    "_elapsed_s": 46.34
+  },
+  "chart_full_history": {
+    "latency_s": 0.655,
+    "latency_min_s": 0.624,
+    "payload_kb": 1372,
+    "candles": 7500,
+    "_elapsed_s": 4.58
+  },
+  "quotes_50": {
+    "latency_s": 4.84,
+    "ok": 47,
+    "errors": 3,
+    "_elapsed_s": 4.84
+  },
+  "concurrent_write": {
+    "download_rows": 47625,
+    "download_s": 52.5,
+    "concurrent_writes": 19,
+    "concurrent_write_failures": 6,
+    "max_write_latency_s": 10.09,
+    "_elapsed_s": 52.84
+  },
+  "excel_import": {
+    "returns_uploaded_rows": false,
+    "first_data_row": [
+      [
+        "RELIANCE",
+        "NSE"
+      ]
+    ],
+    "_elapsed_s": 0.18
+  },
+  "pages": {
+    "pages_ok": 9,
+    "pages_total": 9,
+    "profile_status": 500,
+    "pages_offering_weekly": 4,
+    "watchlist_nav_highlighted": false,
+    "_elapsed_s": 0.13
+  },
+  "export_cookie_800_symbols": {
+    "set_cookie_bytes": 7922,
+    "browser_limit": 4096,
+    "_elapsed_s": 0.02
+  },
+  "storage_engine": {
+    "rows": 937500,
+    "data": "random-walk prices (2 dp) + random volumes, identical for both versions",
+    "v1_orm_rows_per_s": 960,
+    "v1_bytes_per_row": 192.0,
+    "range_read_s": 1.316,
+    "range_read_rows": 41760,
+    "tables_for_data": 11,
+    "_elapsed_s": 24.18
+  },
+  "correctness": {
+    "v1_path_first_daily_row_for_2025_01_01": "2024-12-31 18:30:00.000000",
+    "v1_path_tables_for_M&M_and_M-M": 1,
+    "_elapsed_s": 0.52
+  },
+  "legacy_import": {
+    "available": false,
+    "_elapsed_s": 0.0
+  }
+}

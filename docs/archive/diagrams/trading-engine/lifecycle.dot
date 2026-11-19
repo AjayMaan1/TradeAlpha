@@ -1,0 +1,29 @@
+digraph L {
+  graph [rankdir=TB, fontname="Helvetica", fontsize=20, labelloc=t, pad=0.4, nodesep=0.6, ranksep=0.45,
+         label="Idea lifecycle (paper first, live only after your approval; demotion is automatic)\n "];
+  node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=12, fillcolor="#f8fafc", color="#475569", margin="0.15,0.08"];
+  edge  [fontname="Helvetica", fontsize=10, color="#475569"];
+  R  [label="received"];
+  V  [label="validated\nschema · compile · PIT universe\nlook-ahead fuzz"];
+  E  [label="evaluated\none backtest process:\nWFO · DSR(N) · PBO · robustness\ncapacity · claim reproduced", fillcolor="#fef3c7", color="#a16207"];
+  S  [label="shadow\nsignals only, simulated fills\n≥ 5 sessions, 0 logic divergence", fillcolor="#dcfce7", color="#15803d"];
+  P  [label="paper\nSimulated + OpenAlgo Analyzer\n≥ 20 sessions & ≥ 30 round trips\nslippage ≤ 1.5× model · rejects < 2 %", fillcolor="#dcfce7", color="#15803d"];
+  A  [label="awaiting approval\nevidence bundle", fillcolor="#fee2e2", color="#b91c1c", penwidth=1.8];
+  LP [label="live pilot\ndry run 1 session, then\n≥ 20 sessions at minimum caps", fillcolor="#dbeafe", color="#1d4ed8"];
+  L  [label="live\ncaps ×2 max per 10 clean sessions", fillcolor="#bfdbfe", color="#1d4ed8"];
+  X  [label="rejected / failed", fillcolor="#f1f5f9", color="#94a3b8"];
+  PA [label="paused\n(auto-demotion / kill)", fillcolor="#fde68a", color="#b45309"];
+  RT [label="retired", fillcolor="#f1f5f9", color="#94a3b8"];
+  R -> V [label="auto"]; V -> E [label="auto"]; E -> S [label="auto, if a\nrisk slot is free"]; S -> P [label="auto"]; P -> A [label="auto"];
+  A -> LP [label="YOU: typed sign-off", color="#b91c1c", fontcolor="#b91c1c", penwidth=2];
+  LP -> L [label="semi-auto"];
+  V -> X [style=dashed]; E -> X [style=dashed];
+  {S P LP L} -> PA [style=dashed, color="#b45309"];
+  PA -> S [label="re-qualify", style=dotted, color="#b45309", fontcolor="#b45309"];
+  {PA X} -> RT [style=dotted];
+  note [shape=note, fillcolor="#fff7ed", color="#c2410c", fontsize=11, label="Auto-demotion triggers\n• daily loss stop · DD > 1.5× backtest max DD\n• any 'logic' parity divergence\n• slippage > 2× model over 20 fills · reject spike\n• repeated data-gate blocks · broker / Analyzer mode mismatch\n• kill switch (one, for every order path)"];
+  PA -> note [style=invis];
+  {rank=same; E; X;}
+  {rank=same; P; PA;}
+  {rank=same; L; RT; note;}
+}

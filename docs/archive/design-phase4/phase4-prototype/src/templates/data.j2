@@ -1,0 +1,91 @@
+{% extends "_layout.j2" %}
+{% set active = "data" %}
+{% block title %}Data Manager{% endblock %}
+{% block heading %}Data Manager{% endblock %}
+{% block content %}
+<div class="card-h flex flex-wrap items-center gap-2 p-2">
+  <label class="input input-sm w-64">{{ icon("search", "h-3.5 w-3.5 opacity-50") }}<input placeholder="Filter instruments"></label>
+  <select class="select select-sm w-40"><option>All watchlists</option></select>
+  <select class="select select-sm w-36"><option>All exchanges</option></select>
+  <select class="select select-sm w-44"><option>Any status</option><option>Has gaps</option><option>Stale (&gt; 1 session)</option><option>Failing</option><option>No data</option></select>
+  <div class="ml-auto flex items-center gap-3 text-xs text-base-content/60">
+    <span><b class="num text-base-content">48</b> instruments</span><span><b class="num text-base-content">144</b> series</span><span><b class="num text-base-content">12.4 M</b> bars</span>
+    <span class="chip chip-warn">5 with gaps</span><span class="chip chip-idle">4 stale</span>
+  </div>
+</div>
+
+<div class="mt-3 flex items-center gap-3 rounded-box border border-primary/30 bg-primary/5 px-3 py-2 text-sm">
+  <b>3 selected</b>
+  <button class="btn btn-xs">{{ icon("refresh-cw", "h-3 w-3") }} Update now</button>
+  <button class="btn btn-xs">{{ icon("history", "h-3 w-3") }} Backfill…</button>
+  <button class="btn btn-xs">{{ icon("wrench", "h-3 w-3") }} Repair gaps</button>
+  <button class="btn btn-xs btn-ghost text-error">{{ icon("trash-2", "h-3 w-3") }} Delete series…</button>
+  <span class="ml-auto text-xs text-base-content/55">Every action creates a job you can follow on the Jobs page.</span>
+</div>
+
+<section class="card-h mt-3 overflow-hidden">
+  <table class="w-full">
+    <thead class="bg-base-200/60"><tr>
+      <th class="th w-8"><input type="checkbox" class="checkbox checkbox-xs"></th>
+      <th class="th">Instrument</th>
+      {% for iv in ["1m", "5m", "15m", "1h", "D"] %}<th class="th normal-case">{{ iv }}</th>{% endfor %}
+      <th class="th">Last sync</th>
+    </tr></thead>
+    <tbody>
+    {% set c_ok = "chip-ok" %}{% set c_warn = "chip-warn" %}{% set c_err = "chip-err" %}{% set c_none = "chip-idle" %}
+    {% for sel, sym, ex, name, cells, sync in [
+        (True, "SBIN", "NSE", "State Bank of India", [(c_ok, "90 d"), (c_warn, "1 gap"), (c_none, "-"), (c_ok, "2 y"), (c_ok, "10 y")], "15:46"),
+        (True, "RELIANCE", "NSE", "Reliance Industries", [(c_ok, "90 d"), (c_ok, "1 y"), (c_none, "-"), (c_ok, "2 y"), (c_ok, "10 y")], "15:46"),
+        (False, "TCS", "NSE", "Tata Consultancy", [(c_none, "-"), (c_ok, "1 y"), (c_none, "-"), (c_none, "-"), (c_ok, "10 y")], "15:46"),
+        (False, "TCS", "BSE", "Tata Consultancy", [(c_none, "-"), (c_none, "-"), (c_none, "-"), (c_none, "-"), (c_ok, "5 y")], "15:46"),
+        (False, "NIFTY", "NSE_INDEX", "Nifty 50", [(c_ok, "90 d"), (c_ok, "1 y"), (c_ok, "2 y"), (c_ok, "5 y"), (c_ok, "10 y")], "15:46"),
+        (True, "M&M", "NSE", "Mahindra & Mahindra", [(c_none, "-"), (c_warn, "3 gaps"), (c_none, "-"), (c_none, "-"), (c_ok, "10 y")], "15:46"),
+        (False, "BAJAJ-AUTO", "NSE", "Bajaj Auto", [(c_none, "-"), (c_none, "-"), (c_none, "-"), (c_none, "-"), (c_warn, "stale 3 d")], "25 Mar"),
+        (False, "CRUDEOIL", "MCX", "Crude Oil (continuous)", [(c_none, "-"), (c_ok, "90 d"), (c_ok, "1 y"), (c_none, "-"), (c_ok, "5 y")], "27 Mar 23:41"),
+        (False, "XYZLTD", "NSE", "-", [(c_none, "-"), (c_none, "-"), (c_none, "-"), (c_none, "-"), (c_err, "failing")], "never"),
+        (False, "NEWLISTCO", "NSE", "New Listing Co", [(c_none, "-"), (c_none, "-"), (c_none, "-"), (c_none, "-"), (c_ok, "since 03 Mar")], "15:46")] %}
+      <tr class="{{ 'bg-primary/5' if sel }} hover:bg-base-200/60">
+        <td class="td"><input type="checkbox" class="checkbox checkbox-xs" {{ "checked" if sel }}></td>
+        <td class="td"><div class="font-medium">{{ sym }} <span class="text-xs font-normal text-base-content/50">{{ ex }}</span></div><div class="text-[11px] text-base-content/50">{{ name }}</div></td>
+        {% for cls, label in cells %}
+          <td class="td">{% if cls == "chip-idle" %}<button class="btn btn-ghost btn-xs text-base-content/40">{{ icon("plus", "h-3 w-3") }}</button>{% else %}<span class="chip {{ cls }}">{{ label }}</span>{% endif %}</td>
+        {% endfor %}
+        <td class="td num text-xs text-base-content/60">{{ sync }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="card-h mt-3 p-4">
+  <div class="mb-3 flex items-center justify-between">
+    <h2 class="font-semibold">SBIN · NSE · 5m <span class="ml-2 text-xs font-normal text-base-content/55">sessions stored vs NSE calendar</span></h2>
+    <div class="flex gap-2"><button class="btn btn-xs">{{ icon("wrench", "h-3 w-3") }} Repair 1 session</button><a class="btn btn-xs" href="charts.html">{{ icon("chart-candlestick", "h-3 w-3") }} Open chart</a></div>
+  </div>
+  <div class="grid grid-cols-3 gap-6">
+    {% for month, offset, days in [("January 2025", 2, 31), ("February 2025", 5, 28), ("March 2025", 5, 31)] %}
+    <div>
+      <div class="mb-1 text-xs font-medium text-base-content/60">{{ month }}</div>
+      <div class="grid grid-cols-7 gap-1 text-center text-[10px] text-base-content/45">
+        {% for d in ["M","T","W","T","F","S","S"] %}<div>{{ d }}</div>{% endfor %}
+        {% for _ in range(offset) %}<div></div>{% endfor %}
+        {% for day in range(1, days + 1) %}
+          {% set wd = (offset + day - 1) % 7 %}
+          {% set is_weekend = wd >= 5 %}
+          {% set holiday = (month == "February 2025" and day == 26) or (month == "March 2025" and day in [14, 31]) %}
+          {% set missing = month == "March 2025" and day == 26 %}
+          {% set before = month == "January 2025" and day < 27 %}
+          <div class="rounded py-1 {{ 'bg-error text-error-content' if missing else ('bg-base-200' if (is_weekend or holiday) else ('bg-base-300/40' if before else 'bg-primary/70 text-primary-content')) }}">{{ day }}</div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="mt-3 flex gap-4 text-[11px] text-base-content/55">
+    <span><span class="inline-block h-2 w-2 rounded-sm bg-primary/70"></span> complete session (75 bars)</span>
+    <span><span class="inline-block h-2 w-2 rounded-sm bg-error"></span> missing / short session</span>
+    <span><span class="inline-block h-2 w-2 rounded-sm bg-base-200 ring-1 ring-base-300"></span> weekend / holiday</span>
+    <span><span class="inline-block h-2 w-2 rounded-sm bg-base-300/60"></span> before first stored bar</span>
+  </div>
+</section>
+{% endblock %}

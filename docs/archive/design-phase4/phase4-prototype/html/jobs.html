@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en" data-theme="historify-light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jobs · Historify</title>
+  <link rel="stylesheet" href="assets/app.css">
+  <script defer src="assets/lightweight-charts.standalone.production.js"></script>
+  
+  <script defer src="assets/proto.js"></script>
+  <script defer src="assets/alpine-csp.min.js"></script>
+</head>
+<body class="min-h-screen bg-base-200 font-sans text-base-content antialiased" data-editor="closed">
+<div class="flex min-h-screen">
+  
+  <aside class="w-60 shrink-0 border-r border-base-300 bg-base-100">
+   <div class="sticky top-0 flex h-screen flex-col">
+    <div class="flex h-14 items-center gap-2 border-b border-base-300 px-4">
+      <div class="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-content"><svg class="h-5 w-5" aria-hidden="true" class="lucide lucide-chart-candlestick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 5v4" /> <rect width="4" height="6" x="7" y="9" rx="1" /> <path d="M9 15v2" /> <path d="M17 3v2" /> <rect width="4" height="8" x="15" y="5" rx="1" /> <path d="M17 13v3" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> </svg></div>
+      <div class="leading-tight">
+        <div class="font-semibold">Historify</div>
+        <div class="text-[11px] text-base-content/50">market data manager</div>
+      </div>
+    </div>
+    <nav class="flex-1 overflow-y-auto px-2 pb-4">
+      
+      
+        <div class="nav-group">Monitor</div>
+        
+          <a href="dashboard.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-layout-dashboard" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="7" height="9" x="3" y="3" rx="1" /> <rect width="7" height="5" x="14" y="3" rx="1" /> <rect width="7" height="9" x="14" y="12" rx="1" /> <rect width="7" height="5" x="3" y="16" rx="1" /> </svg><span class="flex-1">Dashboard</span>
+            
+          </a>
+        
+          <a href="watchlists.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-list" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 5h.01" /> <path d="M3 12h.01" /> <path d="M3 19h.01" /> <path d="M8 5h13" /> <path d="M8 12h13" /> <path d="M8 19h13" /> </svg><span class="flex-1">Watchlists</span>
+            
+          </a>
+        
+          <a href="charts.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-chart-candlestick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 5v4" /> <rect width="4" height="6" x="7" y="9" rx="1" /> <path d="M9 15v2" /> <path d="M17 3v2" /> <rect width="4" height="8" x="15" y="5" rx="1" /> <path d="M17 13v3" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> </svg><span class="flex-1">Charts</span>
+            
+          </a>
+        
+      
+        <div class="nav-group">Data</div>
+        
+          <a href="data.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-database" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /> </svg><span class="flex-1">Data Manager</span>
+            
+          </a>
+        
+          <a href="jobs.html" class="nav-item active">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-list-checks" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M13 5h8" /> <path d="M13 12h8" /> <path d="M13 19h8" /> <path d="m3 17 2 2 4-4" /> <path d="m3 7 2 2 4-4" /> </svg><span class="flex-1">Jobs</span>
+            <span class="chip chip-info">1</span>
+          </a>
+        
+          <a href="import.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-file-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M12 12v6" /> <path d="m15 15-3-3-3 3" /> </svg><span class="flex-1">Import</span>
+            
+          </a>
+        
+          <a href="export.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-file-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M12 18v-6" /> <path d="m9 15 3 3 3-3" /> </svg><span class="flex-1">Export</span>
+            
+          </a>
+        
+      
+        <div class="nav-group">Automation</div>
+        
+          <a href="scheduler.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-calendar-clock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M16 14v2.2l1.6 1" /> <path d="M16 2v3" /> <path d="M21 7.338V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h2.338" /> <path d="M3 9h5.859" /> <path d="M8 2v3" /> <circle cx="16" cy="16" r="6" /> </svg><span class="flex-1">Scheduler</span>
+            
+          </a>
+        
+      
+        <div class="nav-group">System</div>
+        
+          <a href="settings.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-settings" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /> </svg><span class="flex-1">Settings</span>
+            
+          </a>
+        
+      
+    </nav>
+    <div class="border-t border-base-300 p-3 text-[11px] text-base-content/50">
+      <div class="flex justify-between"><span>v2.0.0-dev</span><span>Python 3.14</span></div>
+      <div class="mt-1">Bars: DuckDB · Meta: SQLite</div>
+    </div>
+   </div>
+  </aside>
+
+  
+  <div class="flex min-w-0 flex-1 flex-col">
+    <header class="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-base-300 bg-base-100/95 px-5 backdrop-blur">
+      <div class="min-w-0">
+        <h1 class="truncate text-[15px] font-semibold">Jobs</h1>
+      </div>
+      <button class="btn btn-sm ml-4 w-80 justify-start gap-2 border-base-300 bg-base-200 font-normal text-base-content/60 shadow-none">
+        <svg class="icon" aria-hidden="true" class="lucide lucide-search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /> </svg> Search symbols, pages, actions…
+        <kbd class="kbd kbd-xs ml-auto">Ctrl K</kbd>
+      </button>
+      <div class="ml-auto flex items-center gap-2">
+        
+          <span class="chip chip-ok py-1" title="OpenAlgo 127.0.0.1:5000 → Angel One">
+            <span class="h-1.5 w-1.5 rounded-full bg-success"></span> OpenAlgo · Angel One
+          </span>
+        
+        <div class="flex items-center gap-2 rounded-lg border border-base-300 px-2.5 py-1" title="History API budget used this hour (80% of Angel One's 5,000/h)">
+          <svg class="h-3.5 w-3.5 text-base-content/60" aria-hidden="true" class="lucide lucide-gauge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m12 14 4-4" /> <path d="M3.34 19a10 10 0 1 1 17.32 0" /> </svg>
+          <div class="w-20">
+            <div class="flex justify-between text-[10px] text-base-content/60"><span>API/h</span><span class="num">312/4k</span></div>
+            <progress class="progress progress-primary h-1 w-full" value="312" max="4000"></progress>
+          </div>
+        </div>
+        <a href="jobs.html" class="flex items-center gap-2 rounded-lg border border-base-300 px-2.5 py-1 text-xs hover:bg-base-200">
+          <span class="loading loading-spinner loading-xs text-primary"></span> 1 job · <span class="num">62%</span>
+        </a>
+        <button class="btn btn-ghost btn-sm btn-square" aria-label="Toggle theme"><svg class="icon" aria-hidden="true" class="lucide lucide-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /> </svg></button>
+      </div>
+    </header>
+
+    
+
+    <main class="flex-1 p-5">
+      
+<div class="mb-4 flex items-center justify-between">
+  <div role="tablist" class="tabs tabs-border">
+    <a role="tab" class="tab tab-active">Active <span class="badge badge-sm badge-primary ml-2">1</span></a>
+    <a role="tab" class="tab">Queued <span class="badge badge-sm ml-2">1</span></a>
+    <a role="tab" class="tab">History</a>
+    <a role="tab" class="tab">Failed tasks <span class="badge badge-sm badge-error ml-2">2</span></a>
+  </div>
+  <button class="btn btn-primary btn-sm"><svg class="icon" aria-hidden="true" class="lucide lucide-download" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /> </svg> New download</button>
+</div>
+
+<section class="card-h p-4">
+  <div class="flex items-start gap-3">
+    <span class="loading loading-spinner loading-md mt-1 text-primary"></span>
+    <div class="flex-1">
+      <div class="flex items-center gap-2"><h2 class="text-base font-semibold">Post-close update</h2><span class="chip chip-info">schedule</span><span class="chip chip-idle">priority: scheduled</span></div>
+      <div class="text-xs text-base-content/60">Job <span class="num">#a41f</span> · started 15:45:02 IST by Scheduler · all watchlists · 48 instruments × D, 5m, 1m · incremental</div>
+    </div>
+    <button class="btn btn-sm"><svg class="icon" aria-hidden="true" class="lucide lucide-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect x="14" y="3" width="5" height="18" rx="1" /> <rect x="5" y="3" width="5" height="18" rx="1" /> </svg> Pause</button>
+    <button class="btn btn-sm btn-ghost text-error"><svg class="icon" aria-hidden="true" class="lucide lucide-square" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="18" height="18" x="3" y="3" rx="2" /> </svg> Cancel</button>
+  </div>
+  <progress class="progress progress-primary mt-4 w-full" value="62" max="100"></progress>
+  <div class="mt-3 grid grid-cols-6 gap-3">
+    
+    <div class="rounded-lg bg-base-200/70 p-2.5"><div class="kpi-label">Tasks</div><div class="num mt-0.5 text-lg font-semibold">89 / 144</div><div class="text-[11px] text-base-content/50">62%</div></div>
+    
+    <div class="rounded-lg bg-base-200/70 p-2.5"><div class="kpi-label">Rows written</div><div class="num mt-0.5 text-lg font-semibold">1.21 M</div><div class="text-[11px] text-base-content/50">single writer · 1 txn / task</div></div>
+    
+    <div class="rounded-lg bg-base-200/70 p-2.5"><div class="kpi-label">Request rate</div><div class="num mt-0.5 text-lg font-semibold">2.4 /s</div><div class="text-[11px] text-base-content/50">limit 3/s · 180/min · 5000/h × 80%</div></div>
+    
+    <div class="rounded-lg bg-base-200/70 p-2.5"><div class="kpi-label">Budget this hour</div><div class="num mt-0.5 text-lg font-semibold">312 / 4,000</div><div class="text-[11px] text-base-content/50">resets on rolling window</div></div>
+    
+    <div class="rounded-lg bg-base-200/70 p-2.5"><div class="kpi-label">ETA</div><div class="num mt-0.5 text-lg font-semibold">~3 min</div><div class="text-[11px] text-base-content/50">55 requests left</div></div>
+    
+    <div class="rounded-lg bg-base-200/70 p-2.5"><div class="kpi-label">Retries</div><div class="num mt-0.5 text-lg font-semibold">3</div><div class="text-[11px] text-base-content/50">all transient (timeout / 5xx)</div></div>
+    
+  </div>
+
+  <div class="mt-4 overflow-hidden rounded-lg border border-base-300">
+    <table class="w-full">
+      <thead class="bg-base-200/60"><tr><th class="th">Instrument</th><th class="th">Interval</th><th class="th">Chunk (IST dates)</th><th class="th">Attempts</th><th class="th text-right">Rows</th><th class="th">Status</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="td font-medium">SBIN · NSE</td><td class="td num text-xs">D</td><td class="td num text-xs">26 Mar → 28 Mar</td><td class="td num text-xs">1</td><td class="td num text-right text-xs">3</td><td class="td"><span class="chip chip-ok">succeeded</span></td></tr>
+      
+        <tr><td class="td font-medium">SBIN · NSE</td><td class="td num text-xs">5m</td><td class="td num text-xs">27 Mar → 28 Mar</td><td class="td num text-xs">1</td><td class="td num text-right text-xs">150</td><td class="td"><span class="chip chip-ok">succeeded (re-fetched last session)</span></td></tr>
+      
+        <tr><td class="td font-medium">RELIANCE · NSE</td><td class="td num text-xs">5m</td><td class="td num text-xs">27 Mar → 28 Mar</td><td class="td num text-xs">2</td><td class="td num text-right text-xs">-</td><td class="td"><span class="chip chip-warn">retry in 4 s · timed out after 60 s</span></td></tr>
+      
+        <tr><td class="td font-medium">NIFTY · NSE_INDEX</td><td class="td num text-xs">1m</td><td class="td num text-xs">27 Mar → 28 Mar</td><td class="td num text-xs">1</td><td class="td num text-right text-xs">-</td><td class="td"><span class="chip chip-info">running</span></td></tr>
+      
+        <tr><td class="td font-medium">TCS · BSE</td><td class="td num text-xs">D</td><td class="td num text-xs">26 Mar → 28 Mar</td><td class="td num text-xs">1</td><td class="td num text-right text-xs">3</td><td class="td"><span class="chip chip-ok">succeeded</span></td></tr>
+      
+        <tr><td class="td font-medium">NEWLISTCO · NSE</td><td class="td num text-xs">D</td><td class="td num text-xs">26 Mar → 28 Mar</td><td class="td num text-xs">1</td><td class="td num text-right text-xs">0</td><td class="td"><span class="chip chip-idle">empty · no data is expected</span></td></tr>
+      
+        <tr><td class="td font-medium">M&amp;M · NSE</td><td class="td num text-xs">1m</td><td class="td num text-xs">27 Mar → 28 Mar</td><td class="td num text-xs">0</td><td class="td num text-right text-xs">-</td><td class="td"><span class="chip chip-idle">queued</span></td></tr>
+      
+      </tbody>
+    </table>
+    <div class="border-t border-base-300 px-3 py-2 text-xs text-base-content/55">Showing 7 of 144 tasks · filter: all · <a class="link">only problems</a></div>
+  </div>
+</section>
+
+<div class="mt-4 grid grid-cols-2 gap-4">
+  <section class="card-h p-4">
+    <h2 class="mb-3 font-semibold">Queued</h2>
+    <div class="flex items-center gap-3 rounded-lg border border-base-300 p-3 text-sm">
+      <svg class="h-5 w-5 text-base-content/50" aria-hidden="true" class="lucide lucide-clock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M12 6v6l4 2" /> </svg>
+      <div class="flex-1"><div class="font-medium">Backfill 1m · 5 instruments · 1 year</div><div class="text-xs text-base-content/55">manual · priority: backfill · 65 requests planned (13 chunks × 5; 30-day cap)</div></div>
+      <span class="text-xs text-base-content/55">starts after #a41f</span>
+    </div>
+    <p class="mt-3 text-xs text-base-content/55">Priority order: interactive (chart follow, "download now") → scheduled → backfill/repair. Long backfills yield to scheduled runs between tasks.</p>
+  </section>
+  <section class="card-h p-4">
+    <div class="mb-3 flex items-center justify-between"><h2 class="font-semibold">Failed tasks</h2><button class="btn btn-xs"><svg class="h-3 w-3" aria-hidden="true" class="lucide lucide-rotate-ccw" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /> <path d="M3 3v5h5" /> </svg> Retry failed</button></div>
+    <ul class="space-y-2 text-sm">
+      <li class="rounded-lg border border-base-300 p-2.5"><div class="flex justify-between"><b>XYZLTD · NSE · D</b><span class="chip chip-err">permanent</span></div><div class="text-xs text-base-content/60">Symbol XYZLTD not found (check the symbol on the instrument master). Not retried.</div></li>
+      <li class="rounded-lg border border-base-300 p-2.5"><div class="flex justify-between"><b>GOLDM · MCX · 15m</b><span class="chip chip-warn">transient × 4</span></div><div class="text-xs text-base-content/60">HTTP 502 from OpenAlgo after 4 attempts (backoff 1 → 8 s). Safe to retry.</div></li>
+    </ul>
+  </section>
+</div>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>

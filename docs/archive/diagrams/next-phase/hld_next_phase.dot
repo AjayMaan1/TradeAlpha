@@ -1,0 +1,82 @@
+digraph HLD {
+  graph [rankdir=TB, fontname="Helvetica", fontsize=24, labelloc=t, pad=0.4, nodesep=0.3, ranksep=0.7, newrank=true,
+         compound=true,
+         label="Next phase HLD - Idea intake -> evaluation -> paper trading -> trade data (Phase 2 + Phase 3 remainder)\nbuilt on the unified platform (U0-U5 + gaps closed)\n "];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=12, penwidth=1.4];
+  edge [fontname="Helvetica", fontsize=10, color="#374151", penwidth=1.2];
+
+  /* ------------------------------------------------------------------ external */
+  subgraph cluster_ext {
+    label="Idea generation engine (external)"; fontsize=16; style="rounded,dashed"; color="#6b7280";
+    gen   [label="Idea generator\n(emits IdeaSpec v1:\nIR strategy + params + universe\n+ claimed metrics + trials_tested\n+ source.data_end, signed)", fillcolor="#f3f4f6", color="#6b7280"];
+    anal  [label="Analytics / research\n(consumes trade data,\nfeeds the next ideas)", fillcolor="#f3f4f6", color="#6b7280"];
+  }
+
+  /* ------------------------------------------------------------------ intake */
+  subgraph cluster_intake {
+    label="1. Intake (NEW, Phase 2.1-2.2)"; fontsize=16; style="rounded"; color="#1d4ed8";
+    api   [label="POST /api/v2/ideas\nscoped tokens (ideas:write,\ntrades:read, admin) · rate limits\nidempotent (IR sha dedupe)", fillcolor="#dbeafe", color="#1d4ed8"];
+    reg   [label="ideas / idea_versions\n(signature verified, canonical form,\nlineage parent -> child)", fillcolor="#dbeafe", color="#1d4ed8"];
+  }
+
+  /* ------------------------------------------------------------------ validation + evaluation */
+  subgraph cluster_eval {
+    label="2. Validation + evaluation (NEW jobs on the BUILT backtest process, Phase 2.3-2.4)"; fontsize=16; style="rounded"; color="#1d4ed8";
+    val   [label="Validation job\nschema · compile (E-CAUSAL)\nlook-ahead fuzz · data catalogue ($extras)\nembargo: data_end < hold-out", fillcolor="#dbeafe", color="#1d4ed8"];
+    ev    [label="Evaluation job\nWFO · sweep · DSR (N = trials_tested + registry)\nPBO · robustness (costs x1.5, +1 bar, neighbours)\ncapacity (participation) · claimed vs reproduced", fillcolor="#dbeafe", color="#1d4ed8"];
+    bundle[label="Evidence bundle\n(hashes of data, IR, ExecSpec, costs;\nmetrics; gate report)", fillcolor="#dbeafe", color="#1d4ed8"];
+    bt    [label="ONE backtest process (BUILT)\nsnapshot v2 · hbt-core portfolio mode\n(shared cash, max positions) · ADR-001 defaults\ncost tables · PIT extras · one trial registry", fillcolor="#bbf7d0", color="#15803d"];
+  }
+
+  /* ------------------------------------------------------------------ lifecycle */
+  subgraph cluster_life {
+    label="3. Lifecycle (BUILT) + orchestrator (NEW, Phase 3.5)"; fontsize=16; style="rounded"; color="#15803d";
+    orch  [label="Lifecycle orchestrator (NEW)\nauto draft deployment from a passed bundle\nauto promote on evidence · auto demote\n(parity logic, loss stop, drawdown)", fillcolor="#dbeafe", color="#1d4ed8"];
+    dep   [label="Deployments (BUILT)\ndraft -> signals -> shadow -> paper -> eligible_live\ngates: P3 evidence · host journal · drills · sign-off\npinned IR version · audit", fillcolor="#bbf7d0", color="#15803d"];
+    ui    [label="Ideas UI (NEW)\ninbox · lifecycle · evidence\npaper P&L vs backtest band", fillcolor="#dbeafe", color="#1d4ed8"];
+  }
+
+  /* ------------------------------------------------------------------ runtime + execution */
+  subgraph cluster_exec {
+    label="4. Runtime + Execution Gateway (BUILT core, NEW risk + order types, Phase 3.2-3.4)"; fontsize=16; style="rounded"; color="#15803d";
+    feed  [label="ONE follow service (BUILT)\nFeedService downloads (the record)\nWebSocket stream wakes it at bar close", fillcolor="#bbf7d0", color="#15803d"];
+    host  [label="hbt per-bar host (BUILT)\nas-seen journal · PIT extras live\nnightly parity -> P4 classes", fillcolor="#bbf7d0", color="#15803d"];
+    risk  [label="Portfolio risk v1 (NEW)\ncapital slots across ideas · symbol / sector /\ngross caps · global daily loss stop", fillcolor="#dbeafe", color="#1d4ed8"];
+    gw    [label="Execution Gateway (BUILT core)\nOMS journal-first, no blind resend\nONE guardrail set · ONE orders table\nresting broker stop · ONE kill switch\n+ stop-limit / IOC / cancel-replace (NEW)", fillcolor="#bbf7d0", color="#15803d"];
+    sim   [label="Simulated broker\n(signals / shadow)", fillcolor="#bbf7d0", color="#15803d"];
+    oa    [label="OpenAlgo Analyzer\n(paper)", shape=cylinder, fillcolor="#bbf7d0", color="#15803d"];
+    live  [label="Live adapter (PHASE 4)\nstep_bar · WS decisions · trader process\napproval workflow · stepped caps", fillcolor="#e5e7eb", color="#6b7280"];
+  }
+
+  /* ------------------------------------------------------------------ trade data out */
+  subgraph cluster_out {
+    label="5. Trade data out (NEW, Phase 2.5)"; fontsize=16; style="rounded"; color="#1d4ed8";
+    outbox[label="TradeEvent v1 outbox\n(idea/version, signal, order, fill, position,\nP&L, parity, lifecycle - written in the\nsame transaction as the OMS / lifecycle row)", fillcolor="#dbeafe", color="#1d4ed8"];
+    relay [label="Relay: HMAC webhook (retries)\npull API with cursor\nnightly Parquet export", fillcolor="#dbeafe", color="#1d4ed8"];
+  }
+  bus [label="ONE notification bus (BUILT)\nTelegram / OpenAlgo relay\nkill switch · demotions · failures", fillcolor="#bbf7d0", color="#15803d"];
+
+  gen -> api [label="IdeaSpec v1 (signed)", color="#1d4ed8"];
+  api -> reg;
+  reg -> val [label="job"];
+  val -> ev [label="valid"];
+  ev -> bt [label="runs", dir=both, style=dashed];
+  ev -> bundle;
+  bundle -> orch [label="passed"];
+  orch -> dep [label="create / promote / demote"];
+  dep -> ui [style=dashed, dir=none];
+  dep -> host [label="stage -> session\n(route per stage)"];
+  feed -> host [label="final bars", style=dashed];
+  host -> risk [label="intents"];
+  risk -> gw;
+  gw -> sim; gw -> oa; gw -> live [style=dotted];
+  gw -> outbox [label="orders / fills"]; host -> outbox [label="signals / decisions"]; dep -> outbox [label="lifecycle"];
+  outbox -> relay;
+  relay -> anal [label="TradeEvents\n(exactly once,\nconsumer-side)", color="#1d4ed8"];
+  anal -> gen [style=dashed, label="new ideas"];
+  orch -> bus [style=dashed]; gw -> bus [style=dashed];
+
+  legend [shape=plaintext, style="", label=<<TABLE BORDER="0" CELLSPACING="4"><TR>
+    <TD BGCOLOR="#bbf7d0">  built (unified platform)  </TD><TD BGCOLOR="#dbeafe">  NEW in the next phase  </TD>
+    <TD BGCOLOR="#e5e7eb">  later (Phase 4 live)  </TD><TD BGCOLOR="#f3f4f6">  external  </TD></TR></TABLE>>];
+}

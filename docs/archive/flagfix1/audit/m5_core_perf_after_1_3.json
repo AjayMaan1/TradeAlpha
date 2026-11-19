@@ -1,0 +1,13 @@
+{
+ "single_run_39k_bars_ms": 2.87,
+ "fills_per_run": 1700,
+ "batch_sets": 256,
+ "batch_s": 0.362,
+ "batch_backtests_per_s": 707,
+ "cold_start_s": 0.772,
+ "wheel_kb": null,
+ "arrow_1m_one_symbol_ms": 35.2,
+ "arrow_1m_one_symbol_bars": 195750,
+ "arrow_1m_50_symbols_s": 6.6,
+ "arrow_1m_50_symbols_bars": 9787500
+}

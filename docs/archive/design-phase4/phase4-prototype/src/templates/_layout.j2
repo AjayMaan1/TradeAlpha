@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" data-theme="{{ theme }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock %} · Historify</title>
+  <link rel="stylesheet" href="assets/app.css">
+  <script defer src="assets/lightweight-charts.standalone.production.js"></script>
+  {% block data_scripts %}{% endblock %}
+  <script defer src="assets/proto.js"></script>
+  <script defer src="assets/alpine-csp.min.js"></script>
+</head>
+<body class="min-h-screen bg-base-200 font-sans text-base-content antialiased" data-editor="{{ 'open' if editor_open else 'closed' }}">
+<div class="flex min-h-screen">
+  {# ------------------------------------------------------------------ sidebar #}
+  <aside class="w-60 shrink-0 border-r border-base-300 bg-base-100">
+   <div class="sticky top-0 flex h-screen flex-col">
+    <div class="flex h-14 items-center gap-2 border-b border-base-300 px-4">
+      <div class="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-content">{{ icon("chart-candlestick", "h-5 w-5") }}</div>
+      <div class="leading-tight">
+        <div class="font-semibold">Historify</div>
+        <div class="text-[11px] text-base-content/50">market data manager</div>
+      </div>
+    </div>
+    <nav class="flex-1 overflow-y-auto px-2 pb-4">
+      {% set nav = [
+        ("Monitor", [("dashboard", "Dashboard", "layout-dashboard", None), ("watchlists", "Watchlists", "list", None), ("charts", "Charts", "chart-candlestick", None)]),
+        ("Data", [("data", "Data Manager", "database", None), ("jobs", "Jobs", "list-checks", "1"), ("import", "Import", "file-up", None), ("export", "Export", "file-down", None)]),
+        ("Automation", [("scheduler", "Scheduler", "calendar-clock", None)]),
+        ("System", [("settings", "Settings", "settings", None)]),
+      ] %}
+      {% for group, items in nav %}
+        <div class="nav-group">{{ group }}</div>
+        {% for key, label, ic, badge in items %}
+          <a href="{{ key }}.html" class="nav-item {{ 'active' if active == key }}">
+            {{ icon(ic) }}<span class="flex-1">{{ label }}</span>
+            {% if badge %}<span class="chip chip-info">{{ badge }}</span>{% endif %}
+          </a>
+        {% endfor %}
+      {% endfor %}
+    </nav>
+    <div class="border-t border-base-300 p-3 text-[11px] text-base-content/50">
+      <div class="flex justify-between"><span>v2.0.0-dev</span><span>Python 3.14</span></div>
+      <div class="mt-1">Bars: DuckDB · Meta: SQLite</div>
+    </div>
+   </div>
+  </aside>
+
+  {# ------------------------------------------------------------------ main column #}
+  <div class="flex min-w-0 flex-1 flex-col">
+    <header class="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-base-300 bg-base-100/95 px-5 backdrop-blur">
+      <div class="min-w-0">
+        <h1 class="truncate text-[15px] font-semibold">{% block heading %}{% endblock %}</h1>
+      </div>
+      <button class="btn btn-sm ml-4 w-80 justify-start gap-2 border-base-300 bg-base-200 font-normal text-base-content/60 shadow-none">
+        {{ icon("search") }} Search symbols, pages, actions…
+        <kbd class="kbd kbd-xs ml-auto">Ctrl K</kbd>
+      </button>
+      <div class="ml-auto flex items-center gap-2">
+        {% if auth_expired %}
+          <span class="chip chip-err py-1">{{ icon("link-2-off", "h-3.5 w-3.5") }} Broker session expired</span>
+        {% else %}
+          <span class="chip chip-ok py-1" title="OpenAlgo 127.0.0.1:5000 → Angel One">
+            <span class="h-1.5 w-1.5 rounded-full bg-success"></span> OpenAlgo · Angel One
+          </span>
+        {% endif %}
+        <div class="flex items-center gap-2 rounded-lg border border-base-300 px-2.5 py-1" title="History API budget used this hour (80% of Angel One's 5,000/h)">
+          {{ icon("gauge", "h-3.5 w-3.5 text-base-content/60") }}
+          <div class="w-20">
+            <div class="flex justify-between text-[10px] text-base-content/60"><span>API/h</span><span class="num">312/4k</span></div>
+            <progress class="progress progress-primary h-1 w-full" value="312" max="4000"></progress>
+          </div>
+        </div>
+        <a href="jobs.html" class="flex items-center gap-2 rounded-lg border border-base-300 px-2.5 py-1 text-xs hover:bg-base-200">
+          {% if auth_expired %}{{ icon("pause", "h-3.5 w-3.5 text-error") }} 1 job paused{% else %}<span class="loading loading-spinner loading-xs text-primary"></span> 1 job · <span class="num">62%</span>{% endif %}
+        </a>
+        <button class="btn btn-ghost btn-sm btn-square" aria-label="Toggle theme">{{ icon("moon") if theme == "historify-light" else icon("sun") }}</button>
+      </div>
+    </header>
+
+    {% if auth_expired %}
+    <div class="flex items-center gap-3 border-b border-error/30 bg-error/10 px-5 py-2.5 text-sm">
+      {{ icon("triangle-alert", "h-4 w-4 text-error") }}
+      <div class="flex-1"><b>Angel One session expired.</b> Jobs are paused (<span class="num">1</span> job, <span class="num">96</span> tasks waiting). Log in to OpenAlgo with your TOTP, then resume. No broker calls are made meanwhile.</div>
+      <a class="btn btn-sm btn-ghost" href="settings.html">Open settings</a>
+      <button class="btn btn-sm btn-error">{{ icon("refresh-cw") }} I've logged in - resume</button>
+    </div>
+    {% endif %}
+
+    <main class="flex-1 p-5">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</div>
+{% block drawer %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,1 @@
+{"backtests": 400, "cold_first_call_s": 23.7, "warm_simulation_s": 13.62, "warm_metrics_s": 18.73, "warm_per_backtest_ms": 80.9, "peak_rss_mb": 3218}

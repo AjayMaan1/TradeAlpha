@@ -1,0 +1,61 @@
+# Statutory and exchange charges (NSE). IDENTICAL for every broker (pass-through), so they do not change the broker
+# ranking, but they dominate total cost, and the backtest engine must apply them by trade date.
+# Fractions of traded value (options: of premium). Assistant knowledge ("H" unless noted) - VERIFY against the NSE
+# circulars, and check for changes after the knowledge cut-off (e.g. Union Budget changes to STT).
+# GST 18 % applies to brokerage + exchange transaction charge + SEBI fee.
+
+gst = 0.18
+sebi_fee = 0.000001            # Rs 10 per crore, both sides
+
+[[EQ_DELIVERY]]
+effective_from = "2015-01-01"
+stt_buy = 0.001
+stt_sell = 0.001
+stamp_buy = 0.00015            # uniform stamp duty since 1 Jul 2020 (earlier: state-wise)
+exch_txn = 0.0000322
+[[EQ_DELIVERY]]
+effective_from = "2024-10-01"
+stt_buy = 0.001
+stt_sell = 0.001
+stamp_buy = 0.00015
+exch_txn = 0.0000297
+
+[[EQ_INTRADAY]]
+effective_from = "2015-01-01"
+stt_buy = 0.0
+stt_sell = 0.00025
+stamp_buy = 0.00003
+exch_txn = 0.0000322
+[[EQ_INTRADAY]]
+effective_from = "2024-10-01"
+stt_buy = 0.0
+stt_sell = 0.00025
+stamp_buy = 0.00003
+exch_txn = 0.0000297
+
+[[FUTURES]]
+effective_from = "2015-01-01"
+stt_buy = 0.0
+stt_sell = 0.000125
+stamp_buy = 0.00002
+exch_txn = 0.0000188           # M
+[[FUTURES]]
+effective_from = "2024-10-01"
+stt_buy = 0.0
+stt_sell = 0.0002
+stamp_buy = 0.00002
+exch_txn = 0.0000173
+
+[[OPTIONS]]
+effective_from = "2015-01-01"
+stt_buy = 0.0
+stt_sell = 0.000625            # of premium
+stamp_buy = 0.00003
+exch_txn = 0.000495            # M
+[[OPTIONS]]
+effective_from = "2024-10-01"
+stt_buy = 0.0
+stt_sell = 0.001
+stamp_buy = 0.00003
+exch_txn = 0.0003503
+# Not modelled here, but modelled in the engine: STT on EXERCISED in-the-money options = 0.125 % of intrinsic value.

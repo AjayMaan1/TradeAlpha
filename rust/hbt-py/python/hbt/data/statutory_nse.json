@@ -1,0 +1,24 @@
+{
+  "_comment": "NSE statutory and exchange charges by effective date (fractions of value; options: of premium). UNVERIFIED - confirm against NSE/SEBI circulars (decision D-13). Mirrors broker_evaluation/statutory_charges.toml.",
+  "verified": false,
+  "gst": 0.18,
+  "sebi": 0.000001,
+  "segments": {
+    "EQ_DELIVERY": [
+      {"effective_from": "2015-01-01", "stt_buy": 0.001, "stt_sell": 0.001, "stamp_buy": 0.00015, "exch": 0.0000322},
+      {"effective_from": "2024-10-01", "stt_buy": 0.001, "stt_sell": 0.001, "stamp_buy": 0.00015, "exch": 0.0000297}
+    ],
+    "EQ_INTRADAY": [
+      {"effective_from": "2015-01-01", "stt_buy": 0.0, "stt_sell": 0.00025, "stamp_buy": 0.00003, "exch": 0.0000322},
+      {"effective_from": "2024-10-01", "stt_buy": 0.0, "stt_sell": 0.00025, "stamp_buy": 0.00003, "exch": 0.0000297}
+    ],
+    "FUTURES": [
+      {"effective_from": "2015-01-01", "stt_buy": 0.0, "stt_sell": 0.000125, "stamp_buy": 0.00002, "exch": 0.0000188},
+      {"effective_from": "2024-10-01", "stt_buy": 0.0, "stt_sell": 0.0002, "stamp_buy": 0.00002, "exch": 0.0000173}
+    ],
+    "OPTIONS": [
+      {"effective_from": "2015-01-01", "stt_buy": 0.0, "stt_sell": 0.000625, "stamp_buy": 0.00003, "exch": 0.000495},
+      {"effective_from": "2024-10-01", "stt_buy": 0.0, "stt_sell": 0.001, "stamp_buy": 0.00003, "exch": 0.0003503}
+    ]
+  }
+}

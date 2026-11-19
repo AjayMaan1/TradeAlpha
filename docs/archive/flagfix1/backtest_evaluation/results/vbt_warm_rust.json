@@ -1,0 +1,1 @@
+{"engine": "rust", "backtests": 400, "cold_first_call_s": 12.1, "warm_simulation_s": 9.0, "warm_metrics_s": 20.04, "warm_per_backtest_ms": 72.6, "peak_rss_mb": 3125}

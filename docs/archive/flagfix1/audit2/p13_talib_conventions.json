@@ -1,0 +1,50 @@
+{
+ "EMA9": {
+  "nan_pattern_equal": true,
+  "max_rel_diff": 0.0
+ },
+ "SMA9": {
+  "nan_pattern_equal": true,
+  "max_rel_diff": 4.773988830760523e-15
+ },
+ "RSI9": {
+  "nan_pattern_equal": true,
+  "max_rel_diff": 1.268996305706295e-15
+ },
+ "ATR9": {
+  "nan_pattern_equal": true,
+  "max_rel_diff": 4.252513380606662e-16
+ },
+ "EMA21": {
+  "nan_pattern_equal": true,
+  "max_rel_diff": 0.0
+ },
+ "SMA21": {
+  "nan_pattern_equal": true,
+  "max_rel_diff": 1.5504535358965922e-15
+ },
+ "RSI21": {
+  "nan_pattern_equal": true,
+  "max_rel_diff": 1.767935750316589e-15
+ },
+ "ATR21": {
+  "nan_pattern_equal": true,
+  "max_rel_diff": 1.1117168469372324e-15
+ },
+ "EMA50": {
+  "nan_pattern_equal": true,
+  "max_rel_diff": 0.0
+ },
+ "SMA50": {
+  "nan_pattern_equal": true,
+  "max_rel_diff": 0.0
+ },
+ "RSI50": {
+  "nan_pattern_equal": true,
+  "max_rel_diff": 1.4159633216058731e-15
+ },
+ "ATR50": {
+  "nan_pattern_equal": true,
+  "max_rel_diff": 1.5385979030660233e-15
+ }
+}

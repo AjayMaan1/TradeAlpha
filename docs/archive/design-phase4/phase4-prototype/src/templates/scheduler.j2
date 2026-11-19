@@ -1,0 +1,150 @@
+{% extends "_layout.j2" %}
+{% set active = "scheduler" %}
+{% block title %}Scheduler{% endblock %}
+{% block heading %}Scheduler{% endblock %}
+{% block content %}
+<div class="mb-4 flex items-center justify-between">
+  <p class="text-sm text-base-content/60">Schedules create incremental download jobs. Times are IST; market-event schedules follow the exchange calendar (holidays, special sessions).</p>
+  <a href="scheduler-editor.html" class="btn btn-primary btn-sm">{{ icon("plus") }} New schedule</a>
+</div>
+
+<div class="grid grid-cols-4 gap-3">
+  {% for title, desc, ic in [
+      ("After market close", "Final daily + intraday bars, 15 min after the close", "circle-check"),
+      ("Before market open", "Catch up anything missed overnight", "sun"),
+      ("During the session", "Every N minutes while the exchange is open", "activity"),
+      ("Overnight backfill", "Run a big history download once, off-hours", "history")] %}
+  <div class="card-h flex gap-3 p-3">
+    <div class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">{{ icon(ic) }}</div>
+    <div class="min-w-0 flex-1"><div class="text-sm font-medium">{{ title }}</div><div class="text-xs text-base-content/55">{{ desc }}</div></div>
+    <a href="scheduler-editor.html" class="btn btn-ghost btn-xs self-center">Use</a>
+  </div>
+  {% endfor %}
+</div>
+
+<section class="card-h mt-4">
+  <table class="w-full">
+    <thead><tr><th class="th">Schedule</th><th class="th">When</th><th class="th">What</th><th class="th">Next run (IST)</th><th class="th">Last run</th><th class="th">On</th><th class="th"></th></tr></thead>
+    <tbody>
+    {% for name, when, what, nxt, rel, last, lcls, on in [
+      ("Post-close update", "Trading days · NSE close + 15 min", "All watchlists (48) · D, 5m, 1m · incremental", "Tue 01 Apr 15:45", "running now · next in 4 d", "running · 62%", "chip-info", True),
+      ("Pre-open daily check", "Trading days · NSE open − 30 min", "All watchlists (48) · D · incremental", "Tue 01 Apr 08:45", "in 3 d 17 h", "succeeded · 38s", "chip-ok", True),
+      ("Intraday 5m · F&O", "Every 5 min while NSE is open", "F&O (10) · 5m · incremental", "Tue 01 Apr 09:20", "next NSE session", "succeeded · 14s", "chip-ok", True),
+      ("MCX evening close", "Trading days · MCX close + 10 min", "Commodities (4) · D, 15m", "Fri 28 Mar 23:40", "in 7 h 52 m", "succeeded · 22s", "chip-ok", True),
+      ("Weekly gap repair", "Custom · Sun 10:00", "All (48) · all intervals · repair gaps", "Sun 30 Mar 10:00", "in 1 d 18 h", "partial · 1 failed", "chip-warn", True),
+      ("1y 1m backfill · NIFTY 50", "Once · Sat 29 Mar 22:00", "NIFTY 50 (50) · 1m · fixed range", "Sat 29 Mar 22:00", "paused · ≈ 650 req, ~5 min", "never run", "chip-idle", False)] %}
+      <tr class="hover:bg-base-200/60">
+        <td class="td font-medium">{{ name }}</td>
+        <td class="td text-xs">{{ when }}</td>
+        <td class="td text-xs text-base-content/70">{{ what }}</td>
+        <td class="td"><div class="num text-xs">{{ nxt }}</div><div class="text-[11px] text-base-content/50">{{ rel }}</div></td>
+        <td class="td"><span class="chip {{ lcls }}">{{ last }}</span></td>
+        <td class="td"><input type="checkbox" class="toggle toggle-primary toggle-xs" {{ "checked" if on }}></td>
+        <td class="td text-right whitespace-nowrap">
+          <button class="btn btn-ghost btn-xs" title="Run now">{{ icon("play", "h-3.5 w-3.5") }}</button>
+          <a href="scheduler-editor.html" class="btn btn-ghost btn-xs" title="Edit">{{ icon("pencil", "h-3.5 w-3.5") }}</a>
+          <button class="btn btn-ghost btn-xs" title="Delete">{{ icon("trash-2", "h-3.5 w-3.5") }}</button>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="card-h mt-4 p-4">
+  <div class="mb-3 flex items-center justify-between"><h2 class="font-semibold">Run history</h2><span class="text-xs text-base-content/50">every trigger is recorded, including skips</span></div>
+  <table class="w-full">
+    <thead><tr><th class="th">Fired (IST)</th><th class="th">Schedule</th><th class="th">Outcome</th><th class="th">Job</th><th class="th text-right">Requests</th><th class="th text-right">Rows</th></tr></thead>
+    <tbody>
+    {% for fired, sched, outcome, cls, job, req, rows in [
+      ("Fri 28 Mar 15:45:00", "Post-close update", "running · 89 / 144 tasks", "chip-info", "#a41f", "89", "1,204,880"),
+      ("Fri 28 Mar 15:25:00", "Intraday 5m · F&O", "succeeded", "chip-ok", "#a3c2", "10", "3,150"),
+      ("Fri 28 Mar 15:20:00", "Intraday 5m · F&O", "skipped · previous run still active", "chip-idle", "-", "0", "0"),
+      ("Thu 27 Mar 15:45:00", "Post-close update", "waited for broker login (41 min), then succeeded", "chip-warn", "#9e07", "144", "1,198,200"),
+      ("Wed 26 Mar 17:02:11", "Post-close update", "catch-up · app was closed at 15:45", "chip-info", "#9c51", "144", "1,201,330"),
+      ("Fri 14 Mar 15:45:00", "Post-close update", "not fired · NSE holiday (Holi)", "chip-idle", "-", "0", "0")] %}
+      <tr><td class="td num text-xs">{{ fired }}</td><td class="td text-sm">{{ sched }}</td><td class="td"><span class="chip {{ cls }}">{{ outcome }}</span></td>
+          <td class="td num text-xs">{% if job != "-" %}<a class="link link-primary" href="jobs.html">{{ job }}</a>{% else %}<span class="text-base-content/40">-</span>{% endif %}</td><td class="td num text-right text-xs">{{ req }}</td><td class="td num text-right text-xs">{{ rows }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}
+
+{% block drawer %}
+{% if editor_open %}
+<div class="fixed inset-0 z-30 bg-black/30"></div>
+<div class="fixed inset-y-0 right-0 z-40 flex w-[520px] flex-col border-l border-base-300 bg-base-100 shadow-2xl">
+  <div class="flex items-center justify-between border-b border-base-300 px-5 py-3">
+    <h2 class="font-semibold">New schedule</h2>
+    <a href="scheduler.html" class="btn btn-ghost btn-sm btn-square">{{ icon("x") }}</a>
+  </div>
+  <div class="flex-1 space-y-5 overflow-y-auto px-5 py-4 text-sm">
+    <label class="block"><span class="mb-1 block text-xs font-medium text-base-content/60">Name</span>
+      <input class="input input-sm w-full" value="Post-close · Default list"></label>
+
+    <div>
+      <span class="mb-1 block text-xs font-medium text-base-content/60">When</span>
+      <div role="tablist" class="tabs tabs-box tabs-sm">
+        <a role="tab" class="tab tab-active">Market event</a><a role="tab" class="tab">During session</a><a role="tab" class="tab">Custom (cron)</a><a role="tab" class="tab">Once</a>
+      </div>
+      <div class="mt-3 grid grid-cols-3 gap-2">
+        <label><span class="mb-1 block text-[11px] text-base-content/55">Event</span><select class="select select-sm w-full"><option>After close</option><option>Before open</option></select></label>
+        <label><span class="mb-1 block text-[11px] text-base-content/55">Exchange</span><select class="select select-sm w-full"><option>NSE</option><option>BSE</option><option>MCX</option><option>CDS</option></select></label>
+        <label><span class="mb-1 block text-[11px] text-base-content/55">Offset</span><select class="select select-sm w-full"><option>+15 min</option></select></label>
+      </div>
+      <p class="mt-2 text-xs text-base-content/60">Fires at <b>15:45 IST</b> on NSE trading days. Holidays are skipped; special sessions (e.g. Muhurat) follow their own close time.</p>
+    </div>
+
+    <div>
+      <span class="mb-1 block text-xs font-medium text-base-content/60">Target</span>
+      <div class="flex gap-4">
+        <label class="flex items-center gap-2"><input type="radio" class="radio radio-primary radio-xs" checked> Watchlist</label>
+        <label class="flex items-center gap-2"><input type="radio" class="radio radio-primary radio-xs"> Selected instruments</label>
+      </div>
+      <select class="select select-sm mt-2 w-full"><option>Default - 32 instruments (resolved when the schedule fires)</option></select>
+    </div>
+
+    <div>
+      <span class="mb-1 block text-xs font-medium text-base-content/60">Intervals</span>
+      <div class="flex flex-wrap gap-1.5">
+        {% for iv, on in [("1m", True), ("3m", False), ("5m", True), ("10m", False), ("15m", False), ("30m", False), ("1h", False), ("D", True)] %}
+          <span class="chip {{ 'chip-info' if on else 'chip-idle' }} px-2 py-1 text-xs">{{ iv }}</span>
+        {% endfor %}
+        <span class="chip chip-idle px-2 py-1 text-xs line-through opacity-60" title="derived from D">W</span>
+        <span class="chip chip-idle px-2 py-1 text-xs line-through opacity-60" title="derived from D">M</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-3">
+      <label><span class="mb-1 block text-xs font-medium text-base-content/60">Mode</span>
+        <select class="select select-sm w-full"><option>Incremental (recommended)</option><option>Repair gaps</option><option>Fixed date range</option></select></label>
+      <label><span class="mb-1 block text-xs font-medium text-base-content/60">If the previous run is still active</span>
+        <select class="select select-sm w-full"><option>Skip this run</option><option>Queue after it</option></select></label>
+      <label class="col-span-2"><span class="mb-1 block text-xs font-medium text-base-content/60">If Historify was not running at the trigger time</span>
+        <select class="select select-sm w-full"><option>Run once when it starts, if within 6 hours</option><option>Skip</option></select></label>
+    </div>
+
+    <div class="rounded-box border border-base-300 bg-base-200/60 p-3">
+      <div class="mb-2 text-xs font-semibold uppercase tracking-wide text-base-content/55">Preview</div>
+      <ul class="space-y-1 text-xs">
+        <li class="flex justify-between"><span>Tue 01 Apr 2025</span><span class="num">15:45 IST</span></li>
+        <li class="flex justify-between"><span>Wed 02 Apr 2025</span><span class="num">15:45 IST</span></li>
+        <li class="flex justify-between"><span>Thu 03 Apr 2025</span><span class="num">15:45 IST</span></li>
+        <li class="flex justify-between"><span>Fri 04 Apr 2025</span><span class="num">15:45 IST</span></li>
+        <li class="flex justify-between"><span>Mon 07 Apr 2025</span><span class="num">15:45 IST</span></li>
+        <li class="text-base-content/50">Skipped NSE holidays: Mon 31 Mar, Thu 10 Apr, Mon 14 Apr, Fri 18 Apr</li>
+      </ul>
+      <div class="mt-3 border-t border-base-300 pt-2 text-xs text-base-content/70">
+        Per run: <b class="num">96</b> requests (32 × 3 intervals, 1 chunk each) → <b>~40 s</b> at 2.4 req/s.
+        Uses <b class="num">2.4%</b> of the hourly Angel One budget.
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-end gap-2 border-t border-base-300 px-5 py-3">
+    <a href="scheduler.html" class="btn btn-sm">Cancel</a>
+    <button class="btn btn-primary btn-sm">Save schedule</button>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

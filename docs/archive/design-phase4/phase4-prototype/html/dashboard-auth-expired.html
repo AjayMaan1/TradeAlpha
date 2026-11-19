@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en" data-theme="historify-light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard · Historify</title>
+  <link rel="stylesheet" href="assets/app.css">
+  <script defer src="assets/lightweight-charts.standalone.production.js"></script>
+  
+  <script defer src="assets/proto.js"></script>
+  <script defer src="assets/alpine-csp.min.js"></script>
+</head>
+<body class="min-h-screen bg-base-200 font-sans text-base-content antialiased" data-editor="closed">
+<div class="flex min-h-screen">
+  
+  <aside class="w-60 shrink-0 border-r border-base-300 bg-base-100">
+   <div class="sticky top-0 flex h-screen flex-col">
+    <div class="flex h-14 items-center gap-2 border-b border-base-300 px-4">
+      <div class="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-content"><svg class="h-5 w-5" aria-hidden="true" class="lucide lucide-chart-candlestick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 5v4" /> <rect width="4" height="6" x="7" y="9" rx="1" /> <path d="M9 15v2" /> <path d="M17 3v2" /> <rect width="4" height="8" x="15" y="5" rx="1" /> <path d="M17 13v3" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> </svg></div>
+      <div class="leading-tight">
+        <div class="font-semibold">Historify</div>
+        <div class="text-[11px] text-base-content/50">market data manager</div>
+      </div>
+    </div>
+    <nav class="flex-1 overflow-y-auto px-2 pb-4">
+      
+      
+        <div class="nav-group">Monitor</div>
+        
+          <a href="dashboard.html" class="nav-item active">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-layout-dashboard" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="7" height="9" x="3" y="3" rx="1" /> <rect width="7" height="5" x="14" y="3" rx="1" /> <rect width="7" height="9" x="14" y="12" rx="1" /> <rect width="7" height="5" x="3" y="16" rx="1" /> </svg><span class="flex-1">Dashboard</span>
+            
+          </a>
+        
+          <a href="watchlists.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-list" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 5h.01" /> <path d="M3 12h.01" /> <path d="M3 19h.01" /> <path d="M8 5h13" /> <path d="M8 12h13" /> <path d="M8 19h13" /> </svg><span class="flex-1">Watchlists</span>
+            
+          </a>
+        
+          <a href="charts.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-chart-candlestick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 5v4" /> <rect width="4" height="6" x="7" y="9" rx="1" /> <path d="M9 15v2" /> <path d="M17 3v2" /> <rect width="4" height="8" x="15" y="5" rx="1" /> <path d="M17 13v3" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> </svg><span class="flex-1">Charts</span>
+            
+          </a>
+        
+      
+        <div class="nav-group">Data</div>
+        
+          <a href="data.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-database" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /> </svg><span class="flex-1">Data Manager</span>
+            
+          </a>
+        
+          <a href="jobs.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-list-checks" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M13 5h8" /> <path d="M13 12h8" /> <path d="M13 19h8" /> <path d="m3 17 2 2 4-4" /> <path d="m3 7 2 2 4-4" /> </svg><span class="flex-1">Jobs</span>
+            <span class="chip chip-info">1</span>
+          </a>
+        
+          <a href="import.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-file-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M12 12v6" /> <path d="m15 15-3-3-3 3" /> </svg><span class="flex-1">Import</span>
+            
+          </a>
+        
+          <a href="export.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-file-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M12 18v-6" /> <path d="m9 15 3 3 3-3" /> </svg><span class="flex-1">Export</span>
+            
+          </a>
+        
+      
+        <div class="nav-group">Automation</div>
+        
+          <a href="scheduler.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-calendar-clock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M16 14v2.2l1.6 1" /> <path d="M16 2v3" /> <path d="M21 7.338V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h2.338" /> <path d="M3 9h5.859" /> <path d="M8 2v3" /> <circle cx="16" cy="16" r="6" /> </svg><span class="flex-1">Scheduler</span>
+            
+          </a>
+        
+      
+        <div class="nav-group">System</div>
+        
+          <a href="settings.html" class="nav-item ">
+            <svg class="icon" aria-hidden="true" class="lucide lucide-settings" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /> </svg><span class="flex-1">Settings</span>
+            
+          </a>
+        
+      
+    </nav>
+    <div class="border-t border-base-300 p-3 text-[11px] text-base-content/50">
+      <div class="flex justify-between"><span>v2.0.0-dev</span><span>Python 3.14</span></div>
+      <div class="mt-1">Bars: DuckDB · Meta: SQLite</div>
+    </div>
+   </div>
+  </aside>
+
+  
+  <div class="flex min-w-0 flex-1 flex-col">
+    <header class="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-base-300 bg-base-100/95 px-5 backdrop-blur">
+      <div class="min-w-0">
+        <h1 class="truncate text-[15px] font-semibold">Dashboard</h1>
+      </div>
+      <button class="btn btn-sm ml-4 w-80 justify-start gap-2 border-base-300 bg-base-200 font-normal text-base-content/60 shadow-none">
+        <svg class="icon" aria-hidden="true" class="lucide lucide-search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /> </svg> Search symbols, pages, actions…
+        <kbd class="kbd kbd-xs ml-auto">Ctrl K</kbd>
+      </button>
+      <div class="ml-auto flex items-center gap-2">
+        
+          <span class="chip chip-err py-1"><svg class="h-3.5 w-3.5" aria-hidden="true" class="lucide lucide-link-2-off" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 17H7A5 5 0 0 1 7 7" /> <path d="M15 7h2a5 5 0 0 1 4 8" /> <line x1="8" x2="12" y1="12" y2="12" /> <line x1="2" x2="22" y1="2" y2="22" /> </svg> Broker session expired</span>
+        
+        <div class="flex items-center gap-2 rounded-lg border border-base-300 px-2.5 py-1" title="History API budget used this hour (80% of Angel One's 5,000/h)">
+          <svg class="h-3.5 w-3.5 text-base-content/60" aria-hidden="true" class="lucide lucide-gauge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m12 14 4-4" /> <path d="M3.34 19a10 10 0 1 1 17.32 0" /> </svg>
+          <div class="w-20">
+            <div class="flex justify-between text-[10px] text-base-content/60"><span>API/h</span><span class="num">312/4k</span></div>
+            <progress class="progress progress-primary h-1 w-full" value="312" max="4000"></progress>
+          </div>
+        </div>
+        <a href="jobs.html" class="flex items-center gap-2 rounded-lg border border-base-300 px-2.5 py-1 text-xs hover:bg-base-200">
+          <svg class="h-3.5 w-3.5 text-error" aria-hidden="true" class="lucide lucide-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect x="14" y="3" width="5" height="18" rx="1" /> <rect x="5" y="3" width="5" height="18" rx="1" /> </svg> 1 job paused
+        </a>
+        <button class="btn btn-ghost btn-sm btn-square" aria-label="Toggle theme"><svg class="icon" aria-hidden="true" class="lucide lucide-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /> </svg></button>
+      </div>
+    </header>
+
+    
+    <div class="flex items-center gap-3 border-b border-error/30 bg-error/10 px-5 py-2.5 text-sm">
+      <svg class="h-4 w-4 text-error" aria-hidden="true" class="lucide lucide-triangle-alert" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /> <path d="M12 9v4" /> <path d="M12 17h.01" /> </svg>
+      <div class="flex-1"><b>Angel One session expired.</b> Jobs are paused (<span class="num">1</span> job, <span class="num">96</span> tasks waiting). Log in to OpenAlgo with your TOTP, then resume. No broker calls are made meanwhile.</div>
+      <a class="btn btn-sm btn-ghost" href="settings.html">Open settings</a>
+      <button class="btn btn-sm btn-error"><svg class="icon" aria-hidden="true" class="lucide lucide-refresh-cw" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /> <path d="M21 3v5h-5" /> <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /> <path d="M8 16H3v5" /> </svg> I've logged in - resume</button>
+    </div>
+    
+
+    <main class="flex-1 p-5">
+      
+<div class="grid grid-cols-4 gap-4">
+  
+  <div class="card-h p-4">
+    <div class="flex items-start justify-between">
+      <div class="kpi-label">Instruments tracked</div>
+      <span class="text-primary"><svg class="icon" aria-hidden="true" class="lucide lucide-list" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 5h.01" /> <path d="M3 12h.01" /> <path d="M3 19h.01" /> <path d="M8 5h13" /> <path d="M8 12h13" /> <path d="M8 19h13" /> </svg></span>
+    </div>
+    <div class="kpi-value">48</div>
+    <div class="mt-1 text-xs text-base-content/55">3 watchlists · 5 exchanges</div>
+  </div>
+  
+  <div class="card-h p-4">
+    <div class="flex items-start justify-between">
+      <div class="kpi-label">Bars stored</div>
+      <span class="text-secondary"><svg class="icon" aria-hidden="true" class="lucide lucide-database" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /> </svg></span>
+    </div>
+    <div class="kpi-value">12.4 M</div>
+    <div class="mt-1 text-xs text-base-content/55">144 series · 196 MB on disk</div>
+  </div>
+  
+  <div class="card-h p-4">
+    <div class="flex items-start justify-between">
+      <div class="kpi-label">Coverage vs calendar</div>
+      <span class="text-warning"><svg class="icon" aria-hidden="true" class="lucide lucide-layers" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" /> <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" /> <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" /> </svg></span>
+    </div>
+    <div class="kpi-value">97.8 %</div>
+    <div class="mt-1 text-xs text-base-content/55">5 series have gaps</div>
+  </div>
+  
+  <div class="card-h p-4">
+    <div class="flex items-start justify-between">
+      <div class="kpi-label">Last bar written</div>
+      <span class="text-success"><svg class="icon" aria-hidden="true" class="lucide lucide-circle-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="m16 9-5.5 5.5L8 12" /> </svg></span>
+    </div>
+    <div class="kpi-value">15:46 IST</div>
+    <div class="mt-1 text-xs text-base-content/55">today · post-close job running</div>
+  </div>
+  
+</div>
+
+<div class="mt-4 grid grid-cols-3 gap-4">
+  
+  <section class="card-h col-span-2 p-4">
+    <div class="mb-3 flex items-center justify-between">
+      <h2 class="font-semibold">Active jobs</h2>
+      <a class="link link-hover text-sm text-primary" href="jobs.html">All jobs</a>
+    </div>
+    <div class="rounded-lg border border-base-300 p-3">
+      <div class="flex items-center gap-3">
+        <svg class="h-5 w-5 text-error" aria-hidden="true" class="lucide lucide-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect x="14" y="3" width="5" height="18" rx="1" /> <rect x="5" y="3" width="5" height="18" rx="1" /> </svg>
+        <div class="flex-1">
+          <div class="font-medium">Post-close update <span class="chip chip-info ml-1">schedule</span> <span class="chip chip-err ml-1">paused · waiting for broker login</span></div>
+          <div class="text-xs text-base-content/60">All watchlists · 48 instruments × D, 5m, 1m · incremental</div>
+        </div>
+        <div class="text-right text-xs text-base-content/60">
+          <div><span class="num">89 / 144</span> tasks · <span class="num">0</span> req/s</div>
+          <div>resumes after login</div>
+        </div>
+      </div>
+      <progress class="progress progress-primary mt-3 w-full" value="62" max="100"></progress>
+      <div class="mt-2 flex gap-4 text-xs text-base-content/60">
+        <span><b class="num text-base-content">1.21 M</b> rows written</span>
+        <span><b class="num text-success">87</b> succeeded</span>
+        <span><b class="num">2</b> empty (holiday)</span>
+        <span><b class="num text-warning">0</b> retrying</span>
+        <span><b class="num text-error">0</b> failed</span>
+      </div>
+    </div>
+    <div class="mt-3 flex items-center gap-3 rounded-lg border border-dashed border-base-300 p-3 text-sm text-base-content/60">
+      <svg class="icon" aria-hidden="true" class="lucide lucide-clock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M12 6v6l4 2" /> </svg> Queued: <b class="text-base-content">Backfill 1m · 5 instruments · 1 year</b> - starts when the post-close job finishes (lower priority)
+    </div>
+  </section>
+
+  
+  <section class="card-h p-4">
+    <h2 class="mb-3 font-semibold">Needs attention</h2>
+    <ul class="space-y-3 text-sm">
+      <li class="flex gap-2"><svg class="icon mt-0.5 text-warning" aria-hidden="true" class="lucide lucide-triangle-alert" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /> <path d="M12 9v4" /> <path d="M12 17h.01" /> </svg>
+        <div class="flex-1"><b>SBIN · 5m</b> missing 1 session (26 Mar)<div class="text-xs text-base-content/55">broker returned no bars on a trading day</div></div>
+        <button class="btn btn-xs"><svg class="h-3 w-3" aria-hidden="true" class="lucide lucide-wrench" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" /> </svg> Repair</button></li>
+      <li class="flex gap-2"><svg class="icon mt-0.5 text-warning" aria-hidden="true" class="lucide lucide-triangle-alert" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /> <path d="M12 9v4" /> <path d="M12 17h.01" /> </svg>
+        <div class="flex-1"><b>4 series</b> not updated for 3 trading days<div class="text-xs text-base-content/55">not covered by any schedule</div></div>
+        <a class="btn btn-xs" href="data.html">Review</a></li>
+      <li class="flex gap-2"><svg class="icon mt-0.5 text-info" aria-hidden="true" class="lucide lucide-info" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M12 16v-4" /> <path d="M12 8h.01" /> </svg>
+        <div class="flex-1">Holiday calendar is a <b>sample list</b><div class="text-xs text-base-content/55">import the official NSE 2025 list</div></div>
+        <a class="btn btn-xs" href="settings.html">Fix</a></li>
+    </ul>
+  </section>
+</div>
+
+<div class="mt-4 grid grid-cols-3 gap-4">
+  <section class="card-h p-4">
+    <div class="mb-3 flex items-center justify-between"><h2 class="font-semibold">Upcoming runs</h2><a class="link link-hover text-sm text-primary" href="scheduler.html">Scheduler</a></div>
+    <ul class="divide-y divide-base-300/70 text-sm">
+      
+      <li class="flex items-center justify-between py-2"><div><div class="font-medium">Weekly gap repair</div><div class="text-xs text-base-content/55">Sun 30 Mar · 10:00 IST</div></div><span class="text-xs text-base-content/55">in 1 d 18 h</span></li>
+      
+      <li class="flex items-center justify-between py-2"><div><div class="font-medium">Pre-open daily check</div><div class="text-xs text-base-content/55">Tue 01 Apr · 08:45 IST</div></div><span class="text-xs text-base-content/55">in 3 d 17 h</span></li>
+      
+      <li class="flex items-center justify-between py-2"><div><div class="font-medium">Post-close update</div><div class="text-xs text-base-content/55">Tue 01 Apr · 15:45 IST</div></div><span class="text-xs text-base-content/55">in 4 d</span></li>
+      
+    </ul>
+    <div class="mt-2 text-xs text-base-content/50">Mon 31 Mar is an NSE holiday: market-event schedules skip it automatically.</div>
+  </section>
+  <section class="card-h col-span-2 p-4">
+    <div class="mb-3 flex items-center justify-between"><h2 class="font-semibold">Recent runs</h2><a class="link link-hover text-sm text-primary" href="jobs.html">History</a></div>
+    <table class="w-full">
+      <thead><tr><th class="th">Run</th><th class="th">Started (IST)</th><th class="th">Duration</th><th class="th text-right">Rows</th><th class="th">Result</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="td font-medium">Intraday 5m · F&amp;O</td><td class="td num text-xs">Fri 28 Mar 15:25</td><td class="td num text-xs">14s</td><td class="td num text-right text-xs">3,150</td><td class="td"><span class="chip chip-ok">succeeded</span></td></tr>
+      
+        <tr><td class="td font-medium">Manual: Backfill D · NIFTY 50</td><td class="td num text-xs">Fri 28 Mar 11:02</td><td class="td num text-xs">1m 40s</td><td class="td num text-right text-xs">123,400</td><td class="td"><span class="chip chip-warn">partial · 1 failed</span></td></tr>
+      
+        <tr><td class="td font-medium">Pre-open daily check</td><td class="td num text-xs">Fri 28 Mar 08:45</td><td class="td num text-xs">38s</td><td class="td num text-right text-xs">48</td><td class="td"><span class="chip chip-ok">succeeded</span></td></tr>
+      
+        <tr><td class="td font-medium">Post-close update</td><td class="td num text-xs">Thu 27 Mar 15:45</td><td class="td num text-xs">48m 20s</td><td class="td num text-right text-xs">1,198,200</td><td class="td"><span class="chip chip-warn">succeeded after login wait</span></td></tr>
+      
+        <tr><td class="td font-medium">Post-close update</td><td class="td num text-xs">Wed 26 Mar 17:02</td><td class="td num text-xs">6m 05s</td><td class="td num text-right text-xs">1,201,330</td><td class="td"><span class="chip chip-info">catch-up (app closed at 15:45)</span></td></tr>
+      
+      </tbody>
+    </table>
+  </section>
+</div>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+[workspace]
+resolver = "3"
+members = ["hbt-ir", "hbt-core", "hbt-py"]
+
+[workspace.package]
+version = "0.2.0"
+edition = "2024"
+license = "AGPL-3.0-only"
+
+[workspace.dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", features = ["preserve_order"] }
+sha2 = "0.10"
+# PyO3 / rust-numpy / pyo3-arrow / arrow MUST move in lockstep (pyo3-arrow 0.20 pins pyo3 ^0.30 + arrow ^59)
+pyo3 = { version = "0.30", features = ["extension-module", "abi3-py312"] }
+numpy = "0.30"
+pyo3-arrow = "0.20"
+arrow-array = "59"
+arrow-schema = "59"
+rayon = "1.12"
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+opt-level = 3

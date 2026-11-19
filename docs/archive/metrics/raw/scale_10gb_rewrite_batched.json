@@ -1,0 +1,10 @@
+{
+  "rows": 789000000,
+  "series": 800,
+  "bytes_before": 10167005588,
+  "bytes_after": 10067390464,
+  "seconds": 342.58,
+  "previous_file": "/tmp/big10/bars.duckdb.prev",
+  "wall_s": 342.6,
+  "dup_scan_s": 82.0
+}

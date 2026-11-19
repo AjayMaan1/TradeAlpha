@@ -1,0 +1,3 @@
+ema_cross (5 nodes): 39150 bars in 0.920 ms -> 212.8 M node-updates/s (signals fired 913)
+mixed (40 nodes): 39150 bars in 5.654 ms -> 283.9 M node-updates/s (signals fired 0)
+sweep 256 variants (signals only): naive 247.8 ms, shared-EMA program (289 nodes) 56.4 ms -> x4.4 (1)

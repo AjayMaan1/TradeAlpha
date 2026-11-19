@@ -1,0 +1,2 @@
+E3 daily  : hbt vs reference  max rel err 5.3e-15  trades identical 50/50  (snapshot 4201446f)
+E5 intraday: hbt vs reference  max rel err 9.8e-14  entries+stop exits identical 50/50  (kernel time 60 ms for 50 x 39,150 bars)

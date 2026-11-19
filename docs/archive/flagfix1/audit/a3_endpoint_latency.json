@@ -1,0 +1,42 @@
+{
+ "/api/v2/status": {
+  "status": 200,
+  "median_ms": 8
+ },
+ "/api/v2/summary": {
+  "status": 200,
+  "median_ms": 80
+ },
+ "/api/v2/coverage": {
+  "status": 200,
+  "median_ms": 15
+ },
+ "/api/v2/health": {
+  "status": 200,
+  "median_ms": 45
+ },
+ "/api/v2/series/1/1m?days=120": {
+  "status": 200,
+  "median_ms": 14
+ },
+ "/api/v2/bars?instrument_id=1&interval=1m&limit=5000": {
+  "status": 200,
+  "median_ms": 120
+ },
+ "/api/v2/bars?instrument_id=1&interval=5m&limit=1500": {
+  "status": 200,
+  "median_ms": 22
+ },
+ "/api/v2/storage": {
+  "status": 200,
+  "median_ms": 25
+ },
+ "/api/v2/snapshots": {
+  "status": 200,
+  "median_ms": 2
+ },
+ "/api/v2/jobs": {
+  "status": 200,
+  "median_ms": 4
+ }
+}

@@ -1,0 +1,9 @@
+# Historify Lab: build tool for the Rust core wheel and DEV-ONLY test oracles (never runtime dependencies).
+#   maturin      builds the hbt-core abi3 wheel (historify/rust/hbt-py)
+#   TA-Lib       indicator parity oracle (tests/lab/test_indicators.py; ships its own C library in the wheel)
+#   jsonschema   IR / ExecSpec JSON-schema tests
+#   backtesting  backtesting.py bracket-semantics oracle (AGPL-3.0, tests/lab/test_backtesting_py_crosscheck.py)
+maturin==1.16.0
+TA-Lib==0.8.2
+jsonschema==4.26.0
+backtesting==0.6.6
