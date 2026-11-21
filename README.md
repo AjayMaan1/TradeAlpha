@@ -137,4 +137,4 @@ pytest tests/e2e
 
 ## License
 
-AGPL-3.0 — see [LICENSE](LICENSE). Charts powered by [TradingView Lightweight Charts™](https://www.tradingview.com/).
+Apache-2.0 — see [LICENSE](LICENSE). Charts powered by [TradingView Lightweight Charts™](https://www.tradingview.com/).

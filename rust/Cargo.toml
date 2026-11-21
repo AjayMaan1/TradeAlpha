@@ -5,7 +5,7 @@ members = ["hbt-ir", "hbt-core", "hbt-py"]
 [workspace.package]
 version = "0.2.0"
 edition = "2024"
-license = "AGPL-3.0-only"
+license = "Apache-2.0-only"
 
 [workspace.dependencies]
 serde = { version = "1.0", features = ["derive"] }

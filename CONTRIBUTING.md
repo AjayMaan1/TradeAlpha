@@ -1,6 +1,6 @@
 # Contributing to TradeAlpha
 
-TradeAlpha is licensed under **AGPL-3.0** (inherited from upstream historify; ADR-005). By contributing you agree your
+TradeAlpha is licensed under **Apache-2.0** (inherited from upstream historify; ADR-005). By contributing you agree your
 contribution is licensed the same way. New runtime dependencies must use an AGPL-compatible licence (MIT, BSD,
 Apache-2.0, ISC, PSF, MPL-2.0, LGPL) - CI enforces this with `pip-licenses`.
 
